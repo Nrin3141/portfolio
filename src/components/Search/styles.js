@@ -14,9 +14,9 @@ export const SearchIcon = styled(Search)`
 
 const focussed = css`
   background: ${props => props.theme.white};
-  color: ${props => props.theme.darkBlue};
+  color: white;
   cursor: text;
-  width: 5em;
+  width: 30vw;
   + ${SearchIcon} {
     color: ${props => props.theme.darkBlue};
     margin: 0.3em;
@@ -40,7 +40,6 @@ const collapse = css`
 
 const expand = css`
   background: ${props => props.theme.veryLightGray};
-  width: 6em;
   margin-left: -1.6em;
   padding-left: 1.6em;
   + ${SearchIcon} {
@@ -70,8 +69,8 @@ const list = css`
   position: absolute;
   right: 0;
   overflow: hidden;
-  background: black;
-  z-index: 4000;
+  background: #3f51b5;
+  z-index: 40;
   top: calc(100% + 0.5em);
   width: calc(4em + 40vw);
   max-width: 30em;
