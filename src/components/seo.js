@@ -77,7 +77,19 @@ function SEO({ description, lang, meta, keywords, title }) {
             : []
         )
         .concat(meta)}
-    />
+    >
+      <meta charSet="utf-8" />
+      <title>Rico's Blog</title>
+      <link rel="canonical" href="http://mysite.com/example" />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+      />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      />
+    </Helmet>
   )
 }
 
