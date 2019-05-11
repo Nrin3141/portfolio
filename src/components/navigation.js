@@ -3,11 +3,10 @@ import PropTypes from "prop-types"
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
 import Typography from "@material-ui/core/Typography"
-import InputBase from "@material-ui/core/InputBase"
 import { fade } from "@material-ui/core/styles/colorManipulator"
 import { withStyles } from "@material-ui/core/styles"
-import SearchIcon from "@material-ui/icons/Search"
 import SideMenu from "./sidemenu.js"
+import Search from "./Search"
 
 const styles = theme => ({
   root: {
@@ -68,6 +67,10 @@ const styles = theme => ({
     },
   },
 })
+const searchIndices = [
+  { name: `Pages`, title: `Pages`, hitComp: `PageHit` },
+  { name: `Posts`, title: `Blog Posts`, hitComp: `PostHit` },
+]
 
 function Navigation(props) {
   const { classes, siteTitle } = props
@@ -85,18 +88,7 @@ function Navigation(props) {
             {siteTitle}
           </Typography>
           <div className={classes.grow} />
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-            />
-          </div>
+          <Search collapse indices={searchIndices} />
         </Toolbar>
       </AppBar>
     </div>
