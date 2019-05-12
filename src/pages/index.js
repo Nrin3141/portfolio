@@ -2,23 +2,45 @@ import React from "react"
 //import { Link } from "gatsby"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
+import Card from "../components/card"
+import Image from "gatsby-image"
+
 import SEO from "../components/seo"
 
 export default ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-      <div>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "space-between",
+        }}
+      >
         <h1>Amazing Pandas Eating Things</h1>
         <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
         {data.allMarkdownRemark.edges.map(({ node }) => (
-          <div key={node.id}>
-            <h3>
-              {node.frontmatter.title} <span>— {node.frontmatter.date}</span>
-            </h3>
-            <img src={node.frontmatter.image} alt="astronaut" />
-            <p>{node.excerpt}</p>
-          </div>
+          <Card
+            key={node.id}
+            title={node.frontmatter.title}
+            slug={node.frontmatter.slug}
+            image={
+              <Image
+                fluid={node.frontmatter.hero.childImageSharp.fluid}
+                alt="Jellyfish"
+              />
+            }
+            avatar={
+              <Image
+                fluid={node.frontmatter.avatar.childImageSharp.fluid}
+                alt="Author Avatar"
+                style={{ borderRadius: "50%" }}
+              />
+            }
+            excerpt={node.excerpt}
+            date={node.frontmatter.date}
+          />
         ))}
       </div>
     </Layout>
@@ -34,8 +56,22 @@ export const query = graphql`
           id
           frontmatter {
             title
+            slug
             date(formatString: "DD MMMM, YYYY")
-            image
+            hero {
+              childImageSharp {
+                fluid(maxWidth: 970) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+            avatar {
+              childImageSharp {
+                fluid(maxWidth: 970) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
           excerpt
         }
