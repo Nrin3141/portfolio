@@ -10,8 +10,7 @@ import Navigation from "./navigation.js"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import "./layout.css"
-import { MuiThemeProvider } from "@material-ui/core/styles"
-import { theme } from "../templates/theme"
+import withRoot from "../utils/withRoot"
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -50,7 +49,7 @@ const Layout = ({ children }) => (
               rel="stylesheet"
             />
           </Helmet>
-          <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
+          <main>{children}</main>
           <footer>
             © {new Date().getFullYear()}, Built with
             {` `}
@@ -66,4 +65,4 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default Layout
+export default withRoot(Layout)
