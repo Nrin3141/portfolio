@@ -67,7 +67,7 @@ class SideMenu extends React.Component {
         <Link to="/">
           <ListItem button>
             <ListItemIcon>
-              <Create color="primary" />
+              <Create color="secondary" />
             </ListItemIcon>
             <ListItemText primary="Blog" />
           </ListItem>

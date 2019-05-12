@@ -1,7 +1,7 @@
 import { createMuiTheme } from "@material-ui/core/styles"
 import red from "@material-ui/core/colors/red"
 
-const theme = createMuiTheme({
+export const theme = createMuiTheme({
   palette: {
     secondary: red,
     primary: red,
@@ -21,9 +21,9 @@ const theme = createMuiTheme({
         padding: "20px",
       },
     },
+    primary: red,
   },
   typography: {
     useNextVariants: true,
   },
 })
-export default theme
