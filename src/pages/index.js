@@ -11,6 +11,8 @@ export default ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+      <h1>{data.site.siteMetadata.title}</h1>
+      <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
       <div
         style={{
           display: "flex",
@@ -18,8 +20,6 @@ export default ({ data }) => {
           justifyContent: "space-between",
         }}
       >
-        <h1>Amazing Pandas Eating Things</h1>
-        <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
         {data.allMarkdownRemark.edges.map(({ node }) => (
           <Card
             key={node.id}
@@ -49,6 +49,12 @@ export default ({ data }) => {
 
 export const query = graphql`
   query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+
     allMarkdownRemark {
       totalCount
       edges {
