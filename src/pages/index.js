@@ -1,10 +1,9 @@
 import React from "react"
 //import { Link } from "gatsby"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import Card from "../components/card"
 import Image from "gatsby-image"
-
 import SEO from "../components/seo"
 
 export default ({ data }) => {

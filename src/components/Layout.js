@@ -5,10 +5,14 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 import React from "react"
-import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 import Navigation from "./navigation.js"
+import PropTypes from "prop-types"
+import { Helmet } from "react-helmet"
 import "./layout.css"
+import CssBaseline from "@material-ui/core/CssBaseline"
+import { MuiThemeProvider } from "@material-ui/core/styles"
+import theme from "../templates/theme"
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -32,7 +36,25 @@ const Layout = ({ children }) => (
             paddingTop: 0,
           }}
         >
-          <main>{children}</main>
+          <Helmet>
+            <title>No TITLE!!!</title>
+            <link
+              rel="stylesheet"
+              href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            />
+            <meta
+              name="viewport"
+              content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+            />
+            <link
+              href="https://fonts.googleapis.com/css?family=Roboto:400,500,700"
+              rel="stylesheet"
+            />
+          </Helmet>
+          <MuiThemeProvider theme={theme}>
+            <CssBaseline />
+            <main>{children}</main>
+          </MuiThemeProvider>
           <footer>
             © {new Date().getFullYear()}, Built with
             {` `}
