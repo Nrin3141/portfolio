@@ -3,7 +3,9 @@ title: "First Post!!!"
 date: "2017-08-21"
 hero: ../../images/gatsby-astronaut.png
 avatar: ../../images/rico.jpg
-slug: "/posts/first-post"
+slug: "/blog/first-post"
+purpose: "GFH"
+tags: ["A"]
 ---
 
 This is the excerpt: And this is a piece of superb text!
