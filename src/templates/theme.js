@@ -1,14 +1,10 @@
 import { createMuiTheme } from "@material-ui/core/styles"
 import red from "@material-ui/core/colors/red"
 
-export default (theme = createMuiTheme({
+const theme = createMuiTheme({
   palette: {
-    secondary: {
-      main: "#f9dc5c",
-    },
-    primary: {
-      main: "#4CAF50",
-    },
+    secondary: red,
+    primary: red,
     error: red,
     // Used by `getContrastText()` to maximize the contrast between the background and
     // the text.
@@ -29,4 +25,5 @@ export default (theme = createMuiTheme({
   typography: {
     useNextVariants: true,
   },
-}))
+})
+export default theme
