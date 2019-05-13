@@ -77,14 +77,16 @@ class SideMenu extends React.Component {
 
     return (
       <div>
-        <IconButton
-          className={classes.menuButton}
-          color="inherit"
-          aria-label="Open drawer"
-          onClick={this.toggleDrawer(true)}
-        >
-          <MenuIcon />
-        </IconButton>
+        <div style={{ position: "absolute", top: 0, right: 0, zIndex: 300 }}>
+          <IconButton
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="Open drawer"
+            onClick={this.toggleDrawer(true)}
+          >
+            <MenuIcon />
+          </IconButton>
+        </div>
         <Drawer open={this.state.drawer} onClose={this.toggleDrawer(false)}>
           <div
             tabIndex={0}
