@@ -13,6 +13,7 @@ import ShareIcon from "@material-ui/icons/Share"
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
 import Fade from "@material-ui/core/Fade"
 import Button from "@material-ui/core/Button"
+import Tooltip from "@material-ui/core/Tooltip"
 import { Link } from "gatsby"
 
 const styles = theme => ({
@@ -67,13 +68,25 @@ const styles = theme => ({
 class BlogPreview extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { expanded: false }
+    this.state = { expanded: false, like: false }
   }
   handleExpandClick = () => {
     this.setState(state => ({ expanded: !state.expanded }))
   }
+  like = () => {
+    this.setState(state => ({ like: !state.like }))
+  }
   render() {
-    const { slug, avatar, classes, title, image, excerpt, date } = this.props
+    const {
+      slug,
+      avatar,
+      author,
+      classes,
+      title,
+      image,
+      excerpt,
+      date,
+    } = this.props
     return (
       <Card className={classes.card}>
         <div className={classes.actions}>
@@ -101,16 +114,39 @@ class BlogPreview extends React.Component {
           <div>
             <div className={classes.actions}>
               <CardHeader
-                avatar={<div className={classes.avatar}>{avatar}</div>}
-                subheader={date}
+                avatar={
+                  <Tooltip title={"by " + author}>
+                    <div className={classes.avatar}>{avatar}</div>
+                  </Tooltip>
+                }
+                subheader={
+                  <div>
+                    Published on <br />
+                    {date}
+                  </div>
+                }
               />
               <CardActions className={classes.actions} disableActionSpacing>
-                <IconButton color="primary" aria-label="Add to favorites">
-                  <FavoriteIcon />
-                </IconButton>
-                <IconButton color="primary" aria-label="Share">
-                  <ShareIcon />
-                </IconButton>
+                <Tooltip title="Share">
+                  <div>
+                    <IconButton color="primary" aria-label="Share this">
+                      <ShareIcon />
+                    </IconButton>
+                  </div>
+                </Tooltip>
+
+                <Tooltip
+                  title={this.state.like ? "Remove Like" : "Like"}
+                  placement="right"
+                >
+                  <IconButton
+                    color={this.state.like ? "secondary" : "primary"}
+                    aria-label="Add to favorites"
+                    onClick={this.like}
+                  >
+                    <FavoriteIcon />
+                  </IconButton>
+                </Tooltip>
               </CardActions>
             </div>
             <CardContent>

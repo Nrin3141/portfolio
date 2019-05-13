@@ -2,6 +2,7 @@
 title: "First Post!!!"
 date: "2017-08-21"
 hero: ../../images/gatsby-astronaut.png
+author: "Rico T."
 avatar: ../../images/rico.jpg
 slug: "/blog/first-post"
 purpose: "GFH"

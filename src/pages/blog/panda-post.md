@@ -1,6 +1,7 @@
 ---
 title: "Pandas and Bananas"
 date: "2017-08-21"
+author: "Rico T."
 hero: ../../images/gatsby-icon.png
 avatar: ../../images/rico.jpg
 slug: "/blog/panda-post"
