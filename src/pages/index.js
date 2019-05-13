@@ -16,7 +16,11 @@ const styles = theme => ({
   Home = ({ data }) => {
     return (
       <Layout>
-        <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+        <SEO
+          title="Home"
+          addition="Rico's Blog"
+          keywords={[`gatsby`, `application`, `react`]}
+        />
         <h1>{data.site.siteMetadata.title}</h1>
         <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
         <div
