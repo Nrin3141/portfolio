@@ -1,21 +1,101 @@
 import React from "react"
-import { Link } from "gatsby"
-
-import Layout from "../components/layout"
-import Image from "../components/image"
+//import { Link } from "gatsby"
+import { graphql } from "gatsby"
+import Layout from "../components/Layout"
+import Card from "../components/card"
+import Image from "gatsby-image"
 import SEO from "../components/seo"
+import withRoot from "../utils/withRoot"
+import withStyles from "@material-ui/styles/withStyles"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+const styles = theme => ({
+    root: {
+      fontWeight: "bold",
+    },
+  }),
+  Home = ({ data }) => {
+    return (
+      <Layout>
+        <SEO
+          title="Home"
+          addition="Rico's Blog"
+          keywords={[`gatsby`, `application`, `react`]}
+        />
+        <h1>All the posts</h1>
+        <h4>Total: {data.allMarkdownRemark.totalCount}</h4>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+          }}
+        >
+          {data.allMarkdownRemark.edges.map(({ node }) => (
+            <Card
+              key={node.id}
+              title={node.frontmatter.title}
+              slug={node.frontmatter.slug}
+              image={
+                <Image
+                  fluid={node.frontmatter.hero.childImageSharp.fluid}
+                  alt="Jellyfish"
+                />
+              }
+              avatar={
+                <Image
+                  fluid={node.frontmatter.avatar.childImageSharp.fluid}
+                  alt="Author Avatar"
+                  style={{ borderRadius: "50%" }}
+                />
+              }
+              author={node.frontmatter.author}
+              excerpt={node.excerpt}
+              date={node.frontmatter.date}
+            />
+          ))}
+        </div>
+      </Layout>
+    )
+  }
 
-export default IndexPage
+export default withRoot(withStyles(styles)(Home))
+
+export const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+
+    allMarkdownRemark {
+      totalCount
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            slug
+            date(formatString: "DD MMMM, YYYY")
+            author
+            hero {
+              childImageSharp {
+                fluid(maxWidth: 970) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+            avatar {
+              childImageSharp {
+                fluid(maxWidth: 970) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+          excerpt
+        }
+      }
+    }
+  }
+`
