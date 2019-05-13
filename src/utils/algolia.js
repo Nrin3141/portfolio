@@ -20,7 +20,7 @@ const pageQuery = `{
 
 const postQuery = `{
   posts: allMarkdownRemark(
-    filter: { fileAbsolutePath: { regex: "/posts/" } }
+    filter: { fileAbsolutePath: { regex: "/blog/" } }
   ) {
     edges {
       node {

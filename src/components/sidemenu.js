@@ -2,22 +2,23 @@ import React from "react"
 import PropTypes from "prop-types"
 import { withStyles } from "@material-ui/core/styles"
 import Drawer from "@material-ui/core/Drawer"
-import List from "@material-ui/core/List"
-import Divider from "@material-ui/core/Divider"
+import MenuIcon from "@material-ui/icons/Menu"
+import IconButton from "@material-ui/core/IconButton"
+import { Link } from "gatsby"
+import Photography from "@material-ui/icons/PhotoCamera"
+import Home from "@material-ui/icons/Home"
+import Create from "@material-ui/icons/Create"
+import Coding from "@material-ui/icons/Code"
+import Contact from "@material-ui/icons/Send"
 import ListItem from "@material-ui/core/ListItem"
 import ListItemIcon from "@material-ui/core/ListItemIcon"
 import ListItemText from "@material-ui/core/ListItemText"
-import InboxIcon from "@material-ui/icons/MoveToInbox"
-import MailIcon from "@material-ui/icons/Mail"
-import MenuIcon from "@material-ui/icons/Menu"
-import IconButton from "@material-ui/core/IconButton"
 
 const styles = {
   list: {
     width: 250,
-  },
-  fullList: {
-    width: "auto",
+    display: "flex",
+    flexDirection: "column",
   },
 }
 
@@ -37,27 +38,40 @@ class SideMenu extends React.Component {
 
     const sideList = (
       <div className={classes.list}>
-        <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+        {["Home", "Photography", "Coding", "Contact"].map((text, index) => {
+          return (
+            <a
+              key={text}
+              href={
+                "https://ricotrebeljahr.de/" +
+                (text === "Home" ? "" : text.toLowerCase())
+              }
+            >
+              <ListItem button>
+                <ListItemIcon>
+                  {text === "Photography" ? (
+                    <Photography color="primary" />
+                  ) : text === "Coding" ? (
+                    <Coding color="primary" />
+                  ) : text === "Home" ? (
+                    <Home color="primary" />
+                  ) : (
+                    <Contact color="primary" />
+                  )}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            </a>
+          )
+        })}
+        <Link to="/">
+          <ListItem button>
+            <ListItemIcon>
+              <Create color="secondary" />
+            </ListItemIcon>
+            <ListItemText primary="Blog" />
+          </ListItem>
+        </Link>
       </div>
     )
 

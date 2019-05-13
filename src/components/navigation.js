@@ -76,7 +76,7 @@ function Navigation(props) {
   const { classes, siteTitle } = props
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar color="primary" position="static">
         <Toolbar>
           <SideMenu />
           <Typography

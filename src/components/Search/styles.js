@@ -68,8 +68,8 @@ export const Form = styled.form`
 const list = css`
   position: absolute;
   right: 0;
-  overflow: hidden;
-  background: #3f51b5;
+  overflow-x: hidden;
+  background: grey;
   z-index: 40;
   top: calc(100% + 0.5em);
   width: calc(4em + 40vw);
