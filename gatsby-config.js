@@ -9,6 +9,7 @@ module.exports = {
     author: `@Rico Trebeljahr`,
   },
   plugins: [
+    `gatsby-plugin-styled-jsx`,
     {
       resolve: `gatsby-plugin-algolia`,
       options: {
