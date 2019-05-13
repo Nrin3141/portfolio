@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { withStyles } from "@material-ui/core/styles"
+import classnames from "classnames"
 import Card from "@material-ui/core/Card"
 import CardHeader from "@material-ui/core/CardHeader"
 import CardContent from "@material-ui/core/CardContent"
@@ -9,12 +10,27 @@ import IconButton from "@material-ui/core/IconButton"
 import Typography from "@material-ui/core/Typography"
 import FavoriteIcon from "@material-ui/icons/Favorite"
 import ShareIcon from "@material-ui/icons/Share"
-import MoreVertIcon from "@material-ui/icons/MoreVert"
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
+import Fade from "@material-ui/core/Fade"
+import Button from "@material-ui/core/Button"
 import { Link } from "gatsby"
 
 const styles = theme => ({
   card: {
-    maxWidth: 400,
+    margin: "10px 0",
+    width: "90vw",
+    [theme.breakpoints.up("md")]: {
+      width: "45vw",
+      height: "45vw",
+    },
+    [theme.breakpoints.up("lg")]: {
+      width: "30vw",
+      height: "30vw",
+    },
+    [theme.breakpoints.up("xl")]: {
+      width: "23vw",
+      height: "23vw",
+    },
   },
   media: {
     height: 0,
@@ -39,46 +55,81 @@ const styles = theme => ({
     height: 60,
     borderRadius: 50,
   },
+  root: {
+    [theme.breakpoints.up("md")]: {
+      maxHeight: "80%",
+    },
+    backgroundSize: "contain",
+    overflow: "hidden",
+  },
 })
 
-const BlogPreview = ({
-  slug,
-  avatar,
-  classes,
-  title,
-  image,
-  excerpt,
-  date,
-}) => {
-  return (
-    <Card className={classes.card}>
-      <CardHeader
-        avatar={<div className={classes.avatar}>{avatar}</div>}
-        action={
-          <IconButton>
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title={title}
-        subheader={date}
-      />
-      <Link to={slug}>
-        <CardContent>{image}</CardContent>
-      </Link>
-      <CardContent>
-        <Typography component="p">{excerpt}</Typography>
-      </CardContent>
-      <CardActions className={classes.actions} disableActionSpacing>
-        <IconButton aria-label="Add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="Share">
-          <ShareIcon />
-        </IconButton>
-      </CardActions>
-    </Card>
-  )
+class BlogPreview extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { expanded: false }
+  }
+  handleExpandClick = () => {
+    this.setState(state => ({ expanded: !state.expanded }))
+  }
+  render() {
+    const { slug, avatar, classes, title, image, excerpt, date } = this.props
+    return (
+      <Card className={classes.card}>
+        <div className={classes.actions}>
+          <CardHeader title={title}> </CardHeader>
+
+          <CardActions className={classes.actions} disableActionSpacing>
+            <IconButton
+              className={classnames(classes.expand, {
+                [classes.expandOpen]: this.state.expanded,
+              })}
+              onClick={this.handleExpandClick}
+              aria-expanded={this.state.expanded}
+              aria-label="Show more"
+            >
+              <ExpandMoreIcon />
+            </IconButton>
+          </CardActions>
+        </div>
+        <Fade in={!this.state.expanded} unmountOnExit>
+          <Link to={slug}>
+            <CardContent classes={{ root: classes.root }}>{image}</CardContent>
+          </Link>
+        </Fade>
+        <Fade in={this.state.expanded} unmountOnExit>
+          <div>
+            <div className={classes.actions}>
+              <CardHeader
+                avatar={<div className={classes.avatar}>{avatar}</div>}
+                subheader={date}
+              />
+              <CardActions className={classes.actions} disableActionSpacing>
+                <IconButton color="primary" aria-label="Add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton color="primary" aria-label="Share">
+                  <ShareIcon />
+                </IconButton>
+              </CardActions>
+            </div>
+            <CardContent>
+              <Typography component="p">{excerpt} </Typography>
+            </CardContent>
+            <CardContent>
+              <Link to={slug}>
+                <Button variant="contained" color="primary">
+                  Read on
+                </Button>
+              </Link>
+            </CardContent>
+          </div>
+        </Fade>
+      </Card>
+    )
+  }
 }
+
 BlogPreview.propTypes = {
   classes: PropTypes.object.isRequired,
 }
