@@ -1,6 +1,7 @@
 ---
 title: "Third Post!!!"
 date: "2019-05-13"
+author: "Rico T."
 hero: ../../images/rico.jpg
 avatar: ../../images/rico.jpg
 slug: "/blog/third-post"

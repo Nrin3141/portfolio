@@ -1,6 +1,7 @@
 ---
 title: "Second Post!!!"
 date: "2019-05-12"
+author: "Rico T."
 hero: ../../images/gatsby-astronaut.png
 avatar: ../../images/rico.jpg
 slug: "/blog/second-post"

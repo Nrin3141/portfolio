@@ -44,6 +44,7 @@ const styles = theme => ({
                   style={{ borderRadius: "50%" }}
                 />
               }
+              author={node.frontmatter.author}
               excerpt={node.excerpt}
               date={node.frontmatter.date}
             />
@@ -72,6 +73,7 @@ export const query = graphql`
             title
             slug
             date(formatString: "DD MMMM, YYYY")
+            author
             hero {
               childImageSharp {
                 fluid(maxWidth: 970) {
