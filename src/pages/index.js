@@ -21,8 +21,8 @@ const styles = theme => ({
           addition="Rico's Blog"
           keywords={[`gatsby`, `application`, `react`]}
         />
-        <h1>{data.site.siteMetadata.title}</h1>
-        <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
+        <h1>All the posts</h1>
+        <h4>Total: {data.allMarkdownRemark.totalCount}</h4>
         <div
           style={{
             display: "flex",
