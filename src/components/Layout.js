@@ -11,8 +11,7 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import "./layout.css"
 import withRoot from "../utils/withRoot"
-import SEO from "./seo"
-
+import Icon from "@material-ui/core/Icon"
 const Layout = ({ children }) => (
   <StaticQuery
     query={graphql`
@@ -34,7 +33,6 @@ const Layout = ({ children }) => (
             paddingTop: 0,
           }}
         >
-          <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
           <Helmet>
             <link
               rel="stylesheet"
@@ -49,12 +47,16 @@ const Layout = ({ children }) => (
               rel="stylesheet"
             />
           </Helmet>
-          <main>{children}</main>
-          <footer>
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
+          <div style={{ padding: "40px 20px" }}>
+            <main style={{ padding: "40px 0px" }}>{children}</main>
+            <footer style={{ textAlign: "center" }}>
+              © {new Date().getFullYear()}, Built with{` `}
+              <Icon style={{ fontSize: "0.7em" }} color="secondary">
+                favorite
+              </Icon>
+              {` `}by Rico
+            </footer>
+          </div>
         </div>
       </>
     )}
