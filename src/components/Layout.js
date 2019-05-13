@@ -11,6 +11,7 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import "./layout.css"
 import withRoot from "../utils/withRoot"
+import SEO from "./seo"
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -33,8 +34,8 @@ const Layout = ({ children }) => (
             paddingTop: 0,
           }}
         >
+          <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
           <Helmet>
-            <title>No TITLE!!!</title>
             <link
               rel="stylesheet"
               href="https://fonts.googleapis.com/icon?family=Material+Icons"
