@@ -29,7 +29,7 @@ const Layout = ({ children }) => (
         <div
           style={{
             margin: `0 auto`,
-            padding: `0px 1.0875rem 1.45rem`,
+            padding: `0px 1.45rem`,
             paddingTop: 0,
           }}
         >
@@ -47,9 +47,9 @@ const Layout = ({ children }) => (
               rel="stylesheet"
             />
           </Helmet>
-          <div style={{ padding: "40px 20px" }}>
+          <div>
             <main style={{ padding: "40px 0px" }}>{children}</main>
-            <footer style={{ textAlign: "center" }}>
+            <footer style={{ textAlign: "center", margin: "0", padding: "0" }}>
               © {new Date().getFullYear()}, Built with{` `}
               <Icon style={{ fontSize: "0.7em" }} color="secondary">
                 favorite
