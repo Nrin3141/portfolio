@@ -70,7 +70,10 @@ export default class Gallery extends React.Component {
     return (
       <div className="slideshow-container">
         <div
-          className="gallery-control-button-container button"
+          className={
+            "gallery-control-button-container button" +
+            (index === 0 ? " cursor" : "")
+          }
           onClick={this.previousImage}
         >
           <div
@@ -100,7 +103,10 @@ export default class Gallery extends React.Component {
         </div>
 
         <div
-          className="gallery-control-button-container button"
+          className={
+            "gallery-control-button-container button" +
+            (index === maxIndex ? " cursor" : "")
+          }
           onClick={this.nextImage}
         >
           <div
@@ -130,6 +136,9 @@ export default class Gallery extends React.Component {
             border: none;
             color: white;
             text-align: center;
+          }
+          .cursor {
+            cursor: default !important;
           }
           .handle-collapse:hover {
             background: grey;
