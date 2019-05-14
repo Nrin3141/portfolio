@@ -60,12 +60,9 @@ const Projects = ({ classes }) => {
                   <div className="absolute">
                     <h2 className="banner">
                       {
-                        [
-                          "Curious?",
-                          "View Me!",
-                          "Check me out!",
-                          "Take a look",
-                        ][i]
+                        ["Curious?", "View Me!", "Check me out!", "Discover?"][
+                          i
+                        ]
                       }
                     </h2>
                   </div>
