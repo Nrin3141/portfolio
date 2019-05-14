@@ -6,7 +6,7 @@ const Home = () => (
   <div>
     <SEO
       title="Home"
-      addition="Rico's Blog"
+      addition="Rico's Page"
       keywords={[`gatsby`, `application`, `react`]}
     />
     <Main />

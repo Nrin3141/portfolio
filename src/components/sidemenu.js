@@ -40,7 +40,7 @@ class SideMenu extends React.Component {
 
     const sideList = (
       <div className={classes.list}>
-        {["Home", "Photography", "Coding", "Contact", "Blog"].map(
+        {["Home", "Photography", "Coding", "Blog", "Contact"].map(
           (text, index) => {
             return (
               <Link
@@ -58,7 +58,7 @@ class SideMenu extends React.Component {
                     ) : text === "Contact" ? (
                       <Contact color="primary" />
                     ) : (
-                      <Create color="secondary" />
+                      <Create color="primary" />
                     )}
                   </ListItemIcon>
                   <ListItemText primary={text} />
