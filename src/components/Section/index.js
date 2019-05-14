@@ -4,21 +4,11 @@ import Paper from "@material-ui/core/Paper"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import { withStyles } from "@material-ui/core/styles"
-import { createMuiTheme } from "@material-ui/core/styles"
 import { MuiThemeProvider } from "@material-ui/core/styles"
 import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import { theme } from "../../utils/getPageContext.js"
 
-export const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: "#f9dc5c",
-    },
-  },
-  typography: {
-    useNextVariants: true,
-  },
-})
 const styles = {
   button: {
     marginTop: "40px",
@@ -93,7 +83,7 @@ const Section = ({ classes, headline, href, images, counter }) => (
                 <Link to={href}>
                   <Button
                     variant="contained"
-                    color="primary"
+                    color="secondary"
                     className={classes.button}
                   >
                     See for yourself!

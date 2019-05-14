@@ -13,6 +13,8 @@ import Contact from "@material-ui/icons/Send"
 import ListItem from "@material-ui/core/ListItem"
 import ListItemIcon from "@material-ui/core/ListItemIcon"
 import ListItemText from "@material-ui/core/ListItemText"
+import { MuiThemeProvider } from "@material-ui/core/styles"
+import { theme } from "../utils/getPageContext.js"
 
 const styles = {
   list: {
@@ -69,28 +71,30 @@ class SideMenu extends React.Component {
     )
 
     return (
-      <div>
+      <MuiThemeProvider theme={theme}>
         <div>
-          <IconButton
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="Open drawer"
-            onClick={this.toggleDrawer(true)}
-          >
-            <MenuIcon />
-          </IconButton>
-        </div>
-        <Drawer open={this.state.drawer} onClose={this.toggleDrawer(false)}>
-          <div
-            tabIndex={0}
-            role="button"
-            onClick={this.toggleDrawer(false)}
-            onKeyDown={this.toggleDrawer(false)}
-          >
-            {sideList}
+          <div>
+            <IconButton
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="Open drawer"
+              onClick={this.toggleDrawer(true)}
+            >
+              <MenuIcon />
+            </IconButton>
           </div>
-        </Drawer>
-      </div>
+          <Drawer open={this.state.drawer} onClose={this.toggleDrawer(false)}>
+            <div
+              tabIndex={0}
+              role="button"
+              onClick={this.toggleDrawer(false)}
+              onKeyDown={this.toggleDrawer(false)}
+            >
+              {sideList}
+            </div>
+          </Drawer>
+        </div>
+      </MuiThemeProvider>
     )
   }
 }

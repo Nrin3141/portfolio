@@ -1,7 +1,6 @@
 import React from "react"
 import Paper from "@material-ui/core/Paper"
 import PropTypes from "prop-types"
-import classNames from "classnames"
 import { withStyles } from "@material-ui/core/styles"
 
 const styles = {
