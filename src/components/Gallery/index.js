@@ -66,7 +66,7 @@ export default class Gallery extends React.Component {
   }
 
   render() {
-    let { collapse, imageData, index, maxIndex } = this.props
+    let { imageData, index, maxIndex } = this.props
     return (
       <div className="slideshow-container">
         <div
