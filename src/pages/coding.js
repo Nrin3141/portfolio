@@ -1,18 +1,14 @@
 import React from "react"
 import Layout from "../components/Layout"
-import Developer from "../components/Developer"
+import Projects from "../components/Projects"
+import AboutMe from "../components/AboutMe"
+import Technologies from "../components/Technologies"
 
 const Coding = () => (
   <Layout>
-    <Developer />
-    <style jsx>{`
-      div {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden;
-      }
-    `}</style>
+    <AboutMe />
+    <Projects />
+    <Technologies />
   </Layout>
 )
 
