@@ -73,7 +73,7 @@ class SideMenu extends React.Component {
     return (
       <MuiThemeProvider theme={theme}>
         <div>
-          <div>
+          <div style={{ marginRight: "20px" }}>
             <IconButton
               className={classes.menuButton}
               color="inherit"
