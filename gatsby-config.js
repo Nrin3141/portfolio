@@ -4,11 +4,15 @@ require("dotenv").config()
 
 module.exports = {
   siteMetadata: {
-    title: `Rico's Blog`,
+    title: `Rico's Site`,
     description: `Me, playing around with a bunch of tech!`,
     author: `@Rico Trebeljahr`,
   },
   plugins: [
+    `gatsby-plugin-react-helmet`,
+    //`gatsby-plugin-recaptcha`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-jsx`,
     {
       resolve: `gatsby-plugin-algolia`,
@@ -19,7 +23,6 @@ module.exports = {
         chunkSize: 10000, // default: 1000
       },
     },
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -27,8 +30,6 @@ module.exports = {
         path: `${__dirname}/src/`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: "gatsby-transformer-remark",
       options: {
