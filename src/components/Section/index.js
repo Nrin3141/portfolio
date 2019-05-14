@@ -44,7 +44,7 @@ const styles = {
     alignItems: "center",
   },
 }
-const Section = ({ classes, headline, href, images }) => (
+const Section = ({ classes, headline, href, images, counter }) => (
   <StaticQuery
     /*query {
     file(relativePath: { eq: "images/rico.jpg" }) {
@@ -60,11 +60,13 @@ const Section = ({ classes, headline, href, images }) => (
         allFile(
           filter: {
             extension: { regex: "/(jpg)|(jpeg)|(png)/" }
-            relativeDirectory: { eq: "gallery" }
+            relativeDirectory: { eq: "images/banners" }
           }
+          sort: { fields: name, order: ASC }
         ) {
           edges {
             node {
+              name
               childImageSharp {
                 fluid(maxWidth: 970) {
                   ...GatsbyImageSharpFluid
@@ -76,7 +78,7 @@ const Section = ({ classes, headline, href, images }) => (
       }
     `}
     render={data => {
-      console.log(data)
+      console.log(counter === 0 && window.innerWidth < 500 ? 4 : counter)
       return (
         <div>
           <div className="absolute">
@@ -87,21 +89,35 @@ const Section = ({ classes, headline, href, images }) => (
               </h2>
             </Paper>
             <MuiThemeProvider theme={theme}>
-              <Link to={href}>
+              {href !== "https://photodyssee.com" ? (
+                <Link to={href}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    className={classes.button}
+                  >
+                    See for yourself!
+                  </Button>
+                </Link>
+              ) : (
                 <Button
-                  href={href === "https://photodyssee.com" ? href : ""}
+                  href={href}
                   variant="contained"
                   color="primary"
                   className={classes.button}
                 >
                   See for yourself!
                 </Button>
-              </Link>
+              )}
             </MuiThemeProvider>
           </div>
           <Img
-            style={{ width: "100vw", height: "100vh" }}
-            fixed={data.allFile.edges[0].node.childImageSharp.fluid}
+            style={{ width: "100vw", height: "100vh", opacity: 0.8 }}
+            fixed={
+              data.allFile.edges[
+                counter === 0 && window.innerWidth < 500 ? 3 : counter
+              ].node.childImageSharp.fluid
+            }
           />
           <style jsx>{`
             div {
@@ -113,18 +129,6 @@ const Section = ({ classes, headline, href, images }) => (
               align-items: center;
               justify-content: center;
               text-align: center;
-            }
-            #programmer {
-              background-size: 200%;
-              background-position: 50% 80%;
-            }
-            #photographer {
-              background-position: 80% 80%;
-              background-size: cover;
-            }
-            #traveler {
-              background-size: cover;
-              background-position: 80% 80%;
             }
             .off {
               display: none;
@@ -159,40 +163,6 @@ const Section = ({ classes, headline, href, images }) => (
               width: 80vw;
               height: auto;
               z-index: 4;
-            }
-            .img {
-              background-repeat: no-repeat;
-              opacity: 0.7;
-              width: 100vw;
-            }
-
-            @media only screen and (min-width: 850px) {
-              #photographer {
-                background-position: 80% 20%;
-              }
-              #traveler {
-                background-position: 70% 50%;
-              }
-            }
-            @media only screen and (min-width: 650px) {
-              #programmer {
-                background-position: 50% 20%;
-                background-size: cover;
-              }
-            }
-            @media only screen and (max-width: 650px) {
-              #programmer {
-                background-size: cover;
-                background-position: 48% 50%;
-              }
-            }
-            @media only screen and (max-width: 500px) {
-              #traveler {
-                background-position: 70% 20%;
-              }
-            }
-            @media (orientation: portrait) {
-              background-size: auto 100vh;
             }
           `}</style>
         </div>

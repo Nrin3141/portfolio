@@ -53,6 +53,7 @@ class Main extends React.Component {
           img={headline.toLowerCase() + ".jpg"}
           headline={word}
           href={href}
+          counter={section}
         />
         <style jsx>{`
           .wrapper {
