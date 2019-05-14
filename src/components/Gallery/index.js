@@ -148,7 +148,7 @@ export default class Gallery extends React.Component {
             align-items: center;
             justify-content: center;
             background: black;
-            padding: 0 2%;
+            padding: 0;
           }
           .gallery-control-buttons {
             line-height: 2em;
@@ -156,6 +156,7 @@ export default class Gallery extends React.Component {
             width: 3em;
             height: 2em;
             border-radius: 50%;
+            margin: 5%;
           }
           .gallery-control-button-container:hover > div {
             background: grey;

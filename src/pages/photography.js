@@ -3,6 +3,7 @@ import Gallery from "../components/Gallery"
 import Layout from "../components/Layout"
 import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import SEO from "../components/seo"
 
 class Photography extends React.Component {
   constructor(props) {
@@ -61,6 +62,11 @@ class Photography extends React.Component {
               disableMenu={this.state.gallery}
               noSpacing={this.state.gallery}
             >
+              <SEO
+                title="Home"
+                addition="Rico's Photography"
+                keywords={[`gatsby`, `application`, `react`]}
+              />
               {this.state.gallery ? (
                 <Gallery
                   index={this.state.index}
