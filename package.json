@@ -25,9 +25,9 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-google-recaptcha": "^1.0.5",
     "react-helmet": "^5.2.1",
     "react-instantsearch-dom": "^5.5.0",
+    "react-recaptcha-v3": "^1.1.0",
     "styled-components": "^4.2.0",
     "styled-icons": "^7.14.0",
     "styled-jsx": "^3.2.1"
