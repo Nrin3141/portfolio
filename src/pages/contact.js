@@ -1,17 +1,13 @@
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import ReCAPTCHA from "react-google-recaptcha";
-import { withStyles } from "@material-ui/core/styles";
-import Menu from "../components/Menu";
-import Header from "../components/Headers";
-import MenuItem from "@material-ui/core/MenuItem";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import Paper from "@material-ui/core/Paper";
-import Link from "next/link";
+import React from "react"
+import PropTypes from "prop-types"
+import ReCAPTCHA from "react-google-recaptcha"
+import { withStyles } from "@material-ui/core/styles"
+import TextField from "@material-ui/core/TextField"
+import Button from "@material-ui/core/Button"
+import Paper from "@material-ui/core/Paper"
+import { Link } from "gatsby"
 
-import { theme } from "../config/theme.js";
-import _JSXStyle from "styled-jsx/style";
+import { theme } from "../utils/getPageContext.js"
 
 const styles = {
   container: {
@@ -19,7 +15,7 @@ const styles = {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
   },
   inputs: {
     display: "flex",
@@ -27,19 +23,19 @@ const styles = {
     flexDirection: "column",
     justifyContent: "space-around",
     [theme.breakpoints.up("sm")]: {
-      flexDirection: "row"
-    }
+      flexDirection: "row",
+    },
   },
   paper: {
     textAlign: "center",
     padding: 20,
-    margin: 20
+    margin: 20,
   },
   button: {
     margin: "20px 0",
     padding: 10,
     width: "50%",
-    alignSelf: "center"
+    alignSelf: "center",
   },
   outer: {
     display: "flex",
@@ -52,59 +48,59 @@ const styles = {
     left: 0,
     margin: 0,
     padding: 0,
-    overflow: "hidden"
+    overflow: "hidden",
   },
   input: {
     flexGrow: 20,
-    margin: "1vw"
+    margin: "1vw",
   },
   message: {
-    width: "78vw"
-  }
-};
+    width: "78vw",
+  },
+}
 class OutlinedTextFields extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       multiline: "",
       name: "",
       email: "",
       subject: "",
-      res: false
-    };
-    this.recaptchaRef = React.createRef();
+      res: false,
+    }
+    this.recaptchaRef = React.createRef()
   }
   submit = e => {
-    e.preventDefault();
+    e.preventDefault()
     const data = {
       email: e.target.email.value,
       message: e.target.message.value,
       name: e.target.name.value,
       subject: e.target.subject.value,
-      captcha: grecaptcha.getResponse()
-    };
+      captcha: grecaptcha.getResponse(),
+    }
     fetch("/contact", {
       method: "post",
       body: JSON.stringify(data),
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     })
       .then(res => res.json())
-      .then(res => this.setState({ res }));
-  };
+      .then(res => this.setState({ res }))
+  }
   componentDidUpdate = () => {
     //console.log(this.state);
-  };
+  }
   handleChange = name => event => {
     this.setState({
-      [name]: event.target.value
-    });
-  };
+      [name]: event.target.value,
+    })
+  }
 
   render() {
-    const { classes } = this.props;
+    const { classes } = this.props
 
     return (
       <div className={classes.outer}>
@@ -201,12 +197,12 @@ class OutlinedTextFields extends React.Component {
           </Paper>
         )}
       </div>
-    );
+    )
   }
 }
 
 OutlinedTextFields.propTypes = {
-  classes: PropTypes.object.isRequired
-};
+  classes: PropTypes.object.isRequired,
+}
 
-export default withStyles(styles)(OutlinedTextFields);
+export default withStyles(styles)(OutlinedTextFields)
