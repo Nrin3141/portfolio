@@ -29,13 +29,14 @@ const Projects = ({ classes }) => {
       `}
       render={data => {
         return (
-          <Paper>
-            <h2>
+          <Paper style={{ marginTop: "2vh" }}>
+            <h2 style={{ paddingTop: "5vh" }}>
               <i className="fas fa-code" /> Projects
             </h2>
             <div className="icon-container">
               {data.allFile.edges.map((img, i) => (
                 <a
+                  key={i}
                   href={
                     img.node.name === "snake"
                       ? "https://nrin3141.github.io/Snake-2.0/"
@@ -49,7 +50,6 @@ const Projects = ({ classes }) => {
                   className="imgContainer"
                 >
                   <Img
-                    key={i}
                     style={{
                       width: "100%",
                       height: "100%",
@@ -79,7 +79,7 @@ const Projects = ({ classes }) => {
                 background: black;
                 width: 100%;
                 height: 100%;
-                margin: 1vw;
+                margin: 1vh 0;
               }
               .banner {
                 width: 100%;
@@ -105,6 +105,7 @@ const Projects = ({ classes }) => {
                 justify-content: center;
                 align-items: center;
                 flex-wrap: wrap;
+                padding: 1vh 0 5vh;
               }
               .absolute {
                 display: none;
@@ -120,37 +121,17 @@ const Projects = ({ classes }) => {
                 width: 80vw;
                 height: 80vw;
               }
-              .imgContainer:hover > .large {
-                width: 80vw;
-                height: 80vw;
-                opacity: 0.7;
-              }
               @media only screen and (min-width: 400px) {
                 .imgContainer {
                   height: 34vw;
                   width: 34vw;
-                }
-                .large {
-                  width: 32vw;
-                  height: 32vw;
-                }
-                .imgContainer:hover > .large {
-                  width: 34vw;
-                  height: 34vw;
+                  margin: 1vw;
                 }
               }
               @media only screen and (min-width: 1000px) {
-                .large {
-                  width: 15vw;
-                  height: 15vw;
-                }
                 .imgContainer {
                   height: 16vw;
                   width: 16vw;
-                }
-                .imgContainer:hover > .large {
-                  width: 16vw;
-                  height: 16vw;
                 }
               }
             `}</style>

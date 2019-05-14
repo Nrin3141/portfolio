@@ -35,6 +35,8 @@ const styles = theme => ({
     textAlign: "center",
     justifyContent: "center",
     alignItems: "center",
+    marginTop: "2vh",
+    padding: "5vh",
   },
   responsive: {
     [theme.breakpoints.up("sm")]: {
@@ -66,7 +68,12 @@ const AboutMe = props => {
               className={classNames(classes.container, classes.responsive)}
             >
               <Img
-                style={{ width: "100%", height: "100%" }}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  borderRadius: "50%",
+                  margin: "5vh",
+                }}
                 fluid={data.file.img.fluid}
               />
               <div className={classNames(classes.width, classes.col)}>
