@@ -94,7 +94,11 @@ const AboutMe = props => {
                 ask.
               </p>
               <Link to="/contact">
-                <Button variant="contained" color="secondary">
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  style={{ margin: "5vh" }}
+                >
                   Get in touch
                 </Button>
               </Link>
@@ -104,6 +108,12 @@ const AboutMe = props => {
                 technologies and loves to expand his expertise constantly?
               </p>
             </Paper>
+            <style>{`
+              p {
+                margin: 0;
+                padding: 0;
+              }
+              `}</style>
           </MuiThemeProvider>
         )
       }}
