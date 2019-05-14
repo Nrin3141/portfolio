@@ -36,15 +36,6 @@ const styles = {
 }
 const Section = ({ classes, headline, href, images, counter }) => (
   <StaticQuery
-    /*query {
-    file(relativePath: { eq: "images/rico.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 970) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-  }*/
     query={graphql`
       query {
         allFile(
