@@ -4,6 +4,7 @@ import Developer from "../components/Developer"
 
 const Coding = () => (
   <Layout>
+    <Developer />
     <style jsx>{`
       div {
         width: 100%;
