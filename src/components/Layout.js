@@ -12,7 +12,7 @@ import { Helmet } from "react-helmet"
 import "./layout.css"
 import withRoot from "../utils/withRoot"
 import Icon from "@material-ui/core/Icon"
-const Layout = ({ children }) => (
+const Layout = ({ children, disableMenu, noSpacing }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -25,11 +25,15 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <>
-        <Navigation siteTitle={data.site.siteMetadata.title} />
+        {disableMenu ? (
+          ""
+        ) : (
+          <Navigation siteTitle={data.site.siteMetadata.title} />
+        )}
         <div
           style={{
-            margin: `0 auto`,
-            padding: `0px 1.45rem`,
+            margin: noSpacing ? "0" : "0px auto",
+            padding: noSpacing ? "0" : "0px 1.45rem",
             paddingTop: 0,
           }}
         >
@@ -46,16 +50,30 @@ const Layout = ({ children }) => (
               href="https://fonts.googleapis.com/css?family=Roboto:400,500,700"
               rel="stylesheet"
             />
+            <link
+              rel="stylesheet"
+              href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+              integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+              crossorigin="anonymous"
+            />
           </Helmet>
           <div>
-            <main style={{ padding: "40px 0px" }}>{children}</main>
-            <footer style={{ textAlign: "center", margin: "0", padding: "0" }}>
-              © {new Date().getFullYear()}, Built with{` `}
-              <Icon style={{ fontSize: "0.7em" }} color="secondary">
-                favorite
-              </Icon>
-              {` `}by Rico
-            </footer>
+            <main style={{ padding: noSpacing ? "0" : "40px 0px" }}>
+              {children}
+            </main>
+            {disableMenu ? (
+              ""
+            ) : (
+              <footer
+                style={{ textAlign: "center", margin: "0", padding: "0" }}
+              >
+                © {new Date().getFullYear()}, Built with{` `}
+                <Icon style={{ fontSize: "0.7em" }} color="secondary">
+                  favorite
+                </Icon>
+                {` `}by Rico
+              </footer>
+            )}
           </div>
         </div>
       </>

@@ -38,46 +38,39 @@ class SideMenu extends React.Component {
 
     const sideList = (
       <div className={classes.list}>
-        {["Home", "Photography", "Coding", "Contact"].map((text, index) => {
-          return (
-            <a
-              key={text}
-              href={
-                "https://ricotrebeljahr.de/" +
-                (text === "Home" ? "" : text.toLowerCase())
-              }
-            >
-              <ListItem button>
-                <ListItemIcon>
-                  {text === "Photography" ? (
-                    <Photography color="primary" />
-                  ) : text === "Coding" ? (
-                    <Coding color="primary" />
-                  ) : text === "Home" ? (
-                    <Home color="primary" />
-                  ) : (
-                    <Contact color="primary" />
-                  )}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            </a>
-          )
-        })}
-        <Link to="/">
-          <ListItem button>
-            <ListItemIcon>
-              <Create color="secondary" />
-            </ListItemIcon>
-            <ListItemText primary="Blog" />
-          </ListItem>
-        </Link>
+        {["Home", "Photography", "Coding", "Contact", "Blog"].map(
+          (text, index) => {
+            return (
+              <Link
+                key={text}
+                to={"/" + (text === "Home" ? "" : text.toLowerCase())}
+              >
+                <ListItem button>
+                  <ListItemIcon>
+                    {text === "Photography" ? (
+                      <Photography color="primary" />
+                    ) : text === "Coding" ? (
+                      <Coding color="primary" />
+                    ) : text === "Home" ? (
+                      <Home color="primary" />
+                    ) : text === "Contact" ? (
+                      <Contact color="primary" />
+                    ) : (
+                      <Create color="secondary" />
+                    )}
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItem>
+              </Link>
+            )
+          }
+        )}
       </div>
     )
 
     return (
       <div>
-        <div style={{ position: "absolute", top: 0, right: 0, zIndex: 300 }}>
+        <div>
           <IconButton
             className={classes.menuButton}
             color="inherit"
