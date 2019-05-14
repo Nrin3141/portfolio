@@ -78,7 +78,7 @@ const Projects = ({ classes }) => {
                 position: relative;
                 background: black;
                 width: 100%;
-                height: 100%;
+                height: 80vw;
                 margin: 1vh 0;
               }
               .banner {
@@ -130,8 +130,8 @@ const Projects = ({ classes }) => {
               }
               @media only screen and (min-width: 1000px) {
                 .imgContainer {
-                  height: 16vw;
-                  width: 16vw;
+                  height: 20vw;
+                  width: 20vw;
                 }
               }
             `}</style>
