@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 import { Search } from "styled-icons/fa-solid/Search"
-
+import { theme } from "../../utils/getPageContext.js"
 export const Root = styled.div`
   position: relative;
   display: grid;
@@ -13,8 +13,7 @@ export const SearchIcon = styled(Search)`
 `
 
 const focussed = css`
-  background: ${props => props.theme.white};
-  color: white;
+  background: white;
   cursor: text;
   width: 30vw;
   + ${SearchIcon} {
@@ -25,6 +24,8 @@ const focussed = css`
 
 const collapse = css`
   width: 0;
+  color: black;
+  background: ${theme.palette.primary.main};
   cursor: pointer;
   color: ${props => props.theme.lightBlue};
   + ${SearchIcon} {
@@ -51,7 +52,6 @@ export const Input = styled.input`
   outline: none;
   border: none;
   font-size: 1em;
-  background: transparent;
   transition: ${props => props.theme.shortTrans};
   border-radius: ${props => props.theme.smallBorderRadius};
   ${props => (props.collapse ? collapse : expand)};
@@ -67,17 +67,16 @@ export const Form = styled.form`
 
 const list = css`
   position: absolute;
-  right: 0;
+  right: -20px;
   overflow-x: hidden;
-  background: grey;
   z-index: 40;
   top: calc(100% + 0.5em);
   width: calc(4em + 40vw);
   max-width: 30em;
   box-shadow: 0 0 5px 0;
-  padding: 0.7em 1em 0.4em;
   background: ${props => props.theme.white};
   border-radius: ${props => props.theme.smallBorderRadius};
+
   > * + * {
     padding-top: 1em !important;
     border-top: 2px solid ${props => props.theme.darkGray};
@@ -94,8 +93,8 @@ const grid = css`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
     grid-gap: 1em;
+
     li {
-      padding: 0.3em 0.5em;
       background: ${props => props.theme.veryLightGray};
       border-radius: ${props => props.theme.smallBorderRadius};
     }
@@ -105,40 +104,46 @@ const grid = css`
 export const HitsWrapper = styled.div`
   display: ${props => (props.show ? `grid` : `none`)};
   max-height: 80vh;
-  overflow: scroll;
+  background: white;
+  scrollbar-color: ${theme.palette.secondary.main} #fff;
+  &::-webkit-scrollbar {
+    width: 15px;
+  }
+  &::-webkit-scrollbar-track-piece {
+    background: white;
+  }
+  &::-webkit-scrollbar-thumb:vertical {
+    background: rgb(51, 51, 51);
+  }
   ${props => (props.hitsAsGrid ? grid : list)};
   * {
-    margin-top: 0;
+    margin: 0;
+    margin-bottom: 10px;
     padding: 0;
   }
   ul {
     list-style: none;
+    padding-left: 20px;
+    padding-right: 15px;
   }
   mark {
-    color: ${props => props.theme.lightBlue};
-    background: ${props => props.theme.darkBlue};
+    background: ${theme.palette.secondary.main};
+  }
+  p {
+    padding-left: 20px;
+    padding-right: 20px;
   }
   header {
+    padding: 7px 10px 7px 20px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 0.3em;
+    background: ${theme.palette.primary.main};
     h3 {
+      margin: 0;
       color: ${props => props.theme.white};
       background: ${props => props.theme.gray};
-      padding: 0.1em 0.4em;
-      border-radius: ${props => props.theme.smallBorderRadius};
     }
   }
-  h3 {
-    margin: 0 0 0.5em;
-  }
-  h4 {
-    margin-bottom: 0.3em;
-  }
-`
-
-export const By = styled.span`
-  font-size: 0.6em;
-  text-align: end;
-  padding: 0;
 `
