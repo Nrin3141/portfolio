@@ -95,9 +95,6 @@ class ContactForm extends React.Component {
         })
     }
   }
-  componentDidUpdate = () => {
-    console.log(this.state.res)
-  }
   handleChange = name => event => {
     this.setState({
       [name]: event.target.value,
