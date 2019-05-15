@@ -1,7 +1,7 @@
 ---
 title: "First Post!!!"
 date: "2017-08-21"
-hero: ../../images/gatsby-astronaut.png
+hero: ../../images/blog-post-imgs/beach.jpg
 author: "Rico T."
 avatar: ../../images/rico.jpg
 slug: "/blog/first-post"

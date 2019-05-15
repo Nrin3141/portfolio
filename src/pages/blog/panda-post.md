@@ -2,7 +2,7 @@
 title: "Pandas and Bananas"
 date: "2017-08-21"
 author: "Rico T."
-hero: ../../images/gatsby-icon.png
+hero: ../../images/blog-post-imgs/bridge.jpg
 avatar: ../../images/rico.jpg
 slug: "/blog/panda-post"
 purpose: "DEF"
