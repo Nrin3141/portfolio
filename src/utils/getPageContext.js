@@ -2,6 +2,7 @@ import { SheetsRegistry } from "jss"
 import { createMuiTheme } from "@material-ui/core/styles"
 import { createGenerateClassName } from "@material-ui/styles"
 import red from "@material-ui/core/styles"
+
 // A theme with custom primary and secondary color.
 // It's optional.
 export const theme = createMuiTheme({
@@ -12,6 +13,7 @@ export const theme = createMuiTheme({
     primary: {
       main: "#4CAF50",
     },
+    tertiary: { color: "#E44D69" },
     error: red,
   },
   typography: {

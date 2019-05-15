@@ -5,7 +5,8 @@ import Layout from "../components/Layout"
 import Card from "../components/card"
 import Image from "gatsby-image"
 import SEO from "../components/seo"
-import withRoot from "../utils/withRoot"
+import { MuiThemeProvider } from "@material-ui/core/styles"
+import { theme } from "../utils/getPageContext.js"
 import withStyles from "@material-ui/styles/withStyles"
 
 const styles = theme => ({
@@ -21,44 +22,46 @@ const styles = theme => ({
           addition="Rico's Blog"
           keywords={[`gatsby`, `application`, `react`]}
         />
-        <h1>All the posts</h1>
-        <h4>Total: {data.allMarkdownRemark.totalCount}</h4>
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-between",
-          }}
-        >
-          {data.allMarkdownRemark.edges.map(({ node }) => (
-            <Card
-              key={node.id}
-              title={node.frontmatter.title}
-              slug={node.frontmatter.slug}
-              image={
-                <Image
-                  fluid={node.frontmatter.hero.childImageSharp.fluid}
-                  alt="Jellyfish"
-                />
-              }
-              avatar={
-                <Image
-                  fluid={node.frontmatter.avatar.childImageSharp.fluid}
-                  alt="Author Avatar"
-                  style={{ borderRadius: "50%" }}
-                />
-              }
-              author={node.frontmatter.author}
-              excerpt={node.excerpt}
-              date={node.frontmatter.date}
-            />
-          ))}
-        </div>
+        <MuiThemeProvider theme={theme}>
+          <h1>All the posts</h1>
+          <h4>Total: {data.allMarkdownRemark.totalCount}</h4>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "space-between",
+            }}
+          >
+            {data.allMarkdownRemark.edges.map(({ node }) => (
+              <Card
+                key={node.id}
+                title={node.frontmatter.title}
+                slug={node.frontmatter.slug}
+                image={
+                  <Image
+                    fluid={node.frontmatter.hero.childImageSharp.fluid}
+                    alt="Jellyfish"
+                  />
+                }
+                avatar={
+                  <Image
+                    fluid={node.frontmatter.avatar.childImageSharp.fluid}
+                    alt="Author Avatar"
+                    style={{ borderRadius: "50%" }}
+                  />
+                }
+                author={node.frontmatter.author}
+                excerpt={node.excerpt}
+                date={node.frontmatter.date}
+              />
+            ))}
+          </div>
+        </MuiThemeProvider>
       </Layout>
     )
   }
 
-export default withRoot(withStyles(styles)(Home))
+export default withStyles(styles)(Home)
 
 export const query = graphql`
   query {
