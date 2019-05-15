@@ -9,6 +9,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+div.grecaptcha-badge {
+  width: 0 !important;
+}
+
 article,
 aside,
 details,

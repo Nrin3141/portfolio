@@ -40,13 +40,8 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    width: "100vw",
+    width: "100%",
     minHeight: "100%",
-    position: "absolute",
-    top: 0,
-    left: 0,
-    margin: 0,
-    padding: 0,
     overflow: "hidden",
   },
   input: {
@@ -70,8 +65,6 @@ class ContactForm extends React.Component {
     }
   }
   verifyCallback = recaptchaToken => {
-    // Here you will get the final recaptchaToken!!!
-    console.log(recaptchaToken)
     this.setState({ recaptcha: recaptchaToken })
   }
   submit = e => {
@@ -94,7 +87,6 @@ class ContactForm extends React.Component {
         },
       })
         .then(res => res.json())
-        .then(res => console.log(res))
         .then(res => this.setState({ res }))
     }
   }
@@ -116,7 +108,7 @@ class ContactForm extends React.Component {
             <h2 style={{ fontWeight: "100" }}>
               Your message is on the way ...
             </h2>
-            <Link href="/">
+            <Link to="/">
               <Button
                 variant="contained"
                 color="secondary"
@@ -186,12 +178,7 @@ class ContactForm extends React.Component {
                 sitekey={"" + process.env.GATSBY_RECAPTCHA_API_PUBLIC_KEY}
                 action="action_name"
                 verifyCallback={this.verifyCallback}
-              />{" "}
-              {/*<div
-                className="g-recaptcha"
-                data-sitekey={process.env.RECAPTCHA_API_PUBLIC_KEY.toString()}
-                data-callback={this.successfulForm}
-              />*/}
+              />
               <Button
                 variant="contained"
                 color="secondary"
