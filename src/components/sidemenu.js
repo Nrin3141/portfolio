@@ -13,6 +13,8 @@ import Contact from "@material-ui/icons/Send"
 import ListItem from "@material-ui/core/ListItem"
 import ListItemIcon from "@material-ui/core/ListItemIcon"
 import ListItemText from "@material-ui/core/ListItemText"
+import { MuiThemeProvider } from "@material-ui/core/styles"
+import { theme } from "../utils/getPageContext.js"
 
 const styles = {
   list: {
@@ -38,64 +40,61 @@ class SideMenu extends React.Component {
 
     const sideList = (
       <div className={classes.list}>
-        {["Home", "Photography", "Coding", "Contact"].map((text, index) => {
-          return (
-            <a
-              key={text}
-              href={
-                "https://ricotrebeljahr.de/" +
-                (text === "Home" ? "" : text.toLowerCase())
-              }
-            >
-              <ListItem button>
-                <ListItemIcon>
-                  {text === "Photography" ? (
-                    <Photography color="primary" />
-                  ) : text === "Coding" ? (
-                    <Coding color="primary" />
-                  ) : text === "Home" ? (
-                    <Home color="primary" />
-                  ) : (
-                    <Contact color="primary" />
-                  )}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            </a>
-          )
-        })}
-        <Link to="/">
-          <ListItem button>
-            <ListItemIcon>
-              <Create color="secondary" />
-            </ListItemIcon>
-            <ListItemText primary="Blog" />
-          </ListItem>
-        </Link>
+        {["Home", "Photography", "Coding", "Blog", "Contact"].map(
+          (text, index) => {
+            return (
+              <Link
+                key={text}
+                to={"/" + (text === "Home" ? "" : text.toLowerCase())}
+              >
+                <ListItem button>
+                  <ListItemIcon>
+                    {text === "Photography" ? (
+                      <Photography color="primary" />
+                    ) : text === "Coding" ? (
+                      <Coding color="primary" />
+                    ) : text === "Home" ? (
+                      <Home color="primary" />
+                    ) : text === "Contact" ? (
+                      <Contact color="primary" />
+                    ) : (
+                      <Create color="primary" />
+                    )}
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItem>
+              </Link>
+            )
+          }
+        )}
       </div>
     )
 
     return (
-      <div>
-        <IconButton
-          className={classes.menuButton}
-          color="inherit"
-          aria-label="Open drawer"
-          onClick={this.toggleDrawer(true)}
-        >
-          <MenuIcon />
-        </IconButton>
-        <Drawer open={this.state.drawer} onClose={this.toggleDrawer(false)}>
-          <div
-            tabIndex={0}
-            role="button"
-            onClick={this.toggleDrawer(false)}
-            onKeyDown={this.toggleDrawer(false)}
-          >
-            {sideList}
+      <MuiThemeProvider theme={theme}>
+        <div>
+          <div style={{ marginRight: "20px" }}>
+            <IconButton
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="Open drawer"
+              onClick={this.toggleDrawer(true)}
+            >
+              <MenuIcon />
+            </IconButton>
           </div>
-        </Drawer>
-      </div>
+          <Drawer open={this.state.drawer} onClose={this.toggleDrawer(false)}>
+            <div
+              tabIndex={0}
+              role="button"
+              onClick={this.toggleDrawer(false)}
+              onKeyDown={this.toggleDrawer(false)}
+            >
+              {sideList}
+            </div>
+          </Drawer>
+        </div>
+      </MuiThemeProvider>
     )
   }
 }
