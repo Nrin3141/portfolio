@@ -43,30 +43,37 @@ class SideMenu extends React.Component {
         {["Home", "Photography", "Coding", "Blog", "Contact"].map(
           (text, index) => {
             return (
-              <Link
+              <ListItem
                 key={text}
+                component={Link}
                 to={"/" + (text === "Home" ? "" : text.toLowerCase())}
+                activeClassName="active"
+                partiallyActive={text !== "Home" ? true : false}
+                button
               >
-                <ListItem button>
-                  <ListItemIcon>
-                    {text === "Photography" ? (
-                      <Photography color="primary" />
-                    ) : text === "Coding" ? (
-                      <Coding color="primary" />
-                    ) : text === "Home" ? (
-                      <Home color="primary" />
-                    ) : text === "Contact" ? (
-                      <Contact color="primary" />
-                    ) : (
-                      <Create color="primary" />
-                    )}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItem>
-              </Link>
+                <ListItemIcon>
+                  {text === "Photography" ? (
+                    <Photography color="primary" />
+                  ) : text === "Coding" ? (
+                    <Coding color="primary" />
+                  ) : text === "Home" ? (
+                    <Home color="primary" />
+                  ) : text === "Contact" ? (
+                    <Contact color="primary" />
+                  ) : (
+                    <Create color="primary" />
+                  )}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
             )
           }
         )}
+        <style>{`
+          .active {
+            background: #f9dc5c !important;
+          }
+          `}</style>
       </div>
     )
 
