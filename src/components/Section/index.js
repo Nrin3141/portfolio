@@ -95,7 +95,11 @@ const Section = ({ classes, headline, href, images, counter }) => (
             style={{ width: "100vw", height: "100vh", opacity: 0.8 }}
             fixed={
               data.allFile.edges[
-                counter === 0 && window.innerWidth < 500 ? 3 : counter
+                counter === 0 &&
+                typeof window !== "undefined" &&
+                window.innerWidth < 500
+                  ? 3
+                  : counter
               ].node.childImageSharp.fluid
             }
           />
