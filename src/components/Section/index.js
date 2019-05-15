@@ -59,7 +59,6 @@ const Section = ({ classes, headline, href, images, counter }) => (
       }
     `}
     render={data => {
-      console.log(counter === 0 && window.innerWidth < 500 ? 4 : counter)
       return (
         <div>
           <div className="absolute">
@@ -84,7 +83,7 @@ const Section = ({ classes, headline, href, images, counter }) => (
                 <Button
                   href={href}
                   variant="contained"
-                  color="primary"
+                  color="secondary"
                   className={classes.button}
                 >
                   See for yourself!
