@@ -30,7 +30,6 @@ const Technologies = ({ classes }) => {
         }
       `}
       render={data => {
-        console.log(data)
         return (
           <Paper
             style={{ margin: "5vh 0", padding: "5vh", textAlign: "center" }}
