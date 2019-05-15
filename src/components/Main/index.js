@@ -45,7 +45,9 @@ class Main extends React.Component {
     let href = this.state.hrefs[section]
     return (
       <div className="wrapper">
-        <Menu />
+        <div className="fixed">
+          <Menu />
+        </div>
         <Section
           images={this.state.headlines.map(
             headline => headline.toLowerCase() + ".jpg"
@@ -75,6 +77,17 @@ class Main extends React.Component {
           }
           .off {
             display: none;
+          }
+          .fixed {
+            position: absolute;
+            z-index: 200;
+            top: 0;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            min-height: 64px;
+            width: 100%;
+            background: none;
           }
         `}</style>
       </div>
