@@ -5,8 +5,9 @@ import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
 import Paper from "@material-ui/core/Paper"
 import { Link } from "gatsby"
-import { theme } from "../../utils/getPageContext.js"
 import { ReCaptcha } from "react-recaptcha-v3"
+import { MuiThemeProvider } from "@material-ui/core/styles"
+import { theme } from "../../utils/getPageContext.js"
 
 const styles = {
   container: {
@@ -69,7 +70,6 @@ class ContactForm extends React.Component {
   }
   submit = e => {
     e.preventDefault()
-    console.log(this.state.recaptcha)
     if (this.state.recaptcha) {
       const data = {
         email: e.target.email.value,
@@ -88,9 +88,16 @@ class ContactForm extends React.Component {
       })
         .then(res => res.json())
         .then(res => this.setState({ res }))
+        .then(res => {
+          if (this.state.res && !this.state.res.responseCode) {
+            this.setState({ recaptcha: null })
+          }
+        })
     }
   }
-
+  componentDidUpdate = () => {
+    console.log(this.state.res)
+  }
   handleChange = name => event => {
     this.setState({
       [name]: event.target.value,
@@ -101,97 +108,99 @@ class ContactForm extends React.Component {
     const { classes } = this.props
 
     return (
-      <div className={classes.outer}>
-        {this.state.res && !this.state.res.responseCode ? (
-          <Paper className={classes.paper}>
-            <h1>Good news! </h1>
-            <h2 style={{ fontWeight: "100" }}>
-              Your message is on the way ...
-            </h2>
-            <Link to="/">
-              <Button
-                variant="contained"
-                color="secondary"
-                className={classes.button}
+      <MuiThemeProvider theme={theme}>
+        <div className={classes.outer}>
+          {this.state.res && !this.state.res.responseCode ? (
+            <Paper className={classes.paper}>
+              <h1>Good news! </h1>
+              <h2 style={{ fontWeight: "100" }}>
+                Your message is on the way ...
+              </h2>
+              <Link to="/">
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  className={classes.button}
+                >
+                  Home
+                </Button>
+              </Link>
+            </Paper>
+          ) : (
+            <Paper className={classes.paper}>
+              <form
+                onSubmit={this.submit}
+                className={classes.container}
+                noValidate
+                autoComplete="off"
               >
-                Home
-              </Button>
-            </Link>
-          </Paper>
-        ) : (
-          <Paper className={classes.paper}>
-            <form
-              onSubmit={this.submit}
-              className={classes.container}
-              noValidate
-              autoComplete="off"
-            >
-              <div className={classes.inputs}>
+                <div className={classes.inputs}>
+                  <TextField
+                    id="outlined-name"
+                    label="Name"
+                    name="name"
+                    value={this.state.name}
+                    onChange={this.handleChange("name")}
+                    className={classes.input}
+                    margin="normal"
+                    variant="outlined"
+                  />
+                  <TextField
+                    error={
+                      this.state.res &&
+                      this.state.res.errors &&
+                      this.state.res.errors[0].param === "email"
+                    }
+                    id="outlined-email"
+                    label="Email"
+                    name="email"
+                    value={this.state.email}
+                    className={classes.input}
+                    onChange={this.handleChange("email")}
+                    margin="normal"
+                    variant="outlined"
+                  />
+                </div>
                 <TextField
-                  id="outlined-name"
-                  label="Name"
-                  name="name"
-                  value={this.state.name}
-                  onChange={this.handleChange("name")}
-                  className={classes.input}
+                  id="outlined-subject"
+                  label="Subject"
+                  name="subject"
+                  value={this.state.subject}
+                  onChange={this.handleChange("subject")}
+                  className={classes.message}
                   margin="normal"
                   variant="outlined"
                 />
                 <TextField
-                  error={
-                    this.state.res &&
-                    this.state.res.errors &&
-                    this.state.res.errors[0].param === "email"
-                  }
-                  id="outlined-email"
-                  label="Email"
-                  name="email"
-                  value={this.state.email}
-                  className={classes.input}
-                  onChange={this.handleChange("email")}
+                  id="outlined-textarea"
+                  label="Message"
+                  name="message"
+                  multiline
+                  rowsMax="10"
                   margin="normal"
+                  className={classes.message}
                   variant="outlined"
+                  style={{ marginBottom: "5vh" }}
                 />
-              </div>
-              <TextField
-                id="outlined-subject"
-                label="Subject"
-                name="subject"
-                value={this.state.subject}
-                onChange={this.handleChange("subject")}
-                className={classes.message}
-                margin="normal"
-                variant="outlined"
-              />
-              <TextField
-                id="outlined-textarea"
-                label="Message"
-                name="message"
-                multiline
-                rowsMax="10"
-                margin="normal"
-                className={classes.message}
-                variant="outlined"
-                style={{ marginBottom: "5vh" }}
-              />
-              <ReCaptcha
-                sitekey={"" + process.env.GATSBY_RECAPTCHA_API_PUBLIC_KEY}
-                action="action_name"
-                verifyCallback={this.verifyCallback}
-              />
-              <Button
-                variant="contained"
-                color="secondary"
-                id="submit"
-                type="submit"
-                className={classes.button}
-              >
-                Get in touch
-              </Button>
-            </form>
-          </Paper>
-        )}
-      </div>
+                <ReCaptcha
+                  sitekey={"" + process.env.GATSBY_RECAPTCHA_API_PUBLIC_KEY}
+                  action="action_name"
+                  verifyCallback={this.verifyCallback}
+                />
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  id="submit"
+                  type="submit"
+                  className={classes.button}
+                >
+                  Get in touch
+                </Button>
+              </form>
+            </Paper>
+          )}
+        </div>
+      </MuiThemeProvider>
     )
   }
 }
