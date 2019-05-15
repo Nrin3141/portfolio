@@ -4,11 +4,16 @@ require("dotenv").config()
 
 module.exports = {
   siteMetadata: {
-    title: `Rico's Blog`,
+    title: `Rico's Site`,
     description: `Me, playing around with a bunch of tech!`,
     author: `@Rico Trebeljahr`,
   },
   plugins: [
+    `gatsby-plugin-react-helmet`,
+    //`gatsby-plugin-recaptcha`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-styled-jsx`,
     {
       resolve: `gatsby-plugin-algolia`,
       options: {
@@ -18,7 +23,6 @@ module.exports = {
         chunkSize: 10000, // default: 1000
       },
     },
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -26,15 +30,6 @@ module.exports = {
         path: `${__dirname}/src/`,
       },
     },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: "gatsby-transformer-remark",
       options: {
@@ -57,7 +52,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        //icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
