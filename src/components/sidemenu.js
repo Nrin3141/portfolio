@@ -48,6 +48,7 @@ class SideMenu extends React.Component {
                 component={Link}
                 to={"/" + (text === "Home" ? "" : text.toLowerCase())}
                 activeClassName="active"
+                partiallyActive={text !== "Home" ? true : false}
                 button
               >
                 <ListItemIcon>
