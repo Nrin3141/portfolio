@@ -1,6 +1,6 @@
 ---
 title: "Second Post!!!"
-date: "2019-05-12"
+date: "2017-05-12"
 author: "Rico T."
 hero: ../../images/blog-post-imgs/hills.jpg
 avatar: ../../images/rico.jpg
