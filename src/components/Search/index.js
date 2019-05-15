@@ -6,17 +6,15 @@ import {
   Hits,
   connectStateResults,
 } from "react-instantsearch-dom"
-import { Algolia } from "styled-icons/fa-brands/Algolia"
-
-import { Root, HitsWrapper, By } from "./styles"
+import { Root, HitsWrapper } from "./styles"
 import Input from "./Input"
-import * as hitComps from "./hits"
+import PostHit from "./PostHit"
 
 const events = ["mousedown", "touchstart"]
 
 const Results = connectStateResults(
   ({ searchState: state, searchResults: res, children }) =>
-    res && res.nbHits ? children : `No results for ${state.query}`
+    res && res.nbHits ? children : <p>{`No results for ${state.query}`}</p>
 )
 
 const Stats = connectStateResults(
@@ -74,23 +72,17 @@ export default class Search extends Component {
           show={query.length > 0 && focussed}
           hitsAsGrid={hitsAsGrid}
         >
-          {indices.map(({ name, title, hitComp }) => (
+          {indices.map(({ name, title }) => (
             <Index key={name} indexName={name}>
               <header>
                 <h3>{title}</h3>
                 <Stats />
               </header>
               <Results>
-                <Hits hitComponent={hitComps[hitComp](this.disableHits)} />
+                <Hits hitComponent={PostHit(this.disableHits)} />
               </Results>
             </Index>
           ))}
-          <By>
-            Powered by{" "}
-            <a href="https://www.algolia.com">
-              <Algolia size="1em" /> Algolia
-            </a>
-          </By>
         </HitsWrapper>
       </InstantSearch>
     )
