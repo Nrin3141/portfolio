@@ -7,8 +7,6 @@ import { fade } from "@material-ui/core/styles/colorManipulator"
 import { withStyles } from "@material-ui/core/styles"
 import SideMenu from "./sidemenu.js"
 import Search from "./Search"
-import { theme } from "../utils/getPageContext.js"
-import { MuiThemeProvider } from "@material-ui/core/styles"
 
 const styles = theme => ({
   root: {
@@ -77,25 +75,23 @@ const searchIndices = [
 function Navigation(props) {
   const { classes, siteTitle } = props
   return (
-    <MuiThemeProvider theme={theme}>
-      <div className={classes.root}>
-        <AppBar color="primary" position="static">
-          <Toolbar>
-            <SideMenu />
-            <Typography
-              className={classes.title}
-              variant="h6"
-              color="inherit"
-              noWrap
-            >
-              {siteTitle}
-            </Typography>
-            <div className={classes.grow} />
-            <Search collapse indices={searchIndices} />
-          </Toolbar>
-        </AppBar>
-      </div>
-    </MuiThemeProvider>
+    <div className={classes.root}>
+      <AppBar color="primary" position="static">
+        <Toolbar>
+          <SideMenu />
+          <Typography
+            className={classes.title}
+            variant="h6"
+            color="inherit"
+            noWrap
+          >
+            {siteTitle}
+          </Typography>
+          <div className={classes.grow} />
+          <Search collapse indices={searchIndices} />
+        </Toolbar>
+      </AppBar>
+    </div>
   )
 }
 
