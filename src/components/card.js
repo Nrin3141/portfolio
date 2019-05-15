@@ -15,6 +15,7 @@ import Fade from "@material-ui/core/Fade"
 import Button from "@material-ui/core/Button"
 import Tooltip from "@material-ui/core/Tooltip"
 import { Link } from "gatsby"
+import { theme } from "../utils/getPageContext.js"
 
 const styles = theme => ({
   card: {
@@ -139,12 +140,10 @@ class BlogPreview extends React.Component {
                   title={this.state.like ? "Remove Like" : "Like"}
                   placement="right"
                 >
-                  <IconButton
-                    color={this.state.like ? "secondary" : "primary"}
-                    aria-label="Add to favorites"
-                    onClick={this.like}
-                  >
-                    <FavoriteIcon />
+                  <IconButton aria-label="Add to favorites" onClick={this.like}>
+                    <FavoriteIcon
+                      style={this.state.like ? theme.palette.tertiary : {}}
+                    />
                   </IconButton>
                 </Tooltip>
               </CardActions>
@@ -154,7 +153,7 @@ class BlogPreview extends React.Component {
             </CardContent>
             <CardContent>
               <Link to={slug}>
-                <Button variant="contained" color="primary">
+                <Button variant="contained" color="secondary">
                   Read on
                 </Button>
               </Link>
