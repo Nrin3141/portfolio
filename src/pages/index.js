@@ -1,12 +1,7 @@
 import Main from "../components/Main"
 import React from "react"
 import SEO from "../components/seo"
-import withStyles from "@material-ui/styles/withStyles"
-import PropTypes from "prop-types"
 
-const styles = {
-  red: {},
-}
 const Home = ({ classes }) => (
   <div>
     <SEO
@@ -17,7 +12,5 @@ const Home = ({ classes }) => (
     <Main />
   </div>
 )
-Home.propTypes = {
-  classes: PropTypes.object.isRequired,
-}
-export default withStyles(styles)(Home)
+
+export default Home
