@@ -1,46 +1,20 @@
 import React from "react"
-import { ServerStyleSheet, StyleSheetManager } from "styled-components"
+import { Provider } from "react-redux"
 import { renderToString } from "react-dom/server"
-import { JssProvider } from "react-jss"
-import { theme } from "./src/utils/getPageContext.js" // eslint-disable-line
-import getPageContext from "./src/utils/getPageContext.js"
+import { ServerStyleSheet, StyleSheetManager } from "styled-components"
 
 export default (replaceRenderer = ({
   bodyComponent,
   replaceBodyHTMLString,
   setHeadComponents,
 }) => {
-  const sheet = new ServerStyleSheet() //styled-components
+  const sheet = new ServerStyleSheet()
 
-  const pageContext = getPageContext()
-
-  const app = (
-    <JssProvider
-      registry={pageContext.sheetsRegistry}
-      generateClassName={pageContext.generateClassName}
-    >
-      <StyleSheetManager sheet={sheet.instance}>
-        {React.cloneElement(bodyComponent, {
-          pageContext,
-        })}
-      </StyleSheetManager>
-    </JssProvider>
+  const app = () => (
+    <StyleSheetManager sheet={sheet.instance}>
+      {bodyComponent}
+    </StyleSheetManager>
   )
-
-  const body = renderToString(app)
-
-  replaceBodyHTMLString(body)
-  setHeadComponents([
-    <style
-      type="text/css"
-      id="server-side-jss"
-      key="server-side-jss"
-      dangerouslySetInnerHTML={{
-        __html: pageContext.sheetsRegistry.toString(),
-      }}
-    />,
-    sheet.getStyleElement(),
-  ])
-
-  return
+  replaceBodyHTMLString(renderToString(<app />))
+  setHeadComponents([sheet.getStyleElement()])
 })

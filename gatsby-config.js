@@ -9,6 +9,7 @@ module.exports = {
     author: `@Rico Trebeljahr`,
   },
   plugins: [
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
     //`gatsby-plugin-recaptcha`,
     `gatsby-transformer-sharp`,
@@ -57,6 +58,5 @@ module.exports = {
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    `gatsby-plugin-offline`,
   ],
 }
