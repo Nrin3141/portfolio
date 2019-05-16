@@ -78,7 +78,7 @@ class ContactForm extends React.Component {
         subject: e.target.subject.value,
         captcha: this.state.recaptcha,
       }
-      fetch("https://ricotrebeljahr.de/contact", {
+      fetch("https://contact.ricotrebeljahr.de", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -89,7 +89,7 @@ class ContactForm extends React.Component {
         .then(res => res.json())
         .then(res => {
           console.log(res)
-          this.setState({ res })
+          this.setState({ res, errors: res.errors })
         })
     }
   }
