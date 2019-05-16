@@ -65,8 +65,15 @@ const Section = ({ headline, href, images, counter }) => (
             </MuiThemeProvider>
           </div>
           <Img
-            style={{ width: "100vw", height: "100vh", opacity: 0.8 }}
-            fixed={
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100vw",
+              height: "100vh",
+              opacity: 0.8,
+            }}
+            fluid={
               data.allFile.edges[
                 counter === 0 &&
                 typeof window !== "undefined" &&
@@ -96,6 +103,7 @@ const Section = ({ headline, href, images, counter }) => (
               display: relative;
               z-index: 2;
               padding: 10px 20px;
+              text-decoration: none;
             }
             .absolute :global(.muiheadline) {
               display: flex;
