@@ -79,7 +79,7 @@ class ContactForm extends React.Component {
         captcha: this.state.recaptcha,
       }
       fetch("https://ricotrebeljahr.de/contact", {
-        method: "post",
+        method: "POST",
         body: JSON.stringify(data),
         headers: {
           Accept: "application/json",
@@ -87,11 +87,9 @@ class ContactForm extends React.Component {
         },
       })
         .then(res => res.json())
-        .then(res => this.setState({ res }))
         .then(res => {
-          if (this.state.res && !this.state.res.responseCode) {
-            this.setState({ recaptcha: null })
-          }
+          console.log(res)
+          this.setState({ res })
         })
     }
   }
@@ -144,9 +142,8 @@ class ContactForm extends React.Component {
                   />
                   <TextField
                     error={
-                      this.state.res &&
-                      this.state.res.errors &&
-                      this.state.res.errors[0].param === "email"
+                      this.state.errors &&
+                      this.state.errors[0].param === "email"
                     }
                     id="outlined-email"
                     label="Email"
