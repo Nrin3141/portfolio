@@ -1,32 +1,46 @@
-const React = require("react"),
-  { renderToString } = require("react-dom/server"),
-  StylesProvider = require("@material-ui/styles/StylesProvider").default,
-  getPageContext = require("./src/utils/getPageContext").default
+import React from "react"
+import { ServerStyleSheet, StyleSheetManager } from "styled-components"
+import { renderToString } from "react-dom/server"
+import { JssProvider } from "react-jss"
+import { theme } from "./src/utils/getPageContext.js" // eslint-disable-line
+import getPageContext from "./src/utils/getPageContext.js"
 
-function replaceRenderer({
+export default (replaceRenderer = ({
   bodyComponent,
   replaceBodyHTMLString,
   setHeadComponents,
-}) {
-  // Get the context of the page to collected side effects.
-  const muiPageContext = getPageContext(),
-    bodyHTML = renderToString(
-      <StylesProvider sheetsRegistry={muiPageContext.sheetsRegistry}>
-        {bodyComponent}
-      </StylesProvider>
-    )
+}) => {
+  const sheet = new ServerStyleSheet() //styled-components
 
-  replaceBodyHTMLString(bodyHTML)
+  const pageContext = getPageContext()
+
+  const app = (
+    <JssProvider
+      registry={pageContext.sheetsRegistry}
+      generateClassName={pageContext.generateClassName}
+    >
+      <StyleSheetManager sheet={sheet.instance}>
+        {React.cloneElement(bodyComponent, {
+          pageContext,
+        })}
+      </StyleSheetManager>
+    </JssProvider>
+  )
+
+  const body = renderToString(app)
+
+  replaceBodyHTMLString(body)
   setHeadComponents([
     <style
       type="text/css"
-      id="jss-server-side"
-      key="jss-server-side"
+      id="server-side-jss"
+      key="server-side-jss"
       dangerouslySetInnerHTML={{
-        __html: muiPageContext.sheetsRegistry.toString(),
+        __html: pageContext.sheetsRegistry.toString(),
       }}
     />,
+    sheet.getStyleElement(),
   ])
-}
 
-exports.replaceRenderer = replaceRenderer
+  return
+})
