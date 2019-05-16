@@ -24,9 +24,13 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     background: "white",
-    padding: "1em 10em",
     flexWrap: "wrap",
     minWidth: "20vw",
+    maxWidth: "80vw",
+    padding: "1em 2em",
+    [theme.breakpoints.up("md")]: {
+      padding: "1em 10em",
+    },
   },
   dash: {
     display: "flex",
