@@ -1,6 +1,7 @@
 import Main from "../components/Main"
 import React from "react"
 import SEO from "../components/seo"
+import withRoot from "../utils/withRoot"
 
 const Home = ({ classes }) => (
   <div>
@@ -13,4 +14,4 @@ const Home = ({ classes }) => (
   </div>
 )
 
-export default Home
+export default withRoot(Home)

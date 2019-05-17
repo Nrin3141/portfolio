@@ -1,6 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
-import { withStyles } from "@material-ui/core/styles"
 import Drawer from "@material-ui/core/Drawer"
 import MenuIcon from "@material-ui/icons/Menu"
 import IconButton from "@material-ui/core/IconButton"
@@ -16,14 +14,6 @@ import ListItemText from "@material-ui/core/ListItemText"
 import { MuiThemeProvider } from "@material-ui/core/styles"
 import { theme } from "../utils/getPageContext.js"
 
-const styles = {
-  list: {
-    width: 250,
-    display: "flex",
-    flexDirection: "column",
-  },
-}
-
 class SideMenu extends React.Component {
   state = {
     drawer: false,
@@ -36,10 +26,8 @@ class SideMenu extends React.Component {
   }
 
   render() {
-    const { classes } = this.props
-
     const sideList = (
-      <div className={classes.list}>
+      <div className="list">
         {["Home", "Photography", "Coding", "Blog", "Contact"].map(
           (text, index) => {
             return (
@@ -73,6 +61,11 @@ class SideMenu extends React.Component {
           .active {
             background: #f9dc5c !important;
           }
+          .list {
+            width: 250;
+            display: flex;
+            flex-direction: column;
+          }
           `}</style>
       </div>
     )
@@ -88,7 +81,6 @@ class SideMenu extends React.Component {
             }}
           >
             <IconButton
-              className={classes.menuButton}
               color="inherit"
               aria-label="Open drawer"
               onClick={this.toggleDrawer(true)}
@@ -112,8 +104,4 @@ class SideMenu extends React.Component {
   }
 }
 
-SideMenu.propTypes = {
-  classes: PropTypes.object.isRequired,
-}
-
-export default withStyles(styles)(SideMenu)
+export default SideMenu

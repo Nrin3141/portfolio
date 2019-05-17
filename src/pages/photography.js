@@ -4,6 +4,7 @@ import Layout from "../components/Layout"
 import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import SEO from "../components/seo"
+import withRoot from "../utils/withRoot"
 
 class Photography extends React.Component {
   constructor(props) {
@@ -134,4 +135,4 @@ class Photography extends React.Component {
   }
 }
 
-export default Photography
+export default withRoot(Photography)
