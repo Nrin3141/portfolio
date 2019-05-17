@@ -48,7 +48,15 @@ const Section = ({ headline, href, images, counter }) => (
                   color="secondary"
                   className="muibutton"
                 >
-                  <Link to={href}>See for yourself!</Link>
+                  <Link
+                    style={{
+                      color: "black",
+                      textDecoration: "none",
+                    }}
+                    to={href}
+                  >
+                    See for yourself!
+                  </Link>
                 </Button>
               ) : (
                 <Button
