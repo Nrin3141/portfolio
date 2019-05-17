@@ -34,7 +34,8 @@ const Technologies = ({ classes }) => {
           <Paper
             style={{ margin: "5vh 0", padding: "5vh", textAlign: "center" }}
           >
-            <h2>Technologies I use and love: </h2>
+            <h2 style={{ margin: "2vh 0" }}>Tech and Tools </h2>
+            <h4>(I use and love) </h4>
             <div className="icon-container">
               {data.allFile.edges.map((img, i) => (
                 <div key={i} className="size">
