@@ -65,7 +65,6 @@ const Layout = ({ children, disableMenu, noSpacing }) => (
             ) : (
               <footer
                 style={{
-                  width: "100%",
                   textAlign: "center",
                 }}
               >
