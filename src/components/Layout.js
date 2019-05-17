@@ -7,6 +7,7 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import Navigation from "./navigation.js"
+import Social from "./Social"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import "./layout.css"
@@ -63,16 +64,23 @@ const Layout = ({ children, disableMenu, noSpacing }) => (
               ""
             ) : (
               <footer
-                style={{ textAlign: "center", margin: "0", padding: "0" }}
+                style={{
+                  width: "100%",
+                  textAlign: "center",
+                }}
               >
-                © {new Date().getFullYear()}, Built with{` `}
-                <HeartIcon
-                  style={{
-                    fontSize: "0.7em",
-                    color: theme.palette.tertiary.color,
-                  }}
-                />
-                {` `}by Rico
+                <Social>
+                  <div>
+                    © {new Date().getFullYear()}, Built with{` `}
+                    <HeartIcon
+                      style={{
+                        fontSize: "0.7em",
+                        color: theme.palette.tertiary.color,
+                      }}
+                    />
+                    {` `}by Rico
+                  </div>
+                </Social>
               </footer>
             )}
           </div>
