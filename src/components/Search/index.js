@@ -63,7 +63,7 @@ export default class Search extends Component {
     return (
       <InstantSearch
         searchClient={this.searchClient}
-        indexName={indices[0].name}
+        indexName={indices[1].name}
         onSearchStateChange={this.updateState}
         root={{ Root, props: { ref } }}
       >
@@ -72,22 +72,21 @@ export default class Search extends Component {
           focus={this.focus}
           collapse={collapse}
           focussed={focussed}
+          query={query}
         />
         <HitsWrapper
           show={query.length > 0 && focussed}
           hitsAsGrid={hitsAsGrid}
         >
-          {indices.map(({ name, title }) => (
-            <Index key={name} indexName={name}>
-              <header>
-                <h3>{title}</h3>
-                <Stats />
-              </header>
-              <Results>
-                <Hits hitComponent={PostHit(this.disableHits)} />
-              </Results>
-            </Index>
-          ))}
+          <Index key={indices[1].name} indexName={indices[1].name}>
+            <header>
+              <h3>{indices[1].title}</h3>
+              <Stats />
+            </header>
+            <Results>
+              <Hits hitComponent={PostHit(this.disableHits)} />
+            </Results>
+          </Index>
         </HitsWrapper>
       </InstantSearch>
     )

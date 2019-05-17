@@ -4,13 +4,14 @@ import SearchIcon from "@material-ui/icons/Search"
 import Chip from "@material-ui/core/Chip"
 
 export default connectSearchBox(
-  ({ refine, onFocus, collapse, focussed, focus }) => {
+  ({ refine, onFocus, collapse, focussed, focus, query }) => {
     const Input = (
       <div>
         <input
           type="text"
           placeholder="Search"
           aria-label="Search"
+          value={query}
           onChange={e => refine(e.target.value)}
           className={
             (focussed ? "focussed" : "") + (collapse ? "collapse" : "expand")
