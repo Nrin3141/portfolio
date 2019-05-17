@@ -1,68 +1,9 @@
 import styled, { css } from "styled-components"
-import { Search } from "styled-icons/fa-solid/Search"
 import { theme } from "../../utils/getPageContext.js"
 export const Root = styled.div`
   position: relative;
   display: grid;
   grid-gap: 1em;
-`
-
-export const SearchIcon = styled(Search)`
-  width: 1em;
-  pointer-events: none;
-`
-
-const focussed = css`
-  background: white;
-  cursor: text;
-  width: 30vw;
-  + ${SearchIcon} {
-    color: ${props => props.theme.darkBlue};
-    margin: 0.3em;
-  }
-`
-
-const collapse = css`
-  width: 0;
-  color: black;
-  background: ${theme.palette.primary.main};
-  cursor: pointer;
-  color: ${props => props.theme.lightBlue};
-  + ${SearchIcon} {
-    color: ${props => props.theme.white};
-  }
-  ${props => props.focussed && focussed}
-  margin-left: ${props => (props.focussed ? `-1.6em` : `-1em`)};
-  padding-left: ${props => (props.focussed ? `1.6em` : `1em`)};
-  ::placeholder {
-    color: ${props => props.theme.gray};
-  }
-`
-
-const expand = css`
-  background: ${props => props.theme.veryLightGray};
-  margin-left: -1.6em;
-  padding-left: 1.6em;
-  + ${SearchIcon} {
-    margin: 0.3em;
-  }
-`
-
-export const Input = styled.input`
-  outline: none;
-  border: none;
-  font-size: 1em;
-  transition: ${props => props.theme.shortTrans};
-  border-radius: ${props => props.theme.smallBorderRadius};
-  ${props => (props.collapse ? collapse : expand)};
-`
-
-export const Form = styled.form`
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
 `
 
 const list = css`
