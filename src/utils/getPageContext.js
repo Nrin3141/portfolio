@@ -15,7 +15,9 @@ export const theme = createMuiTheme({
     primary: {
       main: "#4CAF50",
     },
-    tertiary: { color: "#E44D69" },
+    tertiary: {
+      color: "#E44D69",
+    },
     error: red,
   },
   typography: {

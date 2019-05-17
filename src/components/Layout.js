@@ -10,8 +10,10 @@ import Navigation from "./navigation.js"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import "./layout.css"
+import { theme } from "../utils/getPageContext"
 import withRoot from "../utils/withRoot"
-import Icon from "@material-ui/core/Icon"
+import HeartIcon from "@material-ui/icons/Favorite"
+
 const Layout = ({ children, disableMenu, noSpacing }) => (
   <StaticQuery
     query={graphql`
@@ -64,9 +66,12 @@ const Layout = ({ children, disableMenu, noSpacing }) => (
                 style={{ textAlign: "center", margin: "0", padding: "0" }}
               >
                 © {new Date().getFullYear()}, Built with{` `}
-                <Icon style={{ fontSize: "0.7em" }} color="secondary">
-                  favorite
-                </Icon>
+                <HeartIcon
+                  style={{
+                    fontSize: "0.7em",
+                    color: theme.palette.tertiary.color,
+                  }}
+                />
                 {` `}by Rico
               </footer>
             )}

@@ -43,15 +43,13 @@ const Section = ({ headline, href, images, counter }) => (
             </Paper>
             <MuiThemeProvider theme={theme}>
               {href !== "https://photodyssee.com" ? (
-                <Link to={href}>
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    className="muibutton"
-                  >
-                    See for yourself!
-                  </Button>
-                </Link>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  className="muibutton"
+                >
+                  <Link to={href}>See for yourself!</Link>
+                </Button>
               ) : (
                 <Button
                   href={href}
