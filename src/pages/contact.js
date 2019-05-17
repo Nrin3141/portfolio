@@ -3,6 +3,7 @@ import SEO from "../components/seo"
 import Layout from "../components/Layout"
 import { loadReCaptcha } from "react-recaptcha-v3"
 import ContactForm from "../components/ContactForm"
+import withRoot from "../utils/withRoot"
 
 class OutlinedTextFields extends React.Component {
   constructor(props) {
@@ -27,4 +28,4 @@ class OutlinedTextFields extends React.Component {
   }
 }
 
-export default OutlinedTextFields
+export default withRoot(OutlinedTextFields)

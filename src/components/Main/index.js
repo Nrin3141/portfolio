@@ -59,10 +59,13 @@ class Main extends React.Component {
         />
         <style jsx>{`
           .wrapper {
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 50;
             margin: 0;
             padding: 0;
-            width: 100%;
+            width: 100vw;
             height: 100vh;
             text-align: justify;
             color: black;
@@ -70,6 +73,7 @@ class Main extends React.Component {
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
           }
           .on {
             display: block;
@@ -86,7 +90,7 @@ class Main extends React.Component {
             align-items: center;
             padding: 0 24px;
             min-height: 64px;
-            width: 100%;
+            width: 100vw;
             background: none;
           }
         `}</style>

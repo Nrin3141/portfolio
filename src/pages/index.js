@@ -1,8 +1,9 @@
 import Main from "../components/Main"
 import React from "react"
 import SEO from "../components/seo"
+import withRoot from "../utils/withRoot"
 
-const Home = () => (
+const Home = ({ classes }) => (
   <div>
     <SEO
       title="Home"
@@ -12,4 +13,5 @@ const Home = () => (
     <Main />
   </div>
 )
-export default Home
+
+export default withRoot(Home)

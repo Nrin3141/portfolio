@@ -2,43 +2,12 @@ import React from "react"
 import Button from "@material-ui/core/Button"
 import Paper from "@material-ui/core/Paper"
 import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import { withStyles } from "@material-ui/core/styles"
 import { MuiThemeProvider } from "@material-ui/core/styles"
 import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import { theme } from "../../utils/getPageContext.js"
 
-const styles = {
-  button: {
-    marginTop: "40px",
-    textDecoration: "none",
-    color: "black",
-    display: "relative",
-    zIndex: 2,
-    padding: "10px 20px",
-  },
-  white: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    background: "white",
-    flexWrap: "wrap",
-    minWidth: "20vw",
-    maxWidth: "80vw",
-    padding: "1em 2em",
-    [theme.breakpoints.up("md")]: {
-      padding: "1em 10em",
-    },
-  },
-  dash: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-  },
-}
-const Section = ({ classes, headline, href, images, counter }) => (
+const Section = ({ headline, href, images, counter }) => (
   <StaticQuery
     query={graphql`
       query {
@@ -66,29 +35,35 @@ const Section = ({ classes, headline, href, images, counter }) => (
       return (
         <div>
           <div className="absolute">
-            <Paper className={classes.white}>
+            <Paper className={"muipaper"}>
               <h2 style={{ marginLeft: "0.4em" }}>I am a</h2>
-              <h2 style={{ marginLeft: "0.4em" }} className={classes.dash}>
+              <h2 style={{ marginLeft: "0.4em" }} className="muiheadline">
                 {headline} <div className="blinking-dash" />
               </h2>
             </Paper>
             <MuiThemeProvider theme={theme}>
               {href !== "https://photodyssee.com" ? (
-                <Link to={href}>
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    className={classes.button}
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  className="muibutton"
+                >
+                  <Link
+                    style={{
+                      color: "black",
+                      textDecoration: "none",
+                    }}
+                    to={href}
                   >
                     See for yourself!
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
               ) : (
                 <Button
                   href={href}
                   variant="contained"
                   color="secondary"
-                  className={classes.button}
+                  className="muibutton"
                 >
                   See for yourself!
                 </Button>
@@ -96,8 +71,15 @@ const Section = ({ classes, headline, href, images, counter }) => (
             </MuiThemeProvider>
           </div>
           <Img
-            style={{ width: "100vw", height: "100vh", opacity: 0.8 }}
-            fixed={
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100vw",
+              height: "100vh",
+              opacity: 0.8,
+            }}
+            fluid={
               data.allFile.edges[
                 counter === 0 &&
                 typeof window !== "undefined" &&
@@ -108,6 +90,32 @@ const Section = ({ classes, headline, href, images, counter }) => (
             }
           />
           <style jsx>{`
+            .absolute :global(.muipaper) {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: center;
+              background: white;
+              flex-wrap: wrap;
+              min-width: 20vw;
+              max-width: 80vw;
+              padding: 1em 2em;
+            }
+
+            .absolute :global(.muibutton) {
+              margin-top: 40px;
+              text-decoration: none;
+              color: black;
+              display: relative;
+              z-index: 2;
+              padding: 10px 20px;
+              text-decoration: none;
+            }
+            .absolute :global(.muiheadline) {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+            }
             div {
               width: 100%;
               height: 100%;
@@ -152,6 +160,11 @@ const Section = ({ classes, headline, href, images, counter }) => (
               height: auto;
               z-index: 4;
             }
+            @media only screen and (min-width: 900px) {
+              .absolute :global(.muipaper) {
+                padding: 1em 10em;
+              }
+            }
           `}</style>
         </div>
       )
@@ -159,8 +172,4 @@ const Section = ({ classes, headline, href, images, counter }) => (
   />
 )
 
-export default withStyles(styles)(Section)
-
-Section.propTypes = {
-  classes: PropTypes.object.isRequired,
-}
+export default Section

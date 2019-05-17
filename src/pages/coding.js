@@ -5,6 +5,7 @@ import AboutMe from "../components/AboutMe"
 import Technologies from "../components/Technologies"
 import IframeSketch from "../components/IframeSketch"
 import SEO from "../components/seo"
+import withRoot from "../utils/withRoot"
 
 const Coding = () => (
   <Layout>
@@ -20,4 +21,4 @@ const Coding = () => (
   </Layout>
 )
 
-export default Coding
+export default withRoot(Coding)
