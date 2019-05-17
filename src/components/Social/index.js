@@ -4,7 +4,6 @@ import { withStyles } from "@material-ui/core/styles"
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
 import Button from "@material-ui/core/Button"
-import { theme } from "../../utils/getPageContext.js"
 
 const styles = {
   appBar: {
@@ -15,13 +14,11 @@ const styles = {
     padding: "20px",
   },
   toolbar: {
-    flexDirection: "column",
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-around",
-    [theme.breakpoints.up("sm")]: {
-      flexDirection: "row",
-    },
     background: "white",
+    flexWrap: "wrap",
   },
   Button: {
     color: "white",
