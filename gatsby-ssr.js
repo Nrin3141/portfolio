@@ -1,20 +1,35 @@
-import React from "react"
-import { Provider } from "react-redux"
-import { renderToString } from "react-dom/server"
-import { ServerStyleSheet, StyleSheetManager } from "styled-components"
+/* eslint-disable react/no-danger */
 
-export default (replaceRenderer = ({
+const React = require("react")
+const { renderToString } = require("react-dom/server")
+const JssProvider = require("react-jss/lib/JssProvider").default
+const getPageContext = require("./src/utils/getPageContext").default
+
+function replaceRenderer({
   bodyComponent,
   replaceBodyHTMLString,
   setHeadComponents,
-}) => {
-  const sheet = new ServerStyleSheet()
+}) {
+  // Get the context of the page to collected side effects.
+  const muiPageContext = getPageContext()
 
-  const app = () => (
-    <StyleSheetManager sheet={sheet.instance}>
+  const bodyHTML = renderToString(
+    <JssProvider registry={muiPageContext.sheetsRegistry}>
       {bodyComponent}
-    </StyleSheetManager>
+    </JssProvider>
   )
-  replaceBodyHTMLString(renderToString(<app />))
-  setHeadComponents([sheet.getStyleElement()])
-})
+
+  replaceBodyHTMLString(bodyHTML)
+  setHeadComponents([
+    <style
+      type="text/css"
+      id="jss-server-side"
+      key="jss-server-side"
+      dangerouslySetInnerHTML={{
+        __html: muiPageContext.sheetsRegistry.toString(),
+      }}
+    />,
+  ])
+}
+
+exports.replaceRenderer = replaceRenderer
