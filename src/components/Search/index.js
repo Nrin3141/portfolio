@@ -67,7 +67,12 @@ export default class Search extends Component {
         onSearchStateChange={this.updateState}
         root={{ Root, props: { ref } }}
       >
-        <Input onFocus={this.focus} {...{ collapse, focussed }} />
+        <Input
+          onFocus={this.focus}
+          focus={this.focus}
+          collapse={collapse}
+          focussed={focussed}
+        />
         <HitsWrapper
           show={query.length > 0 && focussed}
           hitsAsGrid={hitsAsGrid}
