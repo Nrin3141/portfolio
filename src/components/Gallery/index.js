@@ -93,8 +93,6 @@ export default class Gallery extends React.Component {
               objectFit: "contain",
             }}
             fluid={imageData}
-            critical
-            fadeIn={false}
           />
           <div id="collapse-button-container">
             <div
