@@ -1,46 +1,35 @@
-import React from "react"
-import { ServerStyleSheet, StyleSheetManager } from "styled-components"
-import { renderToString } from "react-dom/server"
-import { JssProvider } from "react-jss"
-import { theme } from "./src/utils/getPageContext.js" // eslint-disable-line
-import getPageContext from "./src/utils/getPageContext.js"
+/* eslint-disable react/no-danger */
 
-export default (replaceRenderer = ({
+const React = require("react")
+const { renderToString } = require("react-dom/server")
+const JssProvider = require("react-jss/lib/JssProvider").default
+const getPageContext = require("./src/utils/getPageContext").default
+
+function replaceRenderer({
   bodyComponent,
   replaceBodyHTMLString,
   setHeadComponents,
-}) => {
-  const sheet = new ServerStyleSheet() //styled-components
+}) {
+  // Get the context of the page to collected side effects.
+  const muiPageContext = getPageContext()
 
-  const pageContext = getPageContext()
-
-  const app = (
-    <JssProvider
-      registry={pageContext.sheetsRegistry}
-      generateClassName={pageContext.generateClassName}
-    >
-      <StyleSheetManager sheet={sheet.instance}>
-        {React.cloneElement(bodyComponent, {
-          pageContext,
-        })}
-      </StyleSheetManager>
+  const bodyHTML = renderToString(
+    <JssProvider registry={muiPageContext.sheetsRegistry}>
+      {bodyComponent}
     </JssProvider>
   )
 
-  const body = renderToString(app)
-
-  replaceBodyHTMLString(body)
+  replaceBodyHTMLString(bodyHTML)
   setHeadComponents([
     <style
       type="text/css"
-      id="server-side-jss"
-      key="server-side-jss"
+      id="jss-server-side"
+      key="jss-server-side"
       dangerouslySetInnerHTML={{
-        __html: pageContext.sheetsRegistry.toString(),
+        __html: muiPageContext.sheetsRegistry.toString(),
       }}
     />,
-    sheet.getStyleElement(),
   ])
+}
 
-  return
-})
+exports.replaceRenderer = replaceRenderer

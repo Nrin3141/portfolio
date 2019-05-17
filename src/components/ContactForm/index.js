@@ -1,6 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
-import { withStyles } from "@material-ui/core/styles"
 import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
 import Paper from "@material-ui/core/Paper"
@@ -9,50 +7,6 @@ import { ReCaptcha } from "react-recaptcha-v3"
 import { MuiThemeProvider } from "@material-ui/core/styles"
 import { theme } from "../../utils/getPageContext.js"
 
-const styles = {
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    flexWrap: "wrap",
-  },
-  inputs: {
-    display: "flex",
-    width: "80vw",
-    flexDirection: "column",
-    justifyContent: "space-around",
-    [theme.breakpoints.up("sm")]: {
-      flexDirection: "row",
-    },
-  },
-  paper: {
-    textAlign: "center",
-    padding: 20,
-    margin: 20,
-  },
-  button: {
-    margin: "20px 0",
-    padding: 10,
-    width: "50%",
-    alignSelf: "center",
-  },
-  outer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-    minHeight: "100%",
-    overflow: "hidden",
-  },
-  input: {
-    flexGrow: 20,
-    margin: "1vw",
-  },
-  message: {
-    width: "78vw",
-  },
-}
 class ContactForm extends React.Component {
   constructor(props) {
     super(props)
@@ -100,13 +54,11 @@ class ContactForm extends React.Component {
   }
 
   render = () => {
-    const { classes } = this.props
-
     return (
       <MuiThemeProvider theme={theme}>
-        <div className={classes.outer}>
+        <div className="outer">
           {this.state.res && !this.state.res.responseCode ? (
-            <Paper className={classes.paper}>
+            <Paper className="muipaper">
               <h1>Good news! </h1>
               <h2 style={{ fontWeight: "100" }}>
                 Your message is on the way ...
@@ -115,28 +67,28 @@ class ContactForm extends React.Component {
                 <Button
                   variant="contained"
                   color="secondary"
-                  className={classes.button}
+                  className="button"
                 >
                   Home
                 </Button>
               </Link>
             </Paper>
           ) : (
-            <Paper className={classes.paper}>
+            <Paper className="muipaper">
               <form
                 onSubmit={this.submit}
-                className={classes.container}
+                className="container"
                 noValidate
                 autoComplete="off"
               >
-                <div className={classes.inputs}>
+                <div className="inputs">
                   <TextField
                     id="outlined-name"
                     label="Name"
                     name="name"
                     value={this.state.name}
                     onChange={this.handleChange("name")}
-                    className={classes.input}
+                    className="input"
                     margin="normal"
                     variant="outlined"
                   />
@@ -149,7 +101,7 @@ class ContactForm extends React.Component {
                     label="Email"
                     name="email"
                     value={this.state.email}
-                    className={classes.input}
+                    className="input"
                     onChange={this.handleChange("email")}
                     margin="normal"
                     variant="outlined"
@@ -161,7 +113,7 @@ class ContactForm extends React.Component {
                   name="subject"
                   value={this.state.subject}
                   onChange={this.handleChange("subject")}
-                  className={classes.message}
+                  className="message"
                   margin="normal"
                   variant="outlined"
                 />
@@ -172,7 +124,7 @@ class ContactForm extends React.Component {
                   multiline
                   rowsMax="10"
                   margin="normal"
-                  className={classes.message}
+                  className="message"
                   variant="outlined"
                   style={{ marginBottom: "5vh" }}
                 />
@@ -186,7 +138,7 @@ class ContactForm extends React.Component {
                   color="secondary"
                   id="submit"
                   type="submit"
-                  className={classes.button}
+                  className="button"
                 >
                   Get in touch
                 </Button>
@@ -194,13 +146,56 @@ class ContactForm extends React.Component {
             </Paper>
           )}
         </div>
+        <style jsx>{`
+          .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+          }
+          .inputs {
+            display: flex;
+            width: 80vw;
+            flex-direction: column;
+            justify-content: space-around;
+          }
+          @media only screen and (min-width: 600px) {
+            .inputs {
+              flex-direction: row;
+            }
+          }
+          .outer :global(.muipaper) {
+            text-align: center;
+            padding: 20px;
+            margin: 20px;
+          }
+          .outer :global(.button) {
+            margin: 20px 0;
+            padding: 10px;
+            width: 50%;
+            align-self: center;
+          }
+          .outer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            min-height: 100%;
+            overflow: hidden;
+          }
+          .outer :global(.input) {
+            flex-grow: 20;
+            margin: 10px 1vw;
+          }
+          .outer :global(.message) {
+            width: 78vw;
+            margin: 10px;
+          }
+        `}</style>
       </MuiThemeProvider>
     )
   }
 }
 
-ContactForm.propTypes = {
-  classes: PropTypes.object.isRequired,
-}
-
-export default withStyles(styles)(ContactForm)
+export default ContactForm
