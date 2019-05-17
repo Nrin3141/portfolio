@@ -6,6 +6,9 @@ import { Link } from "gatsby"
 import { ReCaptcha } from "react-recaptcha-v3"
 import { MuiThemeProvider } from "@material-ui/core/styles"
 import { theme } from "../../utils/getPageContext.js"
+import ErrorMessage from "./ErrorMessage.js"
+import SuccessMessage from "./SuccessMessage.js"
+import emailregex from "./emailregex.js"
 
 class ContactForm extends React.Component {
   constructor(props) {
@@ -42,7 +45,6 @@ class ContactForm extends React.Component {
       })
         .then(res => res.json())
         .then(res => {
-          console.log(res)
           this.setState({ res, errors: res.errors })
         })
     }
@@ -59,6 +61,7 @@ class ContactForm extends React.Component {
         <div className="outer">
           {this.state.res && !this.state.res.responseCode ? (
             <Paper className="muipaper">
+              <SuccessMessage />
               <h1>Good news! </h1>
               <h2 style={{ fontWeight: "100" }}>
                 Your message is on the way ...
@@ -75,6 +78,13 @@ class ContactForm extends React.Component {
             </Paper>
           ) : (
             <Paper className="muipaper">
+              <ErrorMessage
+                show={
+                  this.state.errors &&
+                  this.state.errors[0].param === "email" &&
+                  !emailregex.test(this.state.email)
+                }
+              />
               <form
                 onSubmit={this.submit}
                 className="container"
@@ -95,7 +105,8 @@ class ContactForm extends React.Component {
                   <TextField
                     error={
                       this.state.errors &&
-                      this.state.errors[0].param === "email"
+                      this.state.errors[0].param === "email" &&
+                      !emailregex.test(this.state.email)
                     }
                     id="outlined-email"
                     label="Email"
