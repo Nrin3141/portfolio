@@ -101,6 +101,7 @@ class Photography extends React.Component {
               )}
               <style jsx>{`
                 .masonry {
+                  width: 90vw;
                   column-count: 1;
                   column-gap: 0.5em;
                 }
