@@ -57,7 +57,15 @@ const Layout = ({ children, disableMenu, noSpacing }) => (
             />
           </Helmet>
           <div>
-            <main style={{ padding: noSpacing ? "0" : "40px 0px" }}>
+            <main
+              style={{
+                padding: noSpacing ? "0" : "40px 0px",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
               {children}
             </main>
             {disableMenu ? (
