@@ -1,30 +1,28 @@
 const postQuery = `{
-  posts: allMarkdownRemark(
-    filter: { fileAbsolutePath: { regex: "/blog/" } }
-  ) {
-    edges {
-      node {
-        objectID: id
-        frontmatter {
+    posts: allGhostPost{
+      edges {
+        node {
+          objectID: id
           title
           slug
-          date(formatString: "MMM DD, YYYY")
-          tags
+          published_at(formatString: "dddd DD MMMM YYYY")
+          tags {
+            name
+          }
+          excerpt
         }
-        excerpt(pruneLength: 5000)
       }
-    }
-  }
+}
 }`
 
 const flatten = arr =>
-  arr.map(({ node: { frontmatter, ...rest } }) => ({
-    ...frontmatter,
+  arr.map(({ node: { ...rest } }) => ({
     ...rest,
   }))
+
 const settings = { attributesToSnippet: [`excerpt:20`] }
 
-const queries = [
+const query = [
   {
     query: postQuery,
     transformer: ({ data }) => flatten(data.posts.edges),
@@ -33,4 +31,4 @@ const queries = [
   },
 ]
 
-module.exports = queries
+module.exports = query

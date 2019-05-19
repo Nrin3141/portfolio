@@ -13,8 +13,14 @@ import PostHit from "./PostHit"
 const events = ["mousedown", "touchstart"]
 
 const Results = connectStateResults(
-  ({ searchState: state, searchResults: res, children }) =>
-    res && res.nbHits ? children : <p>{`No results for ${state.query}`}</p>
+  ({ searchState: state, searchResults: res, children }) => {
+    console.log(res)
+    return res && res.nbHits ? (
+      children
+    ) : (
+      <p>{`No results for ${state.query}`}</p>
+    )
+  }
 )
 
 const Stats = connectStateResults(

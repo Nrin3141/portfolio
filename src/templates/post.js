@@ -75,8 +75,15 @@ export default ({ data }) => {
 }
 
 export const query = graphql`
-  query($slug: String!) {
-    allGhostPost(filter: { slug: { eq: $slug } }) {
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+
+    allGhostPost(sort: { fields: [published_at], order: DESC }) {
+      totalCount
       edges {
         node {
           title
@@ -88,7 +95,7 @@ export const query = graphql`
             name
             profile_image
           }
-          html
+          excerpt
           tags {
             id
             name
