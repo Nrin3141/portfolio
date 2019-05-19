@@ -47,7 +47,7 @@ class IframeSketch extends React.Component {
           <div style={{ position: "relative" }}>
             <iframe
               src="https://nrin3141.github.io/portfolio-banner/"
-              width={"100%"}
+              width={this.state.w - 80}
               height={this.state.h * 0.7}
               scrolling="no"
               frameBorder="0"
