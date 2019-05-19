@@ -14,7 +14,6 @@ const events = ["mousedown", "touchstart"]
 
 const Results = connectStateResults(
   ({ searchState: state, searchResults: res, children }) => {
-    console.log(res)
     return res && res.nbHits ? (
       children
     ) : (
