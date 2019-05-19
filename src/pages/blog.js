@@ -1,16 +1,13 @@
 import React from "react"
-//import { Link } from "gatsby"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import Card from "../components/card"
-//import Image from "gatsby-image"
 import SEO from "../components/seo"
 import { MuiThemeProvider } from "@material-ui/core/styles"
 import { theme } from "../utils/getPageContext.js"
 import withRoot from "../utils/withRoot"
 
 const Home = ({ data }) => {
-  console.log(data.allGhostPost.edges[0].node.url)
   return (
     <Layout>
       <SEO
