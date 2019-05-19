@@ -58,7 +58,7 @@ const Layout = ({ children, disableMenu, noSpacing }) => (
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                minHeight: "90%",
+                minHeight: "90vh",
               }}
             >
               {children}
