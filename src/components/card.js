@@ -107,7 +107,7 @@ class BlogPreview extends React.Component {
           </CardActions>
         </div>
         <Fade in={!this.state.expanded} unmountOnExit>
-          <Link to={slug}>
+          <Link to={"/blog/" + slug}>
             <CardContent classes={{ root: classes.root }}>{image}</CardContent>
           </Link>
         </Fade>
@@ -152,7 +152,7 @@ class BlogPreview extends React.Component {
               <Typography component="p">{excerpt} </Typography>
             </CardContent>
             <CardContent>
-              <Link to={slug}>
+              <Link to={"/blog/" + slug}>
                 <Button variant="contained" color="secondary">
                   Read on
                 </Button>
