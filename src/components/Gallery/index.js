@@ -88,9 +88,15 @@ export default class Gallery extends React.Component {
             style={{
               maxHeight: "100vh",
               width: "100%",
+              maxWidth: "100%",
+              minWidth: "100%",
+              margin: 0,
+              padding: 0,
             }}
             imgStyle={{
               objectFit: "contain",
+              margin: 0,
+              padding: 0,
             }}
             fluid={imageData}
           />
@@ -165,14 +171,8 @@ export default class Gallery extends React.Component {
             display: grid;
             grid-template-columns: 1fr 15fr 1fr;
             background: white;
-            width: 100vw;
+            width: 100%;
             height: 100vh;
-          }
-          .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 0 5% 0 5%;
           }
           @media (pointer: coarse) {
             .gallery-control-buttons {
@@ -199,6 +199,7 @@ export default class Gallery extends React.Component {
           .img-container {
             position: relative;
             background: black;
+            width: 100%;
             height: 100vh;
             display: flex;
             justify-content: center;
