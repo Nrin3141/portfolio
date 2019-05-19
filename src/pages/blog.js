@@ -3,13 +3,14 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import Card from "../components/card"
-import Image from "gatsby-image"
+//import Image from "gatsby-image"
 import SEO from "../components/seo"
 import { MuiThemeProvider } from "@material-ui/core/styles"
 import { theme } from "../utils/getPageContext.js"
 import withRoot from "../utils/withRoot"
 
 const Home = ({ data }) => {
+  console.log(data.allGhostPost.edges[0].node.url)
   return (
     <Layout>
       <SEO
@@ -19,7 +20,7 @@ const Home = ({ data }) => {
       />
       <MuiThemeProvider theme={theme}>
         <h1>All the posts</h1>
-        <h4>Total: {data.allMarkdownRemark.totalCount}</h4>
+        <h4>Total: {data.allGhostPost.totalCount}</h4>
         <div
           style={{
             display: "flex",
@@ -27,27 +28,22 @@ const Home = ({ data }) => {
             justifyContent: "space-between",
           }}
         >
-          {data.allMarkdownRemark.edges.map(({ node }) => (
+          {data.allGhostPost.edges.map(({ node }) => (
             <Card
               key={node.id}
-              title={node.frontmatter.title}
-              slug={node.frontmatter.slug}
-              image={
-                <Image
-                  fluid={node.frontmatter.hero.childImageSharp.fluid}
-                  alt="Jellyfish"
-                />
-              }
+              title={node.title}
+              slug={node.slug}
+              image={<img src={node.feature_image} alt="Jellyfish" />}
               avatar={
-                <Image
-                  fluid={node.frontmatter.avatar.childImageSharp.fluid}
+                <img
+                  src={node.primary_author.profile_image}
                   alt="Author Avatar"
                   style={{ borderRadius: "50%" }}
                 />
               }
-              author={node.frontmatter.author}
+              author={node.primary_author.name}
               excerpt={node.excerpt}
-              date={node.frontmatter.date}
+              date={node.published_at}
             />
           ))}
         </div>
@@ -71,32 +67,25 @@ export const query = graphql`
       }
     }
 
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: ASC }) {
+    allGhostPost(sort: { fields: [published_at], order: ASC }) {
       totalCount
       edges {
         node {
+          title
           id
-          frontmatter {
-            title
-            slug
-            date(formatString: "DD MMMM, YYYY")
-            author
-            hero {
-              childImageSharp {
-                fluid(maxWidth: 970) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-            avatar {
-              childImageSharp {
-                fluid(maxWidth: 970) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
+          slug
+          published_at(formatString: "dddd DD MMMM YYYY")
+          feature_image
+          primary_author {
+            name
+            profile_image
           }
           excerpt
+          tags {
+            id
+            name
+            slug
+          }
         }
       }
     }
