@@ -14,6 +14,8 @@ const PostHit = clickHandler => ({ hit }) => (
     <div>
       <Calendar size="1em" />
       &nbsp;
+      {hit.published_at}
+      &nbsp;
       <Highlight attribute="date" hit={hit} tagName="mark" />
       &emsp;
       <Tags size="1em" />

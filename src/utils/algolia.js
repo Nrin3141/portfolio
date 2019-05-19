@@ -5,7 +5,7 @@ const postQuery = `{
           objectID: id
           title
           slug
-          published_at(formatString: "dddd DD MMMM YYYY")
+          published_at(formatString: "DD MMMM YYYY")
           tags {
             name
           }
