@@ -33,6 +33,9 @@ const styles = theme => ({
       width: "23vw",
       height: "23vw",
     },
+    "&:hover": {
+      transform: "translate3D(0, -1px, 0) scale(1.02)",
+    },
   },
   media: {
     height: 0,
