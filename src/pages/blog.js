@@ -67,7 +67,7 @@ export const query = graphql`
       }
     }
 
-    allGhostPost(sort: { fields: [published_at], order: ASC }) {
+    allGhostPost(sort: { fields: [published_at], order: DESC }) {
       totalCount
       edges {
         node {
