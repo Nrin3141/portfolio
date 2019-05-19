@@ -107,7 +107,7 @@ class BlogPreview extends React.Component {
           </CardActions>
         </div>
         <Fade in={!this.state.expanded} unmountOnExit>
-          <Link to={slug}>
+          <Link to={"/blog/" + slug}>
             <CardContent classes={{ root: classes.root }}>{image}</CardContent>
           </Link>
         </Fade>

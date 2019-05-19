@@ -16,6 +16,13 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-jsx`,
     {
+      resolve: `gatsby-source-ghost`,
+      options: {
+        apiUrl: "https://blog.ricotrebeljahr.de",
+        contentApiKey: process.env.GATSBY_GHOST_CONTENT_API_KEY,
+      },
+    },
+    {
       resolve: `gatsby-plugin-algolia`,
       options: {
         appId: process.env.GATSBY_ALGOLIA_APP_ID,
