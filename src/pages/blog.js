@@ -20,6 +20,7 @@ const Home = ({ data }) => {
         <h4>Total: {data.allGhostPost.totalCount}</h4>
         <div
           style={{
+            width: "100%",
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "space-between",
