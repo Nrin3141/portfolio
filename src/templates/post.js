@@ -6,7 +6,7 @@ import Paper from "@material-ui/core/Paper"
 import Avatar from "@material-ui/core/Avatar"
 
 export default ({ data }) => {
-  const post = data.allGhostPost.edges[0].node
+  const post = data.post
   return (
     <Layout noSpacing={true}>
       <SEO
@@ -75,33 +75,22 @@ export default ({ data }) => {
 }
 
 export const query = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
+  query($slug: String!) {
+    post: ghostPost(slug: { eq: $slug }) {
+      title
+      id
+      slug
+      published_at(formatString: "DD MMMM YYYY")
+      feature_image
+      html
+      primary_author {
+        name
+        profile_image
       }
-    }
-
-    allGhostPost(sort: { fields: [published_at], order: DESC }) {
-      totalCount
-      edges {
-        node {
-          title
-          id
-          slug
-          published_at(formatString: "dddd DD MMMM YYYY")
-          feature_image
-          primary_author {
-            name
-            profile_image
-          }
-          excerpt
-          tags {
-            id
-            name
-            slug
-          }
-        }
+      excerpt
+      tags {
+        name
+        slug
       }
     }
   }
