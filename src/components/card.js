@@ -19,7 +19,7 @@ import { theme } from "../utils/getPageContext.js"
 
 const styles = theme => ({
   card: {
-    margin: "10px 0",
+    margin: "10px 20px",
     width: "90vw",
     [theme.breakpoints.up("md")]: {
       width: "45vw",

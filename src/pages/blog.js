@@ -23,7 +23,7 @@ const Home = ({ data }) => {
             width: "100%",
             display: "flex",
             flexWrap: "wrap",
-            justifyContent: "space-between",
+            justifyContent: "center",
           }}
         >
           {data.allGhostPost.edges.map(({ node }) => (
