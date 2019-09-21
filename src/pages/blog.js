@@ -3,7 +3,7 @@ import React from "react"
 import Layout from "../components/Layout"
 // import Card from "../components/card"
 import SEO from "../components/seo"
-import { MuiThemeProvider } from "@material-ui/core/styles"
+// import { MuiThemeProvider } from "@material-ui/core/styles"
 // import { theme } from "../utils/getPageContext.js"
 import withRoot from "../utils/withRoot"
 
