@@ -29,10 +29,10 @@ class SideMenu extends React.Component {
     const sideList = (
       <div className="list">
         {["Home", "Photography", "Coding", "Blog", "Contact"].map(
-          (text) => {
+          (text, i) => {
             if (text === "Blog"){
               const linkTo = "https://blog.ricotrebeljahr.de"
-              return (<a href={linkTo}><ListItem
+              return (<a key={i} href={linkTo} target="_blank" rel="noopener noreferrer"><ListItem
                 key={text}
                 button
               > <ListItemIcon>
@@ -46,7 +46,7 @@ class SideMenu extends React.Component {
 
               return (
                 <ListItem
-                key={text}
+                key={i}
                 component={Link}
                 to={linkTo}
                 activeClassName="active"
