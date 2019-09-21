@@ -29,12 +29,26 @@ class SideMenu extends React.Component {
     const sideList = (
       <div className="list">
         {["Home", "Photography", "Coding", "Blog", "Contact"].map(
-          (text, index) => {
-            return (
-              <ListItem
+          (text) => {
+            if (text === "Blog"){
+              const linkTo = "https://blog.ricotrebeljahr.de"
+              return (<a href={linkTo}><ListItem
+                key={text}
+                button
+              > <ListItemIcon>
+                    <Create color="primary" />
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem></a>)
+            }
+            else {
+              const linkTo = "/" + (text === "Home" ? "" : text.toLowerCase());
+
+              return (
+                <ListItem
                 key={text}
                 component={Link}
-                to={"/" + (text === "Home" ? "" : text.toLowerCase())}
+                to={linkTo}
                 activeClassName="active"
                 partiallyActive={text !== "Home" ? true : false}
                 button
@@ -55,6 +69,8 @@ class SideMenu extends React.Component {
                 <ListItemText primary={text} />
               </ListItem>
             )
+            }
+            
           }
         )}
         <style>{`
