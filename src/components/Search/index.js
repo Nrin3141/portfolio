@@ -1,5 +1,4 @@
 import React, { Component, createRef } from "react"
-import algoliasearch from "algoliasearch/lite"
 import {
   InstantSearch,
   Index,
@@ -29,10 +28,6 @@ const Stats = connectStateResults(
 
 export default class Search extends Component {
   state = { query: ``, focussed: false, ref: createRef() }
-  searchClient = algoliasearch(
-    process.env.GATSBY_ALGOLIA_APP_ID,
-    process.env.GATSBY_ALGOLIA_SEARCH_KEY
-  )
 
   updateState = state => this.setState(state)
 
