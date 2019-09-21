@@ -1,13 +1,13 @@
 import React from "react"
-import { graphql } from "gatsby"
+// import { graphql } from "gatsby"
 import Layout from "../components/Layout"
-import Card from "../components/card"
+// import Card from "../components/card"
 import SEO from "../components/seo"
 import { MuiThemeProvider } from "@material-ui/core/styles"
-import { theme } from "../utils/getPageContext.js"
+// import { theme } from "../utils/getPageContext.js"
 import withRoot from "../utils/withRoot"
 
-const Home = ({ data }) => {
+const Home = () => {
   return (
     <Layout>
       <SEO
@@ -15,7 +15,8 @@ const Home = ({ data }) => {
         addition="Rico's Blog"
         keywords={[`gatsby`, `application`, `react`]}
       />
-      <MuiThemeProvider theme={theme}>
+      
+      {/* <MuiThemeProvider theme={theme}>
         <h1>All the posts</h1>
         <h4>Total: {data.allGhostPost.totalCount}</h4>
         <div
@@ -44,8 +45,8 @@ const Home = ({ data }) => {
               date={node.published_at}
             />
           ))}
-        </div>
-      </MuiThemeProvider>
+        </div> 
+            </MuiThemeProvider> */}
       <style jsx>{`
         .root {
           font-weight: bold;
@@ -57,35 +58,35 @@ const Home = ({ data }) => {
 
 export default withRoot(Home)
 
-export const query = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
+// export const query = graphql`
+//   query {
+//     site {
+//       siteMetadata {
+//         title
+//       }
+//     }
 
-    allGhostPost(sort: { fields: [published_at], order: DESC }) {
-      totalCount
-      edges {
-        node {
-          title
-          id
-          slug
-          published_at(formatString: "dddd DD MMMM YYYY")
-          feature_image
-          primary_author {
-            name
-            profile_image
-          }
-          excerpt
-          tags {
-            id
-            name
-            slug
-          }
-        }
-      }
-    }
-  }
-`
+//     allGhostPost(sort: { fields: [published_at], order: DESC }) {
+//       totalCount
+//       edges {
+//         node {
+//           title
+//           id
+//           slug
+//           published_at(formatString: "dddd DD MMMM YYYY")
+//           feature_image
+//           primary_author {
+//             name
+//             profile_image
+//           }
+//           excerpt
+//           tags {
+//             id
+//             name
+//             slug
+//           }
+//         }
+//       }
+//     }
+//   }
+// `
