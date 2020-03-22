@@ -28,24 +28,30 @@ class SideMenu extends React.Component {
   render() {
     const sideList = (
       <div className="list">
-        {["Home", "Photography", "Coding", "Blog", "Contact"].map(
-          (text, i) => {
-            if (text === "Blog"){
-              const linkTo = "https://blog.ricotrebeljahr.de"
-              return (<a key={i} href={linkTo} target="_blank" rel="noopener noreferrer"><ListItem
-                key={text}
-                button
-              > <ListItemIcon>
+        {["Home", "Photography", "Coding", "Blog", "Contact"].map((text, i) => {
+          if (text === "Blog") {
+            const linkTo = process.env.GATSBY_GHOST_URL
+            return (
+              <a
+                key={i}
+                href={linkTo}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <ListItem key={text} button>
+                  {" "}
+                  <ListItemIcon>
                     <Create color="primary" />
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem></a>)
-            }
-            else {
-              const linkTo = "/" + (text === "Home" ? "" : text.toLowerCase());
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItem>
+              </a>
+            )
+          } else {
+            const linkTo = "/" + (text === "Home" ? "" : text.toLowerCase())
 
-              return (
-                <ListItem
+            return (
+              <ListItem
                 key={i}
                 component={Link}
                 to={linkTo}
@@ -69,10 +75,8 @@ class SideMenu extends React.Component {
                 <ListItemText primary={text} />
               </ListItem>
             )
-            }
-            
           }
-        )}
+        })}
         <style>{`
           .active {
             background: #f9dc5c !important;

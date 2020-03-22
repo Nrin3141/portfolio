@@ -3,14 +3,8 @@ import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
 import Typography from "@material-ui/core/Typography"
 import SideMenu from "./sidemenu.js"
-// import Search from "./Search"
 import { MuiThemeProvider } from "@material-ui/core/styles"
 import { theme } from "../utils/getPageContext.js"
-
-// const searchIndices = [
-//   { name: `Pages`, title: `Pages`, hitComp: `PageHit` },
-//   { name: `Posts`, title: `Blog Posts`, hitComp: `PostHit` },
-// ]
 
 function Navigation({ siteTitle }) {
   return (
@@ -23,7 +17,6 @@ function Navigation({ siteTitle }) {
               {siteTitle}
             </Typography>
             <div className="grow" />
-            {/* <Search collapse indices={searchIndices} /> */}
           </Toolbar>
         </AppBar>
       </div>

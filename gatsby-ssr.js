@@ -10,7 +10,6 @@ function replaceRenderer({
   replaceBodyHTMLString,
   setHeadComponents,
 }) {
-  // Get the context of the page to collected side effects.
   const muiPageContext = getPageContext()
 
   const bodyHTML = renderToString(
