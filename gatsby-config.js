@@ -9,7 +9,6 @@ module.exports = {
   plugins: [
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-offline`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-jsx`,
@@ -43,13 +42,6 @@ module.exports = {
         theme_color: `#f9dc5c`,
         display: `minimal-ui`,
         icon: `src/images/logo.png`,
-      },
-    },
-    {
-      resolve: `gatsby-source-ghost`,
-      options: {
-        apiUrl: process.env.GATSBY_GHOST_URL,
-        contentApiKey: process.env.GATSBY_GHOST_CONTENT_API_KEY,
       },
     },
   ],
