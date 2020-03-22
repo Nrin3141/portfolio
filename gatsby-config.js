@@ -39,8 +39,8 @@ module.exports = {
         name: `gatsby-starter-default`,
         short_name: `Rico's Portfolio Page`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#f9dc5c`,
+        theme_color: `#f9dc5c`,
         display: `minimal-ui`,
         icon: `src/images/logo.png`, // This path is relative to the root of the site.
       },
