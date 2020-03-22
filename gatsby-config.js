@@ -2,9 +2,9 @@ require("dotenv").config()
 
 module.exports = {
   siteMetadata: {
-    title: `Rico's Site`,
-    description: `Me, playing around with a bunch of tech!`,
-    author: `@Rico Trebeljahr`,
+    title: `Ricos Website`,
+    description: `Playing around with technology. Creating things.`,
+    author: `Rico Trebeljahr`,
   },
   plugins: [
     `gatsby-plugin-styled-components`,
@@ -35,11 +35,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `Rico's Portfolio Page`,
+        name: `Ricos Website`,
+        short_name: `Ricos Website`,
         start_url: `/`,
-        background_color: `#f9dc5c`,
-        theme_color: `#f9dc5c`,
+        background_color: `#4CAF50`,
+        theme_color: `#4CAF50`,
         display: `minimal-ui`,
         icon: `src/images/logo.png`,
       },
