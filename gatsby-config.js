@@ -42,17 +42,15 @@ module.exports = {
         background_color: `#f9dc5c`,
         theme_color: `#f9dc5c`,
         display: `minimal-ui`,
-        icon: `src/images/logo.png`, // This path is relative to the root of the site.
+        icon: `src/images/logo.png`,
       },
     },
     {
       resolve: `gatsby-source-ghost`,
       options: {
-        apiUrl: "https://blog.ricotrebeljahr.de",
+        apiUrl: process.env.GATSBY_GHOST_URL,
         contentApiKey: process.env.GATSBY_GHOST_CONTENT_API_KEY,
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
   ],
 }
