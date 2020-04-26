@@ -39,7 +39,7 @@ const Projects = ({ classes }) => {
                   key={i}
                   href={
                     img.node.name === "snake"
-                      ? "https://nrin3141.github.io/Snake-2.0/"
+                      ? "https://trebeljahr.github.io/Snake-2.0/"
                       : img.node.name === "tictactoe"
                       ? "https://tic-tac-toe.ricotrebeljahr.de"
                       : img.node.name === "chess"
