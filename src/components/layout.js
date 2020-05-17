@@ -2,10 +2,8 @@ import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import Navigation from "./navigation.js"
 import Social from "./social"
-import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
-import "./layout.css"
-import withRoot from "../utils/withRoot"
+import "../css/layout.css"
 import HeartIcon from "@material-ui/icons/Favorite"
 
 const Layout = ({ children, disableMenu, noSpacing }) => (
@@ -91,8 +89,4 @@ const Layout = ({ children, disableMenu, noSpacing }) => (
   />
 )
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
-
-export default withRoot(Layout)
+export default Layout
