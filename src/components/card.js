@@ -15,7 +15,6 @@ import Fade from "@material-ui/core/Fade"
 import Button from "@material-ui/core/Button"
 import Tooltip from "@material-ui/core/Tooltip"
 import { Link } from "gatsby"
-import { theme } from "../utils/getPageContext.js"
 
 const styles = theme => ({
   card: {

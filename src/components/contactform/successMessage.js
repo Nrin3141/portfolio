@@ -1,7 +1,6 @@
 import React from "react"
 import Snackbar from "@material-ui/core/Snackbar"
 import SuccessIcon from "@material-ui/icons/CheckCircle"
-import { theme } from "../../utils/getPageContext.js"
 
 class ErrorMessage extends React.Component {
   state = { show: true }
