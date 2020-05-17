@@ -7,14 +7,15 @@ import SEO from "../components/seo"
 import "../css/photography.css"
 
 const Photography = ({ data }) => {
+  let imgs = data.allFile.big
   const [gallery, setGallery] = useState(true)
   const [index, setIndex] = useState(0)
 
-  const nextImage = () => {
-    setIndex(old => old + 1)
+  const next = () => {
+    setIndex(old => (old + 1 > imgs.length - 1 ? old : old + 1))
   }
-  const previousImage = () => {
-    setIndex(old => old - 1)
+  const previous = () => {
+    setIndex(old => (old - 1 < 0 ? old : old - 1))
   }
   const collapse = () => {
     setGallery(false)
@@ -24,7 +25,6 @@ const Photography = ({ data }) => {
     setGallery(true)
     setIndex(i)
   }
-  let imgs = data.allFile.big
   return (
     <Layout disableMenu={gallery} noSpacing={gallery}>
       <SEO
@@ -36,8 +36,8 @@ const Photography = ({ data }) => {
         <Gallery
           index={index}
           maxIndex={imgs.length - 1}
-          nextImage={nextImage}
-          previousImage={previousImage}
+          next={next}
+          previous={previous}
           collapse={collapse}
           imageData={
             imgs[index < imgs.length ? index : imgs.length - 1].node.img.fluid

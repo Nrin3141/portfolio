@@ -10,13 +10,7 @@ p {
   height: 2em;
   line-height: 2em;
 }
-.button {
-  cursor: pointer;
-  background: black;
-  border: none;
-  color: white;
-  text-align: center;
-}
+
 .cursor {
   cursor: default !important;
 }

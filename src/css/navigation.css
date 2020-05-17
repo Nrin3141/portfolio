@@ -1,14 +1,14 @@
 .root {
   width: 100%;
 }
-.root :global(.title) {
+.root .title {
   display: none;
 }
 .grow {
   flex-grow: 1;
 }
 @media only screen and (max-width: 600px) {
-  .root :global(.title) {
+  .root .title {
     display: block;
   }
 }

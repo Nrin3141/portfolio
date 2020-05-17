@@ -15,7 +15,7 @@ p {
 .headline {
   text-align: center;
 }
-.absolute :global(.muipaper) {
+.absolute .muipaper {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -25,7 +25,7 @@ p {
   padding: 5vh;
 }
 @media only screen and (min-width: 600px) {
-  .absolute :global(.row) {
+  .absolute .row {
     display: flex;
     flex-direction: row;
   }
