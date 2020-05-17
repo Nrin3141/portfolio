@@ -2,7 +2,17 @@
   background: #f9dc5c !important;
 }
 .list {
-  width: 250;
+  width: 30vw;
   display: flex;
   flex-direction: column;
+}
+.side-menu-drawer {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+.side-menu-item {
+  width: 50vw;
+  max-width: 50vw;
 }

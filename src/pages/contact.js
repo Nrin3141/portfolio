@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import SEO from "../components/seo"
 import Layout from "../components/layout"
 import { loadReCaptcha } from "react-recaptcha-v3"
