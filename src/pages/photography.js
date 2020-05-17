@@ -1,10 +1,10 @@
 import React from "react"
-import Gallery from "../components/Gallery"
-import Layout from "../components/Layout"
+import Gallery from "../components/gallery"
+import Layout from "../components/layout"
+import "../css/photography.css"
 import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import SEO from "../components/seo"
-import withRoot from "../utils/withRoot"
 
 class Photography extends React.Component {
   constructor(props) {
@@ -99,35 +99,7 @@ class Photography extends React.Component {
                   ))}
                 </div>
               )}
-              <style jsx>{`
-                .masonry {
-                  width: 90vw;
-                  column-count: 1;
-                  column-gap: 0.5em;
-                }
-                @media only screen and (min-width: 400px) {
-                  .masonry {
-                    column-count: 2;
-                  }
-                }
-                @media only screen and (min-width: 800px) {
-                  .masonry {
-                    column-count: 3;
-                  }
-                }
-                @media only screen and (min-width: 1600px) {
-                  .masonry {
-                    column-count: 4;
-                  }
-                }
-                .item {
-                  display: inline-block;
-                  background-color: #eee;
-                  margin: 0 0 0.5em;
-                  width: 100%;
-                  cursor: pointer;
-                }
-              `}</style>
+              <style jsx>{``}</style>
             </Layout>
           )
         }}
@@ -136,4 +108,4 @@ class Photography extends React.Component {
   }
 }
 
-export default withRoot(Photography)
+export default Photography

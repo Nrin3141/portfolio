@@ -9,7 +9,7 @@ const Technologies = ({ classes }) => {
         query {
           allFile(
             filter: {
-              extension: { regex: "/(jpg)|(jpeg)|(png)|(svg)/" }
+              extension: { regex: "/(jpg)|(jpeg)|(png)/" }
               relativeDirectory: { eq: "images/technologies" }
             }
           ) {

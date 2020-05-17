@@ -5,7 +5,6 @@ import Social from "./social"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import "./layout.css"
-import { theme } from "../utils/getPageContext"
 import withRoot from "../utils/withRoot"
 import HeartIcon from "@material-ui/icons/Favorite"
 

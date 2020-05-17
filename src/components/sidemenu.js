@@ -12,7 +12,6 @@ import ListItem from "@material-ui/core/ListItem"
 import ListItemIcon from "@material-ui/core/ListItemIcon"
 import ListItemText from "@material-ui/core/ListItemText"
 import { MuiThemeProvider } from "@material-ui/core/styles"
-import { theme } from "../utils/getPageContext.js"
 
 class SideMenu extends React.Component {
   state = {

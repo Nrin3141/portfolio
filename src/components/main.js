@@ -1,5 +1,5 @@
 import React from "react"
-import Section from "../Section"
+import Section from "./section"
 import Menu from "./sidemenu.js"
 
 class Main extends React.Component {

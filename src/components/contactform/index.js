@@ -5,9 +5,8 @@ import Paper from "@material-ui/core/Paper"
 import { Link } from "gatsby"
 import { ReCaptcha } from "react-recaptcha-v3"
 import { MuiThemeProvider } from "@material-ui/core/styles"
-import { theme } from "../../utils/getPageContext.js"
-import ErrorMessage from "./ErrorMessage.js"
-import SuccessMessage from "./SuccessMessage.js"
+import ErrorMessage from "./errorMessage.js"
+import SuccessMessage from "./successMessage.js"
 import emailregex from "./emailregex.js"
 
 class ContactForm extends React.Component {

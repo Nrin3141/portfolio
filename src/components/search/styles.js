@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
-import { theme } from "../../utils/getPageContext.js"
+
 export const Root = styled.div`
   position: relative;
   display: grid;
