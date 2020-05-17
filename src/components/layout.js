@@ -74,7 +74,6 @@ const Layout = ({ children, disableMenu, noSpacing }) => (
                     <HeartIcon
                       style={{
                         fontSize: "0.7em",
-                        color: theme.palette.tertiary.color,
                       }}
                     />
                     {` `}by Rico

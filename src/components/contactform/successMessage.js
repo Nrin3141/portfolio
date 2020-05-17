@@ -22,7 +22,6 @@ class ErrorMessage extends React.Component {
           ContentProps={{
             "aria-describedby": "error-message",
             style: {
-              background: theme.palette.primary.light,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",

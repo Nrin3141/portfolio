@@ -15,7 +15,6 @@ const ErrorMessage = ({ classes, show, email }) => {
         ContentProps={{
           "aria-describedby": "error-message",
           style: {
-            background: theme.palette.error.dark,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
