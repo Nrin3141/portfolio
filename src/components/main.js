@@ -1,6 +1,6 @@
 import React from "react"
 import Section from "./section"
-import Menu from "./sidemenu.js"
+import MobileMenu from "./menus/Mobile"
 import "../css/main.css"
 
 class Main extends React.Component {
@@ -47,7 +47,7 @@ class Main extends React.Component {
     return (
       <div className="wrapper">
         <div className="fixed">
-          <Menu />
+          <MobileMenu />
         </div>
         <Section
           images={this.state.headlines.map(
