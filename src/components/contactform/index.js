@@ -8,6 +8,7 @@ import { MuiThemeProvider } from "@material-ui/core/styles"
 import ErrorMessage from "./errorMessage.js"
 import SuccessMessage from "./successMessage.js"
 import emailregex from "./emailregex.js"
+import "../../css/contactform.css"
 
 class ContactForm extends React.Component {
   constructor(props) {
@@ -156,53 +157,6 @@ class ContactForm extends React.Component {
             </Paper>
           )}
         </div>
-        <style jsx>{`
-          .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-          }
-          .inputs {
-            display: flex;
-            width: 80vw;
-            flex-direction: column;
-            justify-content: space-around;
-          }
-          @media only screen and (min-width: 600px) {
-            .inputs {
-              flex-direction: row;
-            }
-          }
-          .outer :global(.muipaper) {
-            text-align: center;
-            padding: 20px;
-            margin: 20px;
-          }
-          .outer :global(.button) {
-            margin: 20px 0;
-            padding: 10px;
-            width: 50%;
-            align-self: center;
-          }
-          .outer {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            min-height: 100%;
-            overflow: hidden;
-          }
-          .outer :global(.input) {
-            flex-grow: 20;
-            margin: 10px 1vw;
-          }
-          .outer :global(.message) {
-            width: 78vw;
-            margin: 10px;
-          }
-        `}</style>
       </MuiThemeProvider>
     )
   }

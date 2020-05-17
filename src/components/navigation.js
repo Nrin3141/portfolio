@@ -4,6 +4,7 @@ import Toolbar from "@material-ui/core/Toolbar"
 import Typography from "@material-ui/core/Typography"
 import SideMenu from "./sidemenu.js"
 import { MuiThemeProvider } from "@material-ui/core/styles"
+import "../css/navigation.css"
 
 function Navigation({ siteTitle }) {
   return (
@@ -19,22 +20,6 @@ function Navigation({ siteTitle }) {
           </Toolbar>
         </AppBar>
       </div>
-      <style jsx>{`
-        .root {
-          width: 100%;
-        }
-        .root :global(.title) {
-          display: none;
-        }
-        .grow {
-          flex-grow: 1;
-        }
-        @media only screen and (max-width: 600px) {
-          .root :global(.title) {
-            display: block;
-          }
-        }
-      `}</style>
     </MuiThemeProvider>
   )
 }

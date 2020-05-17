@@ -1,10 +1,10 @@
 import React from "react"
 import Gallery from "../components/gallery"
 import Layout from "../components/layout"
-import "../css/photography.css"
 import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import SEO from "../components/seo"
+import "../css/photography.css"
 
 class Photography extends React.Component {
   constructor(props) {
@@ -99,7 +99,6 @@ class Photography extends React.Component {
                   ))}
                 </div>
               )}
-              <style jsx>{``}</style>
             </Layout>
           )
         }}
