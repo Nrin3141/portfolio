@@ -11,116 +11,93 @@ import Contact from "@material-ui/icons/Send"
 import ListItem from "@material-ui/core/ListItem"
 import ListItemIcon from "@material-ui/core/ListItemIcon"
 import ListItemText from "@material-ui/core/ListItemText"
-import { MuiThemeProvider } from "@material-ui/core/styles"
+import "../css/sidemenu.css"
 
-class SideMenu extends React.Component {
-  state = {
-    drawer: false,
+const SideMenu = () => {
+  const [drawer, setDrawer] = useState(false)
+
+  const toggleDrawer = () => () => {
+    setDrawer(old => !old)
   }
 
-  toggleDrawer = open => () => {
-    this.setState({
-      drawer: open,
-    })
-  }
-
-  render() {
-    const sideList = (
-      <div className="list">
-        {["Home", "Photography", "Coding", "Blog", "Contact"].map((text, i) => {
-          if (text === "Blog") {
-            const linkTo = process.env.GATSBY_GHOST_URL
-            return (
-              <a
-                key={i}
-                href={linkTo}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <ListItem key={text} button>
-                  {" "}
-                  <ListItemIcon>
-                    <Create color="primary" />
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItem>
-              </a>
-            )
-          } else {
-            const linkTo = "/" + (text === "Home" ? "" : text.toLowerCase())
-
-            return (
-              <ListItem
-                key={i}
-                component={Link}
-                to={linkTo}
-                activeClassName="active"
-                partiallyActive={text !== "Home" ? true : false}
-                button
-              >
+  const sideList = (
+    <div className="list">
+      {["Home", "Photography", "Coding", "Blog", "Contact"].map((text, i) => {
+        if (text === "Blog") {
+          const linkTo = process.env.GATSBY_GHOST_URL
+          return (
+            <a key={i} href={linkTo} target="_blank" rel="noopener noreferrer">
+              <ListItem key={text} button>
+                {" "}
                 <ListItemIcon>
-                  {text === "Photography" ? (
-                    <Photography color="primary" />
-                  ) : text === "Coding" ? (
-                    <Coding color="primary" />
-                  ) : text === "Home" ? (
-                    <Home color="primary" />
-                  ) : text === "Contact" ? (
-                    <Contact color="primary" />
-                  ) : (
-                    <Create color="primary" />
-                  )}
+                  <Create color="primary" />
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
-            )
-          }
-        })}
-        <style>{`
-          .active {
-            background: #f9dc5c !important;
-          }
-          .list {
-            width: 250;
-            display: flex;
-            flex-direction: column;
-          }
-          `}</style>
-      </div>
-    )
+            </a>
+          )
+        } else {
+          const linkTo = "/" + (text === "Home" ? "" : text.toLowerCase())
 
-    return (
-      <MuiThemeProvider theme={theme}>
-        <div>
-          <div
-            style={{
-              marginRight: "20px",
-              background: "white",
-              borderRadius: "50%",
-            }}
-          >
-            <IconButton
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={this.toggleDrawer(true)}
+          return (
+            <ListItem
+              key={i}
+              component={Link}
+              to={linkTo}
+              activeClassName="active"
+              partiallyActive={text !== "Home" ? true : false}
+              button
             >
-              <MenuIcon />
-            </IconButton>
-          </div>
-          <Drawer open={this.state.drawer} onClose={this.toggleDrawer(false)}>
-            <div
-              tabIndex={0}
-              role="button"
-              onClick={this.toggleDrawer(false)}
-              onKeyDown={this.toggleDrawer(false)}
-            >
-              {sideList}
-            </div>
-          </Drawer>
+              <ListItemIcon>
+                {text === "Photography" ? (
+                  <Photography color="primary" />
+                ) : text === "Coding" ? (
+                  <Coding color="primary" />
+                ) : text === "Home" ? (
+                  <Home color="primary" />
+                ) : text === "Contact" ? (
+                  <Contact color="primary" />
+                ) : (
+                  <Create color="primary" />
+                )}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          )
+        }
+      })}
+    </div>
+  )
+
+  return (
+    <div>
+      <div
+        style={{
+          marginRight: "20px",
+          background: "white",
+          borderRadius: "50%",
+        }}
+      >
+        <IconButton
+          color="inherit"
+          aria-label="Open drawer"
+          onClick={toggleDrawer}
+        >
+          <MenuIcon />
+        </IconButton>
+      </div>
+      <Drawer open={drawer} onClose={toggleDrawer}>
+        <div
+          tabIndex={0}
+          role="button"
+          onClick={toggleDrawer}
+          onKeyDown={toggleDrawer}
+        >
+          {sideList}
         </div>
-      </MuiThemeProvider>
-    )
-  }
+      </Drawer>
+    </div>
+  )
 }
 
 export default SideMenu
