@@ -1,15 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { withStyles } from "@material-ui/core/styles"
 import Snackbar from "@material-ui/core/Snackbar"
 import WarningIcon from "@material-ui/icons/Warning"
-import { theme } from "../../utils/getPageContext.js"
-
-const styles = theme => ({
-  close: {
-    padding: theme.spacing.unit / 2,
-  },
-})
 
 const ErrorMessage = ({ classes, show, email }) => {
   return (
@@ -44,8 +36,4 @@ const ErrorMessage = ({ classes, show, email }) => {
   )
 }
 
-ErrorMessage.propTypes = {
-  classes: PropTypes.object.isRequired,
-}
-
-export default withStyles(styles)(ErrorMessage)
+export default ErrorMessage
