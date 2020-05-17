@@ -5,7 +5,7 @@ import { Link } from "gatsby"
 import { MuiThemeProvider } from "@material-ui/core/styles"
 import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
-import { theme } from "../../utils/getPageContext.js"
+import { theme } from "../utils/getPageContext.js"
 
 const Section = ({ headline, href, images, counter }) => (
   <StaticQuery

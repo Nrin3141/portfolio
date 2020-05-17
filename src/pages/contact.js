@@ -1,6 +1,6 @@
 import React from "react"
 import SEO from "../components/seo"
-import Layout from "../components/Layout"
+import Layout from "../components/layout"
 import { loadReCaptcha } from "react-recaptcha-v3"
 import ContactForm from "../components/ContactForm"
 import withRoot from "../utils/withRoot"

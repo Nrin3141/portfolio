@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import Button from "@material-ui/core/Button"
 import Paper from "@material-ui/core/Paper"
 import { MuiThemeProvider } from "@material-ui/core/styles"
-import { theme } from "../../utils/getPageContext.js"
+import { theme } from "../utils/getPageContext.js"
 import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
