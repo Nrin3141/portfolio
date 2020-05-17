@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react"
 import p5, { Vector } from "p5"
-import Quadtree from "quadtree-lib"
+import { QuadTree, Box, Point, Circle } from "js-quadtree"
 import { v4 } from "uuid"
 
 const Dot = class Dot {
@@ -41,7 +41,7 @@ const Dot = class Dot {
   update() {
     this.pos.add(this.vel)
     this.vel.add(this.acc)
-    this.acc.mult(0)
+    this.acc = this.p.createVector()
   }
   arrive() {
     const desired = Vector.sub(this.target, this.pos)
@@ -59,23 +59,18 @@ const Dot = class Dot {
 const Sketch = () => {
   const myRef = useRef(null)
   const sketch = p => {
-    let w = window.innerWidth
-    let h = window.innerHeight
+    let w = myRef.current.offsetWidth
+    let h = myRef.current.offsetHeight
     let dot
     let font
     let points
     let points2
     let dots = []
-    const quadtree = new Quadtree({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    })
+    const quadtree = new QuadTree(new Box(0, 0, w, h))
     p.preload = () => {
       font = p.loadFont("/Avenir.otf")
     }
     p.setup = () => {
-      w = window.innerWidth
-      h = window.innerHeight
       points = []
       points2 = []
       dots = []
@@ -104,35 +99,23 @@ const Sketch = () => {
         dot.arrive()
         dot.update()
         dot.show(249, 220, 92)
-        quadtree.push(
-          {
-            x: dot.pos.x,
-            y: dot.pos.y,
-            width: dot.w,
-            height: dot.w,
-            id: dot.id,
-          },
-          false
-        )
+        quadtree.insert(new Point(dot.pos.x, dot.pos.y, { flee: dot.flee }))
       })
-      const colliding = quadtree.colliding({
-        x: p.mouseX,
-        y: p.mouseY,
-        width: 50,
-        height: 50,
-      })
-      colliding.forEach(({ id }) => dots.find(dot => dot.id === id).flee())
+
+      const results = quadtree.query(new Circle(p.mouseX, p.mouseY, 50))
+      results.forEach(dot => dot.data.flee())
       quadtree.clear()
       let fps = p.frameRate()
       p.fill(255)
       p.stroke(51)
       p.text("FPS: " + fps.toFixed(0), 10, h - 10)
+      p.text("Dots: " + dots.length, 10, h - 30)
     }
   }
   useEffect(() => {
     new p5(sketch, myRef.current)
   }, [])
-  return <div ref={myRef}></div>
+  return <div className="sketch-container" ref={myRef}></div>
 }
 
 export default Sketch

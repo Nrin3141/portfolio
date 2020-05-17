@@ -25,7 +25,7 @@ const AboutMe = () => {
         return (
           <MuiThemeProvider theme={theme}>
             <div className="absolute">
-              <Paper className="muipaper row">
+              <div className="row">
                 <Img
                   style={{
                     width: "100%",
@@ -43,8 +43,8 @@ const AboutMe = () => {
                     like photography. And I am a passionate traveler.
                   </p>
                 </div>
-              </Paper>
-              <Paper className="muipaper column">
+              </div>
+              <div className="column">
                 <h2>How can I help you?</h2>
                 <p>
                   Do you want to have your own website too? Or a Web app? Mobile
@@ -66,7 +66,7 @@ const AboutMe = () => {
                   team? Somebody who can easily learn and integrate new
                   technologies and loves to expand his expertise constantly?
                 </p>
-              </Paper>
+              </div>
             </div>
 
             <style jsx>{`

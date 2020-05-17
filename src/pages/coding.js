@@ -1,11 +1,10 @@
 import React from "react"
-import Layout from "../components/Layout"
-import Projects from "../components/Projects"
-import AboutMe from "../components/AboutMe"
-import Technologies from "../components/Technologies"
-import IframeSketch from "../components/IframeSketch"
+import Layout from "../components/layout"
+import Projects from "../components/projects"
+import AboutMe from "../components/about"
+import Technologies from "../components/technologies"
+import Sketch from "../components/sketch"
 import SEO from "../components/seo"
-import withRoot from "../utils/withRoot"
 
 const Coding = () => (
   <Layout>
@@ -14,11 +13,11 @@ const Coding = () => (
       addition="Portfolio"
       keywords={[`gatsby`, `application`, `react`]}
     />
-    <IframeSketch />
+    <Sketch />
     <AboutMe />
     <Projects />
     <Technologies />
   </Layout>
 )
 
-export default withRoot(Coding)
+export default Coding
