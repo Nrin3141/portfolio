@@ -1,5 +1,4 @@
 import React from "react"
-import Paper from "@material-ui/core/Paper"
 import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
@@ -29,7 +28,7 @@ const Projects = ({ classes }) => {
       `}
       render={data => {
         return (
-          <Paper style={{ marginTop: "2vh" }}>
+          <div>
             <h2 style={{ paddingTop: "5vh" }}>
               <i className="fas fa-code" /> Projects
             </h2>
@@ -132,7 +131,7 @@ const Projects = ({ classes }) => {
                 }
               }
             `}</style>
-          </Paper>
+          </div>
         )
       }}
     />
