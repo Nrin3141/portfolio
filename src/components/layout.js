@@ -1,7 +1,7 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import Navigation from "./navigation.js"
-import Social from "./Social"
+import Social from "./social"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import "./layout.css"
