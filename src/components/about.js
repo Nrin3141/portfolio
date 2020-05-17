@@ -1,10 +1,10 @@
 import React from "react"
 import { Link } from "gatsby"
 import Button from "@material-ui/core/Button"
-import Paper from "@material-ui/core/Paper"
 import { MuiThemeProvider } from "@material-ui/core/styles"
 import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import "../css/about.css"
 
 const AboutMe = () => {
   return (
@@ -67,41 +67,6 @@ const AboutMe = () => {
                 </p>
               </div>
             </div>
-
-            <style jsx>{`
-              p {
-                margin: 0;
-                padding: 0;
-              }
-              .width {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 100%;
-                height: 100%;
-              }
-              .column {
-                flex-direction: column;
-              }
-              .headline {
-                text-align: center;
-              }
-              .absolute :global(.muipaper) {
-                display: flex;
-                flex-direction: column;
-                text-align: center;
-                justify-content: center;
-                align-items: center;
-                margin-top: 2vh;
-                padding: 5vh;
-              }
-              @media only screen and (min-width: 600px) {
-                .absolute :global(.row) {
-                  display: flex;
-                  flex-direction: row;
-                }
-              }
-            `}</style>
           </MuiThemeProvider>
         )
       }}
