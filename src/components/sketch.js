@@ -113,7 +113,8 @@ const Sketch = () => {
     }
   }
   useEffect(() => {
-    new p5(sketch, myRef.current)
+    const p5Instance = new p5(sketch, myRef.current)
+    return () => p5Instance.remove()
   }, [])
   return <div className="sketch-container" ref={myRef}></div>
 }

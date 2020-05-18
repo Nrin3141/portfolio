@@ -3,8 +3,8 @@ import Gallery from "../components/gallery"
 import Layout from "../components/layout"
 import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
-import SEO from "../components/seo"
 import "../css/photography.css"
+import Header from "../components/header"
 
 const Photography = ({ data }) => {
   let imgs = data.allFile.big
@@ -27,11 +27,7 @@ const Photography = ({ data }) => {
   }
   return (
     <Layout disableMenu={gallery} noSpacing={gallery}>
-      <SEO
-        title="Home"
-        addition="Rico's Photography"
-        keywords={[`gatsby`, `application`, `react`]}
-      />
+      <Header />
       {gallery ? (
         <Gallery
           index={index}

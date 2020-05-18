@@ -4,15 +4,11 @@ import Projects from "../components/projects"
 import AboutMe from "../components/about"
 import Technologies from "../components/technologies"
 import Sketch from "../components/sketch"
-import SEO from "../components/seo"
+import Header from "../components/header"
 
 const Coding = () => (
   <Layout>
-    <SEO
-      title="Home"
-      addition="Portfolio"
-      keywords={[`gatsby`, `application`, `react`]}
-    />
+    <Header />
     <Sketch />
     <AboutMe />
     <Projects />

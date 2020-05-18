@@ -3,7 +3,7 @@ import Burger from "./Burger"
 import MenuLinks from "./MenuLinks"
 import "../../css/mobile-menu.css"
 
-function MobileMenu({ color, ...props }) {
+function MobileMenu({ color }) {
   const [open, setOpen] = useState(false)
   const menuId = "main-menu"
 

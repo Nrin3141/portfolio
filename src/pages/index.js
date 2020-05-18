@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import Section from "../components/section"
 import MobileMenu from "../components/menus/Mobile"
 import { graphql } from "gatsby"
-import SEO from "../components/seo"
+import Header from "../components/header"
 import "../css/main.css"
 
 const sections = [
@@ -18,11 +18,7 @@ const Main = ({ data }) => {
   }
   return (
     <div>
-      <SEO
-        title="Home"
-        addition="Rico's Page"
-        keywords={[`gatsby`, `application`, `react`]}
-      />
+      <Header />
       <MobileMenu color="white" />
       {sections.map((section, index) => {
         const img = data.images.edges.find(
