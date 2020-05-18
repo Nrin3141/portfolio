@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import Burger from "./Burger"
-import { StyledMenu } from "./Mobile.styled"
 import MenuLinks from "./MenuLinks"
+import "../../css/mobile-menu.css"
 
 function MobileMenu({ color, ...props }) {
   const [open, setOpen] = useState(false)
@@ -15,11 +15,12 @@ function MobileMenu({ color, ...props }) {
         aria-controls={menuId}
         color={color}
       />
-      <StyledMenu open={open} aria-hidden={!open} {...props}>
-        <div className="mobile-menu" tabIndex={open ? 0 : -1}>
-          <MenuLinks />
-        </div>
-      </StyledMenu>
+      <div
+        className={`mobile-menu ${!open ? "hidden" : ""}`}
+        tabIndex={open ? 0 : -1}
+      >
+        <MenuLinks />
+      </div>
     </div>
   )
 }
