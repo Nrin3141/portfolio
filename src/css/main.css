@@ -33,3 +33,10 @@
   width: 100vw;
   background: none;
 }
+
+.activeSection {
+  display: block;
+}
+.hiddenSection {
+  display: none;
+}
