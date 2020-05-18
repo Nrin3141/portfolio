@@ -13,6 +13,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 .sketch-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  /* background: rgb(51, 51, 51); */
   width: 100vw;
-  height: 40vh;
+  height: fit-content;
+}
+.grecaptcha-badge {
+  opacity: 0;
 }
