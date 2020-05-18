@@ -14,9 +14,8 @@ body {
 }
 .sketch-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+  justify-content: flex-start;
+  align-items: flex-start;
   /* background: rgb(51, 51, 51); */
   width: 100vw;
   height: fit-content;

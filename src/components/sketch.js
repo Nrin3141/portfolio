@@ -1,15 +1,12 @@
 import React, { useRef, useEffect } from "react"
 import p5, { Vector } from "p5"
-import { QuadTree, Box, Point, Circle } from "js-quadtree"
+// import { QuadTree, Box, Point, Circle } from "js-quadtree"
 import { v4 } from "uuid"
 
 const Dot = class Dot {
-  constructor(p, x, y, w) {
+  constructor(p, x, y, w, h) {
     this.p = p
-    this.pos = this.p.createVector(
-      this.p.random(0, window.innerWidth),
-      this.p.random(0, window.innerHeight / 2)
-    )
+    this.pos = this.p.createVector(this.p.random(0, w), this.p.random(0, h / 2))
     this.id = v4()
     this.target = this.p.createVector(x, y)
     this.vel = Vector.random2D()
@@ -32,7 +29,6 @@ const Dot = class Dot {
     this.acc.add(f)
   }
   flee() {
-    console.log("Flee!")
     let xDiff = this.p.mouseX - this.pos.x
     let yDiff = this.p.mouseY - this.pos.y
     let fleeVector = this.p.createVector(-xDiff, -yDiff)
@@ -65,29 +61,28 @@ const Sketch = () => {
     let font
     let dots = []
     let bounds1, bounds2
-    const quadtree = new QuadTree(new Box(0, 0, w, h))
+    // const quadtree = new QuadTree(new Box(0, 0, w, h))
     p.preload = () => {
       font = p.loadFont("/Avenir.otf")
     }
     p.setup = () => {
-      const l = w / 8
+      const l = w / 6
       bounds1 = font.textBounds("Develop", 0, 0, l)
       bounds2 = font.textBounds("your ideas", 0, -bounds1.y + bounds1.h, l)
 
-      p.createCanvas(bounds2.w, bounds1.h * 2 + 100)
+      p.createCanvas(w, bounds1.h * 2 + 100)
 
-      console.log(bounds1)
-      console.log(bounds1)
+      console.log({ textWidth: bounds2.w, windowWidth: w, fontSize: l })
       const points1 = font
         .textToPoints("Develop", 0, 0, l, {
           sampleFactor: 30 / l,
         })
-        .map(point => new Dot(p, point.x, point.y + bounds1.h, w))
+        .map(point => new Dot(p, point.x + w / 10, point.y + bounds1.h, w, h))
       const points2 = font
         .textToPoints("your ideas", 0, -bounds1.y + 30, l, {
           sampleFactor: 30 / l,
         })
-        .map(point => new Dot(p, point.x, point.y + bounds2.h, w))
+        .map(point => new Dot(p, point.x + w / 10, point.y + bounds2.h, w, h))
       dots = [...points1, ...points2]
     }
 
