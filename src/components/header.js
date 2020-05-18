@@ -1,9 +1,27 @@
 import React from "react"
-import PropTypes from "prop-types"
-import Helmet from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import { Helmet } from "react-helmet"
+import { useStaticQuery } from "gatsby"
 
-function SEO({ description, lang, meta, keywords, title, addition }) {
+const Header = () => {
+  return (
+    <Helmet>
+      <meta
+        name="viewport"
+        content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+      />
+      <link
+        href="https://fonts.googleapis.com/css?family=Roboto:400,500,700"
+        rel="stylesheet"
+      />
+      <script
+        src="https://kit.fontawesome.com/ef7381bf93.js"
+        crossorigin="anonymous"
+      ></script>
+    </Helmet>
+  )
+}
+
+const SEO = ({ description, lang, meta, keywords, title, addition }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -17,9 +35,7 @@ function SEO({ description, lang, meta, keywords, title, addition }) {
       }
     `
   )
-
   const metaDescription = description || site.siteMetadata.description
-
   return (
     <Helmet
       htmlAttributes={{
@@ -76,19 +92,4 @@ function SEO({ description, lang, meta, keywords, title, addition }) {
   )
 }
 
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  keywords: [],
-  description: ``,
-}
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired,
-}
-
-export default SEO
+export default Header

@@ -1,31 +1,22 @@
 import React from "react"
 import { Link } from "gatsby"
-import Photography from "@material-ui/icons/PhotoCamera"
-import Home from "@material-ui/icons/Home"
-import Blog from "@material-ui/icons/Create"
-import Coding from "@material-ui/icons/Code"
-import Contact from "@material-ui/icons/Send"
 
 const MenuLinks = () => (
   <>
-    <Link to="/home" activeStyle={{ textDecoration: "underline" }}>
-      <Home color="primary" />
-      home
+    <Link to="/" activeStyle={{ textDecoration: "underline" }}>
+      <h1 id="navigation-header">trebeljahr</h1>
     </Link>
     <Link to="/coding" activeStyle={{ textDecoration: "underline" }}>
-      <Coding color="primary" />
-      coding
+      <i className="fas fa-code"></i> coding
     </Link>
     <Link to="/photography" activeStyle={{ textDecoration: "underline" }}>
-      <Photography color="primary" />
-      photography
+      <i className="fas fa-camera"></i> photography
     </Link>
-    <a href={process.env.GATSBY_GHOST_URL}>
-      <Blog color="primary" /> blog
-    </a>
-
+    {/* <a href={process.env.GATSBY_GHOST_URL}>
+      <i className="fas fa-pen"></i>blog
+    </a> */}
     <Link to="/contact" activeStyle={{ textDecoration: "underline" }}>
-      <Contact color="primary" /> contact
+      <i className="fas fa-paper-plane"></i> contact
     </Link>
   </>
 )

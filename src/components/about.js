@@ -1,6 +1,5 @@
 import React from "react"
 import { Link } from "gatsby"
-import Button from "@material-ui/core/Button"
 import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import "../css/about.css"
@@ -50,13 +49,13 @@ const AboutMe = () => {
                 ask.
               </p>
               <Link to="/contact">
-                <Button
+                <button
                   variant="contained"
                   color="secondary"
                   style={{ margin: "5vh" }}
                 >
                   Get in touch
-                </Button>
+                </button>
               </Link>
               <p>
                 Or are you in search of a full-stack developer to expand your
