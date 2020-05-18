@@ -14,7 +14,7 @@ const Dot = class Dot {
     this.target = this.p.createVector(x, y)
     this.vel = Vector.random2D()
     this.acc = this.p.createVector()
-    this.r = w < 600 ? (w < 400 ? 1.5 : 3) : 5
+    this.r = 5
     this.maxspeed = 10
     this.maxforce = 1
     this.show = this.show.bind(this)
@@ -71,22 +71,13 @@ const Sketch = () => {
       font = p.loadFont("/Avenir.otf")
     }
     p.setup = () => {
-      points = []
-      points2 = []
-      dots = []
       p.createCanvas(w, h)
-      points = font.textToPoints("Develop", w / 6.5, w / 7, w / 8, {
-        sampleFactor: w < 600 ? (w < 400 ? 0.7 : 0.5) : 0.25,
-      })
-      points2 = font.textToPoints("your ideas", w / 6.5, w / 4, w / 8, {
-        sampleFactor: w < 600 ? (w < 400 ? 0.7 : 0.5) : 0.25,
-      })
-
-      points.forEach(point => {
-        dot = new Dot(p, point.x, point.y, w)
-        dots.push(dot)
-      })
-      points2.forEach(point => {
+      const l = w / 3
+      dots = [
+        ...font.textToPoints("Develop", 0, 100, l, { sampleFactor: 1 / l }),
+        ...font.textToPoints("your ideas", 0, 200, l, { sampleFactor: 1 / l }),
+      ]
+      dots.forEach(point => {
         dot = new Dot(p, point.x, point.y, w)
         dots.push(dot)
       })
