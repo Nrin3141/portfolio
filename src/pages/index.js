@@ -4,7 +4,6 @@ import MobileMenu from "../components/menus/Mobile"
 import { graphql } from "gatsby"
 import SEO from "../components/seo"
 import "../css/main.css"
-import { v4 } from "uuid"
 
 const sections = [
   { text: "Programmer", link: "/coding", imgPath: "programmer" },
@@ -24,32 +23,28 @@ const Main = ({ data }) => {
         addition="Rico's Page"
         keywords={[`gatsby`, `application`, `react`]}
       />
-      <div className="wrapper">
-        <div className="fixed">
-          <MobileMenu />
-        </div>
-        {sections.map((section, index) => {
-          const img = data.images.edges.find(
-            ({ node }) => node.name === section.imgPath
-          )
-          const sources = [
-            img.node.small.fluid,
-            { fluid: img.node.medium.fluid, media: "(min-width: 700px)" },
-            { fluid: img.node.full.fluid, media: "(min-width: 1800px)" },
-            { fluid: img.node.full.fluid, media: "(min-width: 3000px)" },
-          ]
-          return (
-            <Section
-              key={index}
-              active={index === active}
-              nextSection={nextSection}
-              img={sources}
-              headline={section.text}
-              href={section.link}
-            />
-          )
-        })}
-      </div>
+      <MobileMenu color="white" />
+      {sections.map((section, index) => {
+        const img = data.images.edges.find(
+          ({ node }) => node.name === section.imgPath
+        )
+        const sources = [
+          img.node.small.fluid,
+          { fluid: img.node.medium.fluid, media: "(min-width: 700px)" },
+          { fluid: img.node.full.fluid, media: "(min-width: 1800px)" },
+          { fluid: img.node.full.fluid, media: "(min-width: 3000px)" },
+        ]
+        return (
+          <Section
+            key={index}
+            active={index === active}
+            nextSection={nextSection}
+            img={sources}
+            headline={section.text}
+            href={section.link}
+          />
+        )
+      })}
     </div>
   )
 }
