@@ -1,5 +1,5 @@
 .masonry {
-  width: 90vw;
+  width: 100vw;
   column-count: 1;
   column-gap: 0.5em;
 }
@@ -12,6 +12,9 @@
   .masonry {
     column-count: 3;
   }
+  .item {
+    cursor: pointer;
+  }
 }
 @media only screen and (min-width: 1600px) {
   .masonry {
@@ -23,5 +26,4 @@
   background-color: #eee;
   margin: 0 0 0.5em;
   width: 100%;
-  cursor: pointer;
 }
