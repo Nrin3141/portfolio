@@ -11,9 +11,13 @@ const Dot = class Dot {
     this.target = this.p.createVector(x, y)
     this.vel = Vector.random2D()
     this.acc = this.p.createVector()
+    this.r = 249
+    this.g = 220
+    this.b = 92
+    this.w = w
     const a = this.p.map(w, 0, 4000, 1, 10)
-    this.r = this.p.random(a, 3 * a)
-    this.maxspeed = p.map(w, 0, 4000, 10, 20)
+    this.radius = 2 * a
+    this.maxspeed = p.map(w, 0, 4000, 5, 8)
     this.maxforce = 1
     this.show = this.show.bind(this)
     this.applyForce = this.applyForce.bind(this)
@@ -21,9 +25,9 @@ const Dot = class Dot {
     this.arrive = this.arrive.bind(this)
     this.flee = this.flee.bind(this)
   }
-  show(r, g, b) {
-    this.p.stroke(r, g, b)
-    this.p.strokeWeight(this.r)
+  show() {
+    this.p.stroke(this.r, this.g, this.b)
+    this.p.strokeWeight(this.radius)
     this.p.point(this.pos.x, this.pos.y)
   }
   applyForce(f) {
@@ -33,7 +37,17 @@ const Dot = class Dot {
     let xDiff = this.p.mouseX - this.pos.x
     let yDiff = this.p.mouseY - this.pos.y
     let fleeVector = this.p.createVector(-xDiff, -yDiff)
-    fleeVector.setMag(1)
+    if (fleeVector.mag() > 100) {
+      return
+    }
+    fleeVector.setMag(2)
+    this.applyForce(fleeVector)
+  }
+  explode() {
+    let xDiff = this.p.mouseX - this.pos.x
+    let yDiff = this.p.mouseY - this.pos.y
+    let fleeVector = this.p.createVector(-xDiff, -yDiff)
+    fleeVector.setMag(30)
     this.applyForce(fleeVector)
   }
   update() {
@@ -44,12 +58,10 @@ const Dot = class Dot {
   arrive() {
     const desired = Vector.sub(this.target, this.pos)
     const d = desired.mag()
-    const speed =
-      d < 100 ? this.p.map(d, 0, 100, 0, this.maxspeed) : this.maxspeed
+    const speed = this.p.map(d, 0, 100, 0, this.maxspeed)
     desired.setMag(speed)
     const steer = Vector.sub(desired, this.vel)
     steer.limit(this.maxforce)
-    steer.mult(0.5)
     this.applyForce(steer)
   }
 }
@@ -86,25 +98,23 @@ const Sketch = () => {
         .map(point => new Dot(p, point.x + w / 10, point.y + bounds2.h, w, h))
       dots = [...points1, ...points2]
     }
+    p.mouseClicked = () => {
+      dots.forEach(dot => {
+        dot.explode()
+      })
+    }
 
     p.draw = () => {
       p.background(51)
       p.fill("red")
-      p.circle(dots[0].pos.x, dots[0].pos.y, 30)
-      p.circle(dots[dots.length - 1].pos.x, dots[dots.length - 1].pos.y, 30)
 
       p.fill(255)
-      dots.forEach((dot, index) => {
+      dots.forEach(dot => {
         dot.arrive()
         dot.update()
         dot.show(249, 220, 92)
-        if (
-          (p.mouseX - dot.pos.x) * (p.mouseX - dot.pos.x) +
-            (p.mouseY - dot.pos.y) * (p.mouseY - dot.pos.y) <
-          50 * 50
-        ) {
-          dot.flee()
-        }
+        dot.flee()
+
         // quadtree.insert(new Point(dot.pos.x, dot.pos.y, { flee: dot.flee }))
       })
 
