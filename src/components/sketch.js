@@ -62,7 +62,6 @@ const Dot = class Dot {
 const Sketch = () => {
   const myRef = useRef(null)
   const sketch = p => {
-    console.log(myRef)
     if (!myRef.current) return
     let w = myRef.current.offsetWidth
     let h = myRef.current.offsetHeight
