@@ -16,7 +16,7 @@ function MobileMenu({ color }) {
         color={color}
       />
       <div
-        className={`mobile-menu ${!open ? "hidden" : ""}`}
+        className={`mobile-menu ${!open ? "hidden-menu" : ""}`}
         tabIndex={open ? 0 : -1}
       >
         <MenuLinks />

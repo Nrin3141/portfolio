@@ -1,16 +1,9 @@
-p {
-  text-align: center;
-}
-.hidden {
-  visibility: hidden;
-}
 .handle-collapse {
   border-radius: 50%;
   width: 2em;
   height: 2em;
   line-height: 2em;
 }
-
 .cursor {
   cursor: default !important;
 }
