@@ -13,8 +13,8 @@ const Projects = () => {
               <i className="fas fa-code" /> past projects
             </h2>
             <div className="projects-container">
-              {data.allFile.edges.map((img, i) => (
-                <SingleProject img={img} i={i} />
+              {data.allFile.edges.map(img => (
+                <SingleProject img={img} />
               ))}
             </div>
           </div>
@@ -24,24 +24,40 @@ const Projects = () => {
   )
 }
 
-const ImageToLinkMap = {
-  tictactoe: "https://tic-tac-toe.ricotrebeljahr.de",
-  chess: "https://chess.ricotrebeljahr.de",
-  travel: "https://photodyssee.com",
-  swantje: "https://swantjefurtak.com",
-  amit: "https://brave-morse-b2bb17.netlify.app/",
-  asteroids: "https://confident-aryabhata-d5dc3d.netlify.app/",
-  "fractal-tree": "https://trebeljahr.github.io/fractal-tree/",
-  "barnsley-fern": "https://trebeljahr.github.io/barnsley-fern/",
+const imageMap = {
+  tictactoe: {
+    href: "https://tic-tac-toe.ricotrebeljahr.de",
+    text: "A Tic Tac Toe Game",
+  },
+  chess: { href: "https://chess.ricotrebeljahr.de", text: "A chess game" },
+  travel: { href: "https://photodyssee.com", text: "A travel blog" },
+  swantje: {
+    href: "https://swantjefurtak.com",
+    text: "A filmmaker's portfolio",
+  },
+  amit: {
+    href: "https://brave-morse-b2bb17.netlify.app/",
+    text: "A copywriter's portfolio",
+  },
+  asteroids: {
+    href: "https://confident-aryabhata-d5dc3d.netlify.app/",
+    text: "An asteroid Game",
+  },
+  "fractal-tree": {
+    href: "https://trebeljahr.github.io/fractal-tree/",
+    text: "A fractal tree",
+  },
+  "barnsley-fern": {
+    href: "https://trebeljahr.github.io/barnsley-fern/",
+    text: "A barnsley fern",
+  },
 }
 
-const SingleProject = ({ img, i }) => (
-  <a href={ImageToLinkMap[img.node.name]} target="blank" className="project">
+const SingleProject = ({ img }) => (
+  <a href={imageMap[img.node.name].href} target="blank" className="project">
     <Img className="project-image" fluid={img.node.childImageSharp.fluid} />
     <div className="project-header-container">
-      <h2 className="project-header">
-        {["Curious?", "View Me!", "Check me out!", "Discover?"][i]}
-      </h2>
+      <h2 className="project-header">{imageMap[img.node.name].text}</h2>
     </div>
   </a>
 )

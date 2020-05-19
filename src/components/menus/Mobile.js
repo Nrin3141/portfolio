@@ -3,12 +3,12 @@ import Burger from "./Burger"
 import MenuLinks from "./MenuLinks"
 import "../../css/mobile-menu.css"
 
-function MobileMenu({ color }) {
+function MobileMenu({ color, display }) {
   const [open, setOpen] = useState(false)
   const menuId = "main-menu"
 
   return (
-    <div className="mobile-menu-container">
+    <div className={`mobile-menu-container ${display ? "" : "hide-mobile"}`}>
       <Burger
         open={open}
         setOpen={setOpen}

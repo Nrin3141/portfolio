@@ -19,7 +19,7 @@ const Main = ({ data }) => {
   return (
     <div>
       <Header />
-      <MobileMenu color="white" />
+      <MobileMenu color="white" display={true} />
       {sections.map((section, index) => {
         const img = data.images.edges.find(
           ({ node }) => node.name === section.imgPath

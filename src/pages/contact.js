@@ -3,6 +3,7 @@ import Layout from "../components/layout"
 import { loadReCaptcha } from "react-recaptcha-v3"
 import ContactForm from "../components/contactform"
 import Header from "../components/header"
+import MobileMenu from "../components/menus/Mobile"
 
 const OutlinedTextFields = () => {
   const [mount, setMount] = useState(false)
@@ -13,6 +14,7 @@ const OutlinedTextFields = () => {
   return (
     <Layout>
       <Header />
+      <MobileMenu color="black" />
       {mount ? <ContactForm /> : null}
     </Layout>
   )

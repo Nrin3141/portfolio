@@ -5,32 +5,15 @@ import { useEffect } from "react"
 
 const Gallery = ({ collapse, next, previous, index, max, imageData }) => {
   useEffect(() => {
-    document.removeEventListener("keydown", handleKey)
-    document.removeEventListener("touchstart", touchstart)
-    document.removeEventListener("touchend", touchend)
+    document.addEventListener("keydown", handleKey)
     return () => {
-      document.addEventListener("keydown", handleKey)
-      document.addEventListener("touchstart", touchstart)
-      document.addEventListener("touchend", touchend)
+      document.removeEventListener("keydown", handleKey)
     }
   }, [])
 
-  const [x, setX] = useState(0)
-  const touchstart = e => {
-    setX(e.targetTouches[0].clientX)
-  }
-  const touchend = e => {
-    if (e.changedTouches[0].clientX - x > 60) {
-      previous()
-    } else if (e.changedTouches[0].clientX - x < -60) {
-      next()
-    }
-    setX(0)
-  }
   const handleCollapse = () => {
     collapse()
   }
-
   const handleKey = e => {
     if (e.key === "Escape") {
       handleCollapse()
