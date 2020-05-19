@@ -57,7 +57,7 @@ const Section = ({ headline, href, img, nextSection, active }) => {
   const person =
     headline.slice(0, characterIndex < 0 ? 0 : characterIndex) + " "
   return (
-    <div className={!active ? "hidden" : ""}>
+    <div className={!active ? "hidden" : "activeSection"}>
       <Img className="section-image" fluid={img} />
       <div className="section-container">
         <div className="section-header">

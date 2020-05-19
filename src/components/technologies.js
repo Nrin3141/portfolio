@@ -36,7 +36,7 @@ const Technologies = () => {
             <h4>(I use and love) </h4>
             <div className="icon-container">
               {data.allFile.edges.map((img, i) => (
-                <div key={i} className="size">
+                <div key={`technology-${i}`} className="size">
                   {!img.node.childImageSharp && img.node.extension === "svg" ? (
                     <img
                       className="small"

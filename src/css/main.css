@@ -1,5 +1,56 @@
 .hidden {
+  animation: blendOut 3s;
+  opacity: 0;
   display: none;
+}
+.hidden-menu {
+  display: none;
+}
+.fa-heart {
+  color: #e6164a;
+  margin: 5px;
+}
+.socials-bar {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+}
+.socials-bar > * {
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 10px 0px;
+}
+.socials-bar > *:hover {
+  background: rgb(230, 230, 230);
+}
+.copyrights-bar {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activeSection {
+  animation: blendIn 1s;
+  opacity: 0.8;
+}
+@keyframes blendIn {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+@keyframes blendOut {
+  0% {
+    opacity: 0.8;
+    display: block;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
 }
 h1 {
   margin: 0;
@@ -16,4 +67,7 @@ a:visited {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.navigation-bar > a {
+  margin: 10px 30px;
 }

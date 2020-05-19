@@ -1,6 +1,5 @@
 import React from "react"
 import MenuLinks from "./menus/MenuLinks"
-import "../css/navigation.css"
 
 function Navigation() {
   return (
