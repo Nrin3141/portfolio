@@ -1,14 +1,14 @@
 import React, { useState } from "react"
 import Gallery from "../components/gallery"
-import Layout from "../components/layout"
-import { StaticQuery, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Img from "gatsby-image"
-import "../css/photography.css"
 import Header from "../components/header"
+import "../css/photography.css"
+import { Navigation } from "../components/layout"
 
 const Photography = ({ data }) => {
   let imgs = data.allFile.big
-  const [gallery, setGallery] = useState(true)
+  const [gallery, setGallery] = useState(false)
   const [index, setIndex] = useState(0)
 
   const next = () => {
@@ -22,16 +22,20 @@ const Photography = ({ data }) => {
     setIndex(0)
   }
   const handleClick = i => {
+    if (window.innerWidth < 800) {
+      return
+    }
     setGallery(true)
     setIndex(i)
   }
   return (
-    <Layout disableMenu={gallery} noSpacing={gallery}>
+    <>
       <Header />
+      <Navigation />
       {gallery ? (
         <Gallery
           index={index}
-          maxIndex={imgs.length - 1}
+          max={imgs.length - 1}
           next={next}
           previous={previous}
           collapse={collapse}
@@ -51,7 +55,7 @@ const Photography = ({ data }) => {
           ))}
         </div>
       )}
-    </Layout>
+    </>
   )
 }
 
