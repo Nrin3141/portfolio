@@ -62,6 +62,8 @@ const Dot = class Dot {
 const Sketch = () => {
   const myRef = useRef(null)
   const sketch = p => {
+    console.log(myRef)
+    if (!myRef.current) return
     let w = myRef.current.offsetWidth
     let h = myRef.current.offsetHeight
     let font
@@ -116,8 +118,19 @@ const Sketch = () => {
     }
   }
   useEffect(() => {
-    const p5Instance = new p5(sketch, myRef.current)
-    return () => p5Instance.remove()
+    let p5Instance = new p5(sketch, myRef.current)
+    const resize = () => {
+      p5Instance && p5Instance.remove()
+      p5Instance = null
+      p5Instance = new p5(sketch, myRef.current)
+    }
+    window.addEventListener("resize", resize)
+
+    return () => {
+      window.removeEventListener("resize", resize)
+      p5Instance && p5Instance.remove()
+      p5Instance = null
+    }
   }, [])
   return <div className="sketch-container" ref={myRef}></div>
 }
