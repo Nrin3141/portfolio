@@ -43,13 +43,6 @@ const Dot = class Dot {
     fleeVector.setMag(2)
     this.applyForce(fleeVector)
   }
-  explode() {
-    let xDiff = this.p.mouseX - this.pos.x
-    let yDiff = this.p.mouseY - this.pos.y
-    let fleeVector = this.p.createVector(-xDiff, -yDiff)
-    fleeVector.setMag(30)
-    this.applyForce(fleeVector)
-  }
   update() {
     this.pos.add(this.vel)
     this.vel.add(this.acc)
@@ -85,7 +78,6 @@ const Sketch = () => {
 
       p.createCanvas(w, bounds1.h * 2 + 100)
 
-      console.log({ textWidth: bounds2.w, windowWidth: w, fontSize: l })
       const points1 = font
         .textToPoints("Develop", 0, 0, l, {
           sampleFactor: 30 / l,
@@ -97,11 +89,6 @@ const Sketch = () => {
         })
         .map(point => new Dot(p, point.x + w / 10, point.y + bounds2.h, w, h))
       dots = [...points1, ...points2]
-    }
-    p.mouseClicked = () => {
-      dots.forEach(dot => {
-        dot.explode()
-      })
     }
 
     p.draw = () => {
@@ -119,7 +106,6 @@ const Sketch = () => {
       })
 
       // const results = quadtree.query(new Circle(p.mouseX, p.mouseY, 1000))
-      // console.log(results)
       // results.forEach(dot => dot.data.flee())
       // quadtree.clear()
       let fps = p.frameRate()
