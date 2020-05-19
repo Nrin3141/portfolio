@@ -3,11 +3,7 @@ button {
   background: inherit;
   color: inherit;
 }
-.hidden-section {
-  animation: blendOut 3s;
-  opacity: 0;
-  display: none;
-}
+
 .hidden {
   display: none !important;
 }
@@ -72,6 +68,17 @@ button {
   justify-content: space-around;
   align-items: center;
 }
+
+.menu-links > a {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.menu-links > a > i {
+  text-decoration: none !important;
+  margin-right: 5px;
+}
 .socials-bar > * {
   padding: 10px 20px;
   border-radius: 10px;
@@ -86,10 +93,7 @@ button {
   align-items: center;
   justify-content: center;
 }
-.active-section {
-  animation: blendIn 1s;
-  opacity: 0.8;
-}
+
 .projects-section,
 .technologies-container {
   display: flex;
@@ -101,6 +105,8 @@ button {
 .project-header {
   color: white;
   text-align: center;
+  font-size: 2em;
+  font-weight: 900;
   padding: 20px;
 }
 .project-header-container {
@@ -143,23 +149,43 @@ button {
   height: 100vw;
   overflow: hidden;
 }
+.active-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.active-section > .section-image {
+  animation: blendIn 1s;
+  opacity: 0.8;
+}
 
 @keyframes blendIn {
   0% {
-    opacity: 0.3;
+    /* top: -100vh; */
+    opacity: 0;
   }
   100% {
+    /* top: 0; */
     opacity: 0.8;
   }
 }
+.hidden-section {
+  position: absolute;
+  animation: blendOut 1s;
+  top: 0;
+  opacity: 0;
+  /* top: 100vh; */
+  left: 0;
+}
+
 @keyframes blendOut {
   0% {
     opacity: 0.8;
-    display: block;
+    /* top: 0; */
   }
   100% {
     opacity: 0;
-    display: none;
+    /* top: 100vh; */
   }
 }
 h1 {
@@ -180,6 +206,9 @@ a:visited {
   display: none;
 }
 @media only screen and (min-width: 800px) {
+  .hide-mobile {
+    display: none;
+  }
   .technology-image-container {
     width: 80vw;
     padding: 0 10vw;
@@ -214,7 +243,11 @@ a:visited {
     align-items: center;
     height: 7vh;
   }
-  .navigation-bar > a {
+  .navigation-bar > .menu-links {
+    display: flex;
+    flex-direction: row;
+  }
+  .navigation-bar > .menu-links > a {
     margin: 10px 30px;
   }
 }

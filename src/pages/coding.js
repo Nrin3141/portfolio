@@ -5,10 +5,12 @@ import AboutMe from "../components/about"
 import Technologies from "../components/technologies"
 import Sketch from "../components/sketch"
 import Header from "../components/header"
+import MobileMenu from "../components/menus/Mobile"
 
 const Coding = () => (
   <Layout>
     <Header />
+    <MobileMenu color="white" />
     <Sketch />
     <AboutMe />
     <Projects />

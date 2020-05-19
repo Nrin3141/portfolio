@@ -5,6 +5,7 @@ import Img from "gatsby-image"
 import Header from "../components/header"
 import "../css/photography.css"
 import { Navigation } from "../components/layout"
+import MobileMenu from "../components/menus/Mobile"
 
 const Photography = ({ data }) => {
   let imgs = data.allFile.big
@@ -31,6 +32,7 @@ const Photography = ({ data }) => {
   return (
     <>
       <Header />
+      <MobileMenu color="white" />
       <Navigation />
       {gallery ? (
         <Gallery
