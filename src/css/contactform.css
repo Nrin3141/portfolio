@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.inputs {
+  display: flex;
+  width: 80vw;
+  flex-direction: column;
+  justify-content: space-around;
+}
+@media only screen and (min-width: 600px) {
+  .inputs {
+    flex-direction: row;
+  }
+}
+.outer .muipaper {
+  text-align: center;
+  padding: 20px;
+  margin: 20px;
+}
+.outer {
+  margin: 20px 0;
+  padding: 10px;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 20px);
+  min-height: 100%;
+  overflow: hidden;
+}
+.outer .input {
+  flex-grow: 20;
+  margin: 10px 1vw;
+}
+.outer .message {
+  width: 78vw;
+  margin: 10px;
+}

@@ -1,139 +1,93 @@
-import React from "react"
-import Gallery from "../components/Gallery"
-import Layout from "../components/Layout"
-import { StaticQuery, graphql } from "gatsby"
+import React, { useState } from "react"
+import Gallery from "../components/gallery"
+import { graphql } from "gatsby"
 import Img from "gatsby-image"
-import SEO from "../components/seo"
-import withRoot from "../utils/withRoot"
+import Header from "../components/header"
+import { Navigation } from "../components/layout"
+import MobileMenu from "../components/menus/Mobile"
+import "../css/photography.css"
 
-class Photography extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { gallery: false, index: 0 }
+const Photography = ({ data }) => {
+  let imgs = data.allFile.big
+  const [gallery, setGallery] = useState(false)
+  const [index, setIndex] = useState(0)
+  const next = () => {
+    setIndex(old => (old + 1 > imgs.length - 1 ? old : old + 1))
   }
-  nextImage = () => {
-    this.setState(state => ({ index: this.state.index + 1 }))
+  const previous = () => {
+    setIndex(old => (old - 1 < 0 ? old : old - 1))
   }
-  previousImage = () => {
-    this.setState(state => ({ index: this.state.index - 1 }))
+  const collapse = () => {
+    setGallery(false)
+    setIndex(0)
   }
-  collapse = () => {
-    this.setState({ gallery: false, index: 0 })
+  const handleClick = i => {
+    if (window.innerWidth < 800) {
+      return
+    }
+    setGallery(true)
+    setIndex(i)
   }
-  handleClick = i => {
-    this.setState({ gallery: true, index: i })
-  }
-
-  render() {
-    return (
-      <StaticQuery
-        query={graphql`
-          query {
-            allFile(
-              filter: {
-                extension: { regex: "/(jpg)|(jpeg)|(png)/" }
-                relativeDirectory: { eq: "images/gallery" }
-              }
-            ) {
-              big: edges {
-                node {
-                  img: childImageSharp {
-                    fluid(maxWidth: 4000) {
-                      ...GatsbyImageSharpFluid
-                    }
-                  }
-                }
-              }
-              small: edges {
-                node {
-                  img: childImageSharp {
-                    fluid(maxWidth: 400) {
-                      ...GatsbyImageSharpFluid
-                    }
-                  }
-                }
-              }
-            }
+  return (
+    <>
+      <Header />
+      <MobileMenu color="white" />
+      <Navigation />
+      {gallery ? (
+        <Gallery
+          index={index}
+          max={imgs.length - 1}
+          next={next}
+          previous={previous}
+          collapse={collapse}
+          imageData={
+            imgs[index < imgs.length ? index : imgs.length - 1].node.img.fluid
           }
-        `}
-        render={data => {
-          let imgs = data.allFile.big
-          return (
-            <Layout
-              disableMenu={this.state.gallery}
-              noSpacing={this.state.gallery}
-            >
-              <SEO
-                title="Home"
-                addition="Rico's Photography"
-                keywords={[`gatsby`, `application`, `react`]}
+        />
+      ) : (
+        <div className="masonry">
+          {data.allFile.small.map((e, i) => (
+            <button className="item" key={i} onClick={() => handleClick(i)}>
+              <Img
+                style={{ width: "100%", height: "100%" }}
+                fluid={e.node.img.fluid}
               />
-              {this.state.gallery ? (
-                <Gallery
-                  index={this.state.index}
-                  maxIndex={imgs.length - 1}
-                  nextImage={this.nextImage}
-                  previousImage={this.previousImage}
-                  collapse={this.collapse}
-                  imageData={
-                    imgs[
-                      this.state.index < imgs.length
-                        ? this.state.index
-                        : imgs.length - 1
-                    ].node.img.fluid
-                  }
-                />
-              ) : (
-                <div className="masonry">
-                  {data.allFile.small.map((e, i) => (
-                    <div
-                      className="item"
-                      key={i}
-                      onClick={() => this.handleClick(i)}
-                    >
-                      <Img
-                        style={{ width: "100%", height: "100%" }}
-                        fluid={e.node.img.fluid}
-                      />
-                    </div>
-                  ))}
-                </div>
-              )}
-              <style jsx>{`
-                .masonry {
-                  width: 90vw;
-                  column-count: 1;
-                  column-gap: 0.5em;
-                }
-                @media only screen and (min-width: 400px) {
-                  .masonry {
-                    column-count: 2;
-                  }
-                }
-                @media only screen and (min-width: 800px) {
-                  .masonry {
-                    column-count: 3;
-                  }
-                }
-                @media only screen and (min-width: 1600px) {
-                  .masonry {
-                    column-count: 4;
-                  }
-                }
-                .item {
-                  display: inline-block;
-                  background-color: #eee;
-                  margin: 0 0 0.5em;
-                  width: 100%;
-                  cursor: pointer;
-                }
-              `}</style>
-            </Layout>
-          )
-        }}
-      />
-    )
-  }
+            </button>
+          ))}
+        </div>
+      )}
+    </>
+  )
 }
 
-export default withRoot(Photography)
+export const query = graphql`
+  query {
+    allFile(
+      filter: {
+        extension: { regex: "/(jpg)|(jpeg)|(png)/" }
+        relativeDirectory: { eq: "images/gallery" }
+      }
+    ) {
+      big: edges {
+        node {
+          img: childImageSharp {
+            fluid(maxWidth: 4000) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+      small: edges {
+        node {
+          img: childImageSharp {
+            fluid(maxWidth: 400) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+export default Photography

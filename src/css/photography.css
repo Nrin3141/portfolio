@@ -1,0 +1,36 @@
+.masonry {
+  width: 100vw;
+  column-count: 1;
+  column-gap: 0.5em;
+}
+@media only screen and (min-width: 400px) {
+  .item {
+    margin: 0 0 0.5em;
+  }
+  .masonry {
+    column-count: 2;
+  }
+}
+@media only screen and (min-width: 800px) {
+  .masonry {
+    column-count: 3;
+  }
+  .item {
+    cursor: pointer;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .masonry {
+    column-count: 4;
+  }
+}
+
+.item:focus {
+  outline: 1px solid cadetblue;
+}
+.item {
+  padding: 0;
+  display: inline-block;
+  background-color: #eee;
+  width: 100%;
+}

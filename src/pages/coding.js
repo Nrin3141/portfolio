@@ -1,24 +1,21 @@
 import React from "react"
-import Layout from "../components/Layout"
-import Projects from "../components/Projects"
-import AboutMe from "../components/AboutMe"
-import Technologies from "../components/Technologies"
-import IframeSketch from "../components/IframeSketch"
-import SEO from "../components/seo"
-import withRoot from "../utils/withRoot"
+import Layout from "../components/layout"
+import Projects from "../components/projects"
+import AboutMe from "../components/about"
+import Technologies from "../components/technologies"
+import Sketch from "../components/sketch"
+import Header from "../components/header"
+import MobileMenu from "../components/menus/Mobile"
 
 const Coding = () => (
   <Layout>
-    <SEO
-      title="Home"
-      addition="Portfolio"
-      keywords={[`gatsby`, `application`, `react`]}
-    />
-    <IframeSketch />
+    <Header />
+    <MobileMenu color="white" />
+    <Sketch />
     <AboutMe />
     <Projects />
     <Technologies />
   </Layout>
 )
 
-export default withRoot(Coding)
+export default Coding

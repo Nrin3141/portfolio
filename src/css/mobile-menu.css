@@ -1,0 +1,26 @@
+.mobile-menu {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+}
+.mobile-menu > * {
+  margin: 5px;
+}
+.mobile-menu-container {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+}
+
+@media only screen and (min-width: 700px) {
+  .mobile-menu {
+    padding: 50px;
+    width: fit-content;
+  }
+}

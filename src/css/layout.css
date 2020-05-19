@@ -1,0 +1,27 @@
+html {
+  font-family: Roboto, sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.sketch-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: fit-content;
+}
+.grecaptcha-badge {
+  opacity: 0;
+}
