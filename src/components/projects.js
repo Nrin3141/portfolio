@@ -27,29 +27,29 @@ const Projects = () => {
 const imageMap = {
   tictactoe: {
     href: "https://tic-tac-toe.ricotrebeljahr.de",
-    text: "A Tic Tac Toe Game",
+    text: "a game of tic tac toe",
   },
-  chess: { href: "https://chess.ricotrebeljahr.de", text: "A chess game" },
-  travel: { href: "https://photodyssee.com", text: "A travel blog" },
+  chess: { href: "https://chess.ricotrebeljahr.de", text: "a game of chess" },
+  travel: { href: "https://photodyssee.com", text: "a travel blog" },
   swantje: {
     href: "https://swantjefurtak.com",
-    text: "A filmmaker's portfolio",
+    text: "a site for a filmmaker",
   },
   amit: {
     href: "https://brave-morse-b2bb17.netlify.app/",
-    text: "A copywriter's portfolio",
+    text: "a portfolio for a copywriter",
   },
   asteroids: {
     href: "https://confident-aryabhata-d5dc3d.netlify.app/",
-    text: "An asteroid Game",
+    text: "a game in space",
   },
   "fractal-tree": {
     href: "https://trebeljahr.github.io/fractal-tree/",
-    text: "A fractal tree",
+    text: "a fractal tree",
   },
   "barnsley-fern": {
     href: "https://trebeljahr.github.io/barnsley-fern/",
-    text: "A barnsley fern",
+    text: "a barnsley fern",
   },
 }
 
