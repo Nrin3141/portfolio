@@ -1,7 +1,6 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
-import "../css/technologies.css"
 
 const Technologies = () => {
   return (
@@ -9,18 +8,21 @@ const Technologies = () => {
       query={query}
       render={data => {
         return (
-          <>
+          <div className="technologies-container">
             <h2>Tech and Tools </h2>
             <h4>(I use and love) </h4>
-            <div>
+            <div className="technology-image-container">
               {data.allFile.edges.map((img, i) => (
-                <Img
-                  key={`technology-${i}`}
-                  fluid={img.node.childImageSharp.fluid}
-                />
+                <div className="technology">
+                  <Img
+                    key={`technology-${i}`}
+                    className="technology-image"
+                    fluid={img.node.childImageSharp.fluid}
+                  />
+                </div>
               ))}
             </div>
-          </>
+          </div>
         )
       }}
     />
