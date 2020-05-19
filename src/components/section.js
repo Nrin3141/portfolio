@@ -1,55 +1,78 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useCallback, useRef } from "react"
 import Img from "gatsby-image"
 import "../css/section.css"
 
-const Section = ({ headline, href, img, nextSection, active }) => {
+function useInterval(callback, delay) {
+  const savedCallback = useRef()
+  useEffect(() => {
+    savedCallback.current = callback
+  }, [callback])
+
+  useEffect(() => {
+    function tick() {
+      savedCallback.current()
+    }
+    if (delay !== null) {
+      let id = setInterval(tick, delay)
+      return () => clearInterval(id)
+    }
+  }, [delay])
+}
+
+const Section = ({ headline, img, nextSection, active }) => {
   const speed = 200
   const waitBeforeDelete = 2000
   const waitBeforeChange = 700
   const deleteSpeed = 60
-  const [timer, setTimer] = useState(0)
+  const [deletionTimer, setDeletionTimer] = useState(0)
   const [wait, setWait] = useState(0)
   const [characterIndex, setCharacterIndex] = useState(0)
 
-  const count = () => {
+  const changeToNext = useCallback(() => {
+    nextSection()
+    setCharacterIndex(0)
+  }, [nextSection])
+
+  const countDown = () => {
+    console.log("Counting Down")
+    setCharacterIndex(old => old - 1)
+  }
+  const countUp = () => {
+    console.log("Counting Up")
     setCharacterIndex(old => old + 1)
   }
 
-  const countDown = () => {
-    setCharacterIndex(old => old - 1)
-  }
+  const [countingUp, setCountingUp] = useState(true)
+  const [countingDown, setCountingDown] = useState(false)
 
   useEffect(() => {
-    const changeToNext = () => {
-      nextSection()
-      setCharacterIndex(0)
+    if (characterIndex < 0) {
+      setCountingDown(false)
+      setCountingUp(true)
+      setWait(
+        setTimeout(() => {
+          changeToNext()
+        }, waitBeforeChange)
+      )
     }
     if (characterIndex >= headline.length) {
-      clearInterval(timer)
-      const startDeleting = () => setTimer(setInterval(countDown, deleteSpeed))
-      setTimeout(startDeleting, waitBeforeDelete)
+      setCountingUp(false)
+      setTimeout(
+        () => setDeletionTimer(setCountingDown(true, deleteSpeed)),
+        waitBeforeDelete
+      )
     }
-    if (characterIndex < 0) {
-      clearInterval(timer)
-      setWait(() => {
-        clearTimeout(wait)
-        return setTimeout(changeToNext, waitBeforeChange)
-      })
-    }
-  }, [characterIndex, headline, wait, timer, nextSection])
+  }, [characterIndex, headline, changeToNext])
 
   useEffect(() => {
-    if (active) {
-      setTimer(() => setInterval(count, speed))
-      setCharacterIndex(0)
-      return () => {
-        clearInterval(timer)
-        clearTimeout(wait)
-      }
+    return () => {
+      clearTimeout(wait)
+      clearTimeout(deletionTimer)
     }
-    clearInterval(timer)
-    clearTimeout(wait)
-  }, [active, timer, wait])
+  }, [deletionTimer, wait])
+
+  useInterval(countUp, active && countingUp ? speed : null)
+  useInterval(countDown, active && countingDown ? deleteSpeed : null)
 
   const person =
     headline.slice(0, characterIndex < 0 ? 0 : characterIndex) + " "
