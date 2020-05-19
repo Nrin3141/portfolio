@@ -55,7 +55,11 @@ const imageMap = {
 
 const SingleProject = ({ img }) => (
   <a href={imageMap[img.node.name].href} target="blank" className="project">
-    <Img className="project-image" fluid={img.node.childImageSharp.fluid} />
+    <Img
+      className="project-image"
+      key={img.node.id}
+      fluid={img.node.childImageSharp.fluid}
+    />
     <div className="project-header-container">
       <h2 className="project-header">{imageMap[img.node.name].text}</h2>
     </div>
@@ -72,6 +76,7 @@ const query = graphql`
       edges {
         node {
           name
+          id
           childImageSharp {
             fluid(maxWidth: 2000) {
               ...GatsbyImageSharpFluid
