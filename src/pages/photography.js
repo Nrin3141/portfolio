@@ -3,15 +3,14 @@ import Gallery from "../components/gallery"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Header from "../components/header"
-import "../css/photography.css"
 import { Navigation } from "../components/layout"
 import MobileMenu from "../components/menus/Mobile"
+import "../css/photography.css"
 
 const Photography = ({ data }) => {
   let imgs = data.allFile.big
   const [gallery, setGallery] = useState(false)
   const [index, setIndex] = useState(0)
-
   const next = () => {
     setIndex(old => (old + 1 > imgs.length - 1 ? old : old + 1))
   }
@@ -48,12 +47,12 @@ const Photography = ({ data }) => {
       ) : (
         <div className="masonry">
           {data.allFile.small.map((e, i) => (
-            <div className="item" key={i} onClick={() => handleClick(i)}>
+            <button className="item" key={i} onClick={() => handleClick(i)}>
               <Img
                 style={{ width: "100%", height: "100%" }}
                 fluid={e.node.img.fluid}
               />
-            </div>
+            </button>
           ))}
         </div>
       )}

@@ -1,9 +1,8 @@
 import React from "react"
-import PropTypes from "prop-types"
 import Snackbar from "@material-ui/core/Snackbar"
 import WarningIcon from "@material-ui/icons/Warning"
 
-const ErrorMessage = ({ classes, show, email }) => {
+const ErrorMessage = ({ show }) => {
   return (
     <div>
       <Snackbar

@@ -13,7 +13,7 @@ const Technologies = () => {
             <h4>(I use and love) </h4>
             <div className="technology-image-container">
               {data.allFile.edges.map((img, i) => (
-                <div className="technology">
+                <div key={`technology-${i}`} className="technology">
                   <Img
                     key={`technology-${i}`}
                     className="technology-image"

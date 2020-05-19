@@ -21,7 +21,7 @@ const Header = () => {
   )
 }
 
-const SEO = ({ description, lang, meta, keywords, title, addition }) => {
+export const SEO = ({ description, lang, meta, keywords, title, addition }) => {
   const { site } = useStaticQuery(
     graphql`
       query {

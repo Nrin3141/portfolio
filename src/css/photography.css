@@ -21,6 +21,9 @@
     column-count: 4;
   }
 }
+.item:focus {
+  outline: 1px solid cadetblue;
+}
 .item {
   display: inline-block;
   background-color: #eee;

@@ -3,7 +3,7 @@ import Burger from "./Burger"
 import MenuLinks from "./MenuLinks"
 import "../../css/mobile-menu.css"
 
-function MobileMenu({ color, display }) {
+const MobileMenu = ({ color, display }) => {
   const [open, setOpen] = useState(false)
   const menuId = "main-menu"
 
@@ -15,10 +15,7 @@ function MobileMenu({ color, display }) {
         aria-controls={menuId}
         color={color}
       />
-      <div
-        className={`mobile-menu ${!open ? "hidden" : ""}`}
-        tabIndex={open ? 0 : -1}
-      >
+      <div className={`mobile-menu ${!open ? "hidden" : ""}`}>
         <MenuLinks />
       </div>
     </div>

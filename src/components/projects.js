@@ -13,8 +13,8 @@ const Projects = () => {
               <i className="fas fa-code" /> past projects
             </h2>
             <div className="projects-container">
-              {data.allFile.edges.map(img => (
-                <SingleProject img={img} />
+              {data.allFile.edges.map((img, i) => (
+                <SingleProject key={`project-${i}`} img={img} />
               ))}
             </div>
           </div>
