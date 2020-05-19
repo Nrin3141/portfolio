@@ -27,7 +27,7 @@ const Main = ({ data }) => {
         const sources = [
           img.node.small.fluid,
           { fluid: img.node.medium.fluid, media: "(min-width: 700px)" },
-          { fluid: img.node.full.fluid, media: "(min-width: 1800px)" },
+          { fluid: img.node.large.fluid, media: "(min-width: 1800px)" },
           { fluid: img.node.full.fluid, media: "(min-width: 3000px)" },
         ]
         return (
