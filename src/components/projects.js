@@ -9,7 +9,7 @@ const Projects = () => {
       render={data => {
         return (
           <div className="projects-section">
-            <h2>
+            <h2 className="projects-header">
               <i className="fas fa-code" /> past projects
             </h2>
             <div className="projects-container">

@@ -14,11 +14,13 @@ const Technologies = () => {
             <div className="technology-image-container">
               {data.allFile.edges.map((img, i) => (
                 <div key={`technology-${i}`} className="technology">
-                  <Img
-                    key={`technology-${i}`}
-                    className="technology-image"
-                    fluid={img.node.childImageSharp.fluid}
-                  />
+                  <div className="center-technology-image">
+                    <Img
+                      key={`technology-${i}`}
+                      className="technology-image"
+                      fluid={img.node.childImageSharp.fluid}
+                    />
+                  </div>
                 </div>
               ))}
             </div>

@@ -24,11 +24,13 @@ const AboutMe = () => {
               className="circular about-me-image"
               fluid={data.file.img.fluid}
             />
-            <p>
-              You want to develop your own website? Or a Web app? Mobile game?
-              Something in the app store? Online Shop? Blog? Let me turn your
-              next project into something remarkable.
-            </p>
+            <div>
+              <p>
+                You want to develop your own website? Or a Web app? Mobile game?
+                Something in the app store? Online Shop? Blog? Let me turn your
+                next project into something remarkable.
+              </p>
+            </div>
             <Link to="/contact">Get in touch</Link>
           </div>
         )

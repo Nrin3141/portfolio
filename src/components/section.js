@@ -34,11 +34,9 @@ const Section = ({ headline, img, nextSection, active }) => {
   }, [nextSection])
 
   const countDown = () => {
-    console.log("Counting Down")
     setCharacterIndex(old => old - 1)
   }
   const countUp = () => {
-    console.log("Counting Up")
     setCharacterIndex(old => old + 1)
   }
 
@@ -57,9 +55,11 @@ const Section = ({ headline, img, nextSection, active }) => {
     }
     if (characterIndex >= headline.length) {
       setCountingUp(false)
-      setTimeout(
-        () => setDeletionTimer(setCountingDown(true, deleteSpeed)),
-        waitBeforeDelete
+      setDeletionTimer(
+        setTimeout(
+          () => setDeletionTimer(setCountingDown(true, deleteSpeed)),
+          waitBeforeDelete
+        )
       )
     }
   }, [characterIndex, headline, changeToNext])
