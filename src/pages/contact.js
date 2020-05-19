@@ -10,7 +10,7 @@ const OutlinedTextFields = () => {
   useEffect(() => {
     loadReCaptcha(process.env.GATSBY_RECAPTCHA_API_PUBLIC_KEY)
     setMount(true)
-  })
+  }, [])
   return (
     <Layout>
       <Header />

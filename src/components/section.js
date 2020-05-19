@@ -19,12 +19,11 @@ const Section = ({ headline, href, img, nextSection, active }) => {
     setCharacterIndex(old => old - 1)
   }
 
-  const changeToNext = () => {
-    nextSection()
-    setCharacterIndex(0)
-  }
-
   useEffect(() => {
+    const changeToNext = () => {
+      nextSection()
+      setCharacterIndex(0)
+    }
     if (characterIndex >= headline.length) {
       clearInterval(timer)
       const startDeleting = () => setTimer(setInterval(countDown, deleteSpeed))
@@ -37,7 +36,7 @@ const Section = ({ headline, href, img, nextSection, active }) => {
         return setTimeout(changeToNext, waitBeforeChange)
       })
     }
-  }, [characterIndex])
+  }, [characterIndex, headline, wait, timer, nextSection])
 
   useEffect(() => {
     if (active) {
@@ -50,7 +49,7 @@ const Section = ({ headline, href, img, nextSection, active }) => {
     }
     clearInterval(timer)
     clearTimeout(wait)
-  }, [active])
+  }, [active, timer, wait])
 
   const person =
     headline.slice(0, characterIndex < 0 ? 0 : characterIndex) + " "

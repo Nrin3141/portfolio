@@ -15,18 +15,18 @@
   justify-content: center;
   padding: 0;
 }
-.gallery-button > i,
-.collapse-button-container > i {
+.gallery-button > button,
+.collapse-button-container > button {
   margin: 10px;
   background: lightgrey;
   border-radius: 100%;
   padding: 10px;
 }
-.collapse-button-container > i {
+.collapse-button-container > button {
   padding: 10px 15px;
 }
-.gallery-button > i:hover,
-.collapse-button-container > i:hover {
+.gallery-button > button:hover,
+.collapse-button-container > button:hover {
   background: grey;
 }
 .invisible {
