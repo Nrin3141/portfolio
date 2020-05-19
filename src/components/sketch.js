@@ -1,8 +1,8 @@
 import React, { useRef, useEffect } from "react"
-import p5, { Vector } from "p5"
 // import { QuadTree, Box, Point, Circle } from "js-quadtree"
 import { v4 } from "uuid"
 
+let Vector
 const Dot = class Dot {
   constructor(p, x, y, w, h) {
     this.p = p
@@ -117,18 +117,25 @@ const Sketch = () => {
     }
   }
   useEffect(() => {
-    let p5Instance = new p5(sketch, myRef.current)
-    const resize = () => {
-      p5Instance && p5Instance.remove()
-      p5Instance = null
-      p5Instance = new p5(sketch, myRef.current)
-    }
-    window.addEventListener("resize", resize)
+    if (window !== undefined) {
+      const p5 = require("p5")
+      Vector = p5.Vector
+      let p5Instance = new p5(sketch, myRef.current)
 
-    return () => {
-      window.removeEventListener("resize", resize)
-      p5Instance && p5Instance.remove()
-      p5Instance = null
+      const resize = () => {
+        p5Instance && p5Instance.remove()
+        p5Instance = null
+        p5Instance = new p5(sketch, myRef.current)
+      }
+      window.addEventListener("resize", resize)
+
+      return () => {
+        if (window !== undefined) {
+          window.removeEventListener("resize", resize)
+          p5Instance && p5Instance.remove()
+          p5Instance = null
+        }
+      }
     }
   }, [])
   return <div className="sketch-container" ref={myRef}></div>

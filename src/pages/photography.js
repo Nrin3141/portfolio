@@ -22,7 +22,7 @@ const Photography = ({ data }) => {
     setIndex(0)
   }
   const handleClick = i => {
-    if (window.innerWidth < 800) {
+    if (window !== undefined && window.innerWidth < 800) {
       return
     }
     setGallery(true)
