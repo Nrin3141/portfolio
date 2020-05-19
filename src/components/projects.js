@@ -6,67 +6,16 @@ import "../css/projects.css"
 const Projects = () => {
   return (
     <StaticQuery
-      query={graphql`
-        query {
-          allFile(
-            filter: {
-              extension: { regex: "/(jpg)|(jpeg)|(png)/" }
-              relativeDirectory: { eq: "images/projects" }
-            }
-          ) {
-            edges {
-              node {
-                name
-                childImageSharp {
-                  fluid(maxWidth: 2000) {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
-            }
-          }
-        }
-      `}
+      query={query}
       render={data => {
         return (
           <div>
-            <h2 style={{ paddingTop: "5vh" }}>
-              <i className="fas fa-code" /> Projects
+            <h2>
+              <i className="fas fa-code" /> past projects
             </h2>
             <div className="icon-container">
               {data.allFile.edges.map((img, i) => (
-                <a
-                  key={i}
-                  href={
-                    img.node.name === "snake"
-                      ? "https://trebeljahr.github.io/Snake-2.0/"
-                      : img.node.name === "tictactoe"
-                      ? "https://tic-tac-toe.ricotrebeljahr.de"
-                      : img.node.name === "chess"
-                      ? "https://chess.ricotrebeljahr.de"
-                      : "https://photodyssee.com"
-                  }
-                  target="blank"
-                  className="imgContainer"
-                >
-                  <Img
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                    }}
-                    fluid={img.node.childImageSharp.fluid}
-                  />
-                  <div className="absolute shadow" />
-                  <div className="absolute">
-                    <h2 className="banner">
-                      {
-                        ["Curious?", "View Me!", "Check me out!", "Discover?"][
-                          i
-                        ]
-                      }
-                    </h2>
-                  </div>
-                </a>
+                <SingleProject img={img} i={i} />
               ))}
             </div>
           </div>
@@ -75,5 +24,42 @@ const Projects = () => {
     />
   )
 }
+
+const ImageToLinkMap = {
+  snake: "https://trebeljahr.github.io/Snake-2.0/",
+  tictactoe: "https://tic-tac-toe.ricotrebeljahr.de",
+  chess: "https://chess.ricotrebeljahr.de",
+  traveler: "https://photodyssee.com",
+}
+
+const SingleProject = ({ img, i }) => (
+  <a href={ImageToLinkMap[img.node.name]} target="blank">
+    <Img fluid={img.node.childImageSharp.fluid} />
+    <h2 className="banner">
+      {["Curious?", "View Me!", "Check me out!", "Discover?"][i]}
+    </h2>
+  </a>
+)
+const query = graphql`
+  query {
+    allFile(
+      filter: {
+        extension: { regex: "/(jpg)|(jpeg)|(png)/" }
+        relativeDirectory: { eq: "images/projects" }
+      }
+    ) {
+      edges {
+        node {
+          name
+          childImageSharp {
+            fluid(maxWidth: 2000) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    }
+  }
+`
 
 export default Projects
