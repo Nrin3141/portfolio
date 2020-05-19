@@ -1,44 +1,41 @@
 import React from "react"
-import Navigation from "./navigation.js"
+import MenuLinks from "./menus/MenuLinks"
 import "../css/layout.css"
 
 const Layout = ({ children }) => (
   <>
     <Navigation />
-    <div className="layout-content-container">{children}</div>
+    {children}
     <Footer />
   </>
 )
 
-const Footer = () => {
+export const Navigation = () => {
+  return (
+    <header>
+      <div className="navigation-bar">
+        <MenuLinks />
+      </div>
+    </header>
+  )
+}
+
+export const Footer = () => {
   return (
     <footer>
       <div className="socials-bar">
         <a href={"https://github.com/trebeljahr"} target="blank" rel="noopener">
           Github <i className="fab fa-github" />
         </a>
-        <a
-          href="https://www.linkedin.com/in/ricotrebeljahr"
-          target="blank"
-          rel="noopener"
-        >
+        <a href="https://www.linkedin.com/in/ricotrebeljahr">
           Linked
-          <i className="fab fa-linkedin" style={{ color: "#4875B4" }} />
+          <i className="fab fa-linkedin" />
         </a>
-        <a
-          href="https://stackoverflow.com/story/ricotrebeljahr"
-          target="blank"
-          rel="noopener"
-        >
-          <i className="fab fa-stack-overflow" style={{ color: "#F48024" }} />{" "}
-          Stackoverflow
+        <a href="https://stackoverflow.com/story/ricotrebeljahr">
+          <i className="fab fa-stack-overflow" /> Stackoverflow
         </a>
-        <a href="https://codepen.io/Nrin/" target="blank" rel="noopener">
-          Codepen{" "}
-          <i
-            className="fab fa-codepen"
-            style={{ color: "rgb(100, 100, 100)" }}
-          />
+        <a href="https://codepen.io/Nrin/">
+          Codepen <i className="fab fa-codepen" />
         </a>
       </div>
       <div className="copyrights-bar">
@@ -49,4 +46,5 @@ const Footer = () => {
     </footer>
   )
 }
+
 export default Layout

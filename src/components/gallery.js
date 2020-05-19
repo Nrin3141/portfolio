@@ -3,7 +3,7 @@ import Img from "gatsby-image"
 import "../css/gallery.css"
 import { useEffect } from "react"
 
-const Gallery = ({ collapse, next, previous, index, maxIndex, imageData }) => {
+const Gallery = ({ collapse, next, previous, index, max, imageData }) => {
   useEffect(() => {
     document.removeEventListener("keydown", handleKey)
     document.removeEventListener("touchstart", touchstart)
@@ -35,80 +35,32 @@ const Gallery = ({ collapse, next, previous, index, maxIndex, imageData }) => {
     if (e.key === "Escape") {
       handleCollapse()
     }
-    if (
-      e.key === "ArrowRight" ||
-      e.key === "ArrowDown" ||
-      e.key === "j" ||
-      e.key === "l" ||
-      e.key === "d"
-    ) {
+    if (e.key === "ArrowRight" || e.key === "d") {
       next()
     }
-    if (
-      e.key === "ArrowLeft" ||
-      e.key === "ArrowUp" ||
-      e.key === "k" ||
-      e.key === "h" ||
-      e.key === "a"
-    ) {
+    if (e.key === "ArrowLeft" || e.key === "a") {
       previous()
     }
   }
-
   return (
     <div className="slideshow-container">
-      <div
-        className={
-          "gallery-control-button-container button" +
-          (index === 0 ? " cursor" : "")
-        }
-        onClick={previous}
-      >
-        <div
-          className={
-            "gallery-control-buttons fas fa-angle-double-left" +
-            (index === 0 ? " hidden" : "")
-          }
-        />
+      <div className="collapse-button-container">
+        <i onClick={handleCollapse} className="fas fa-times"></i>
       </div>
-      <div className="img-container">
-        <Img
-          style={{
-            maxHeight: "100vh",
-            width: "100%",
-            maxWidth: "100%",
-            minWidth: "100%",
-            margin: 0,
-            padding: 0,
-          }}
-          imgStyle={{
-            objectFit: "contain",
-            margin: 0,
-            padding: 0,
-          }}
-          fluid={imageData}
-        />
-        <div id="collapse-button-container">
-          <div
-            onClick={handleCollapse}
-            className="handle-collapse button fas fa-times"
-          />
-        </div>
+      <div className={`gallery-button ${index === 0 ? " invisible" : ""}`}>
+        <i onClick={previous} className="fas fa-angle-double-left"></i>
       </div>
-
-      <div
-        className={
-          "gallery-control-button-container button" +
-          (index === maxIndex ? " cursor" : "")
-        }
-        onClick={next}
-      >
-        <div
-          className={
-            "gallery-control-buttons fas fa-angle-double-right" +
-            (index === maxIndex ? " hidden" : "")
-          }
-        />
+      <Img
+        className="gallery-image"
+        imgStyle={{
+          objectFit: "contain",
+          margin: 0,
+          padding: 0,
+        }}
+        fluid={imageData}
+      />
+      <div className={`gallery-button ${index === max ? " invisible" : ""}`}>
+        <i onClick={next} className="fas fa-angle-double-right"></i>
       </div>
     </div>
   )
