@@ -4,6 +4,9 @@
   column-gap: 0.5em;
 }
 @media only screen and (min-width: 400px) {
+  .item {
+    margin: 0 0 0.5em;
+  }
   .masonry {
     column-count: 2;
   }
@@ -21,12 +24,13 @@
     column-count: 4;
   }
 }
+
 .item:focus {
   outline: 1px solid cadetblue;
 }
 .item {
+  padding: 0;
   display: inline-block;
   background-color: #eee;
-  margin: 0 0 0.5em;
   width: 100%;
 }
