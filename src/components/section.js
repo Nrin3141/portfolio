@@ -46,9 +46,9 @@ const Section = ({ headline, img, nextSection, active }) => {
   useEffect(() => {
     if (characterIndex < 0) {
       setCountingDown(false)
-      setCountingUp(true)
       setWait(
         setTimeout(() => {
+          setCountingUp(true)
           changeToNext()
         }, waitBeforeChange)
       )
