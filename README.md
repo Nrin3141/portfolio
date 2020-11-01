@@ -1,12 +1,12 @@
-  <a href="https://www.gatsbyjs.org">
-    <img height="120" alt="Gatsby-Logo" src="/src/images/technologies/gatsby.png" />
-  </a>
-  <a href="https://www.netlify.com">
-    <img height="120" alt="Netlify-Logo" src="https://www.netlify.com/img/global/badges/netlify-color-bg.svg"/>
-  </a>
-  <a href="https://www.ghost.com">
-    <img height="120" alt="Ghost-Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Ghost-Logo.svg/128px-Ghost-Logo.svg.png">
-  </a>
+<a href="https://www.gatsbyjs.org">
+ <img height="120" alt="Gatsby-Logo" src="/src/images/technologies/gatsby.png" />
+</a>
+<a href="https://www.netlify.com">
+ <img height="120" alt="Netlify-Logo" src="https://www.netlify.com/img/global/badges/netlify-color-bg.svg"/>
+</a>
+<a href="https://www.ghost.com">
+ <img height="120" alt="Ghost-Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Ghost-Logo.svg/128px-Ghost-Logo.svg.png">
+</a>
 
 # Rico's Portfolio
 ## Run with Gatsby and Netlify and a Blog powered by a headless Ghost CMS
