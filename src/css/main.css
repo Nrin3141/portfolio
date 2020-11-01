@@ -148,45 +148,7 @@ button {
   height: 100vw;
   overflow: hidden;
 }
-.active-section {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.active-section > .section-image {
-  animation: blendIn 1s;
-  opacity: 0.8;
-}
 
-@keyframes blendIn {
-  0% {
-    /* top: -100vh; */
-    opacity: 0;
-  }
-  100% {
-    /* top: 0; */
-    opacity: 0.8;
-  }
-}
-.hidden-section {
-  position: absolute;
-  animation: blendOut 1s;
-  top: 0;
-  opacity: 0;
-  /* top: 100vh; */
-  left: 0;
-}
-
-@keyframes blendOut {
-  0% {
-    opacity: 0.8;
-    /* top: 0; */
-  }
-  100% {
-    opacity: 0;
-    /* top: 100vh; */
-  }
-}
 h1 {
   margin: 0;
 }

@@ -32,17 +32,17 @@ const Main = ({ data }) => {
     setActive(old => old + 1)
   }
   return (
-    <div className="section-container">
+    <div className="section-container2">
       <Header />
       <MobileMenu color="white" display={true} />
       {sections.map((_, index) => (
         <Img
-          key={"section-img" + index}
           className={
             active % sections.length === index
               ? "section-image "
               : "hidden-section"
           }
+          key={"section-img" + index}
           fluid={computeSources(index, data)}
         />
       ))}
