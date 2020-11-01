@@ -1,9 +1,12 @@
-import React, { useState } from "react"
-import Section from "../components/section"
+import React, { useState, useEffect } from "react"
 import MobileMenu from "../components/menus/Mobile"
 import { graphql } from "gatsby"
 import Header from "../components/header"
 import "../css/main.css"
+import "../css/section.css"
+import Typed from "react-typed"
+import "react-typed/dist/animatedCursor.css"
+import Img from "gatsby-image"
 
 const sections = [
   { text: "Programmer", link: "/coding", imgPath: "programmer" },
@@ -11,36 +14,54 @@ const sections = [
   { text: "Traveler", link: "https://photodyssee.com", imgPath: "traveler" },
 ]
 
+const computeSources = (active, data) => {
+  const img = data.images.edges.find(
+    ({ node }) => node.name === sections[active].imgPath
+  )
+  const sources = [
+    img.node.small.fluid,
+    { ...img.node.medium.fluid, media: "(min-width: 700px)" },
+    { ...img.node.large.fluid, media: "(min-width: 1800px)" },
+    { ...img.node.full.fluid, media: "(min-width: 3000px)" },
+  ]
+  return sources
+}
 const Main = ({ data }) => {
-  const [active, setActive] = useState(0)
+  const [active, setActive] = useState(2)
   const nextSection = () => {
-    setActive(old => (old + 1 >= sections.length ? 0 : old + 1))
+    setActive(old => old + 1)
   }
   return (
-    <div>
+    <div className="section-container">
       <Header />
       <MobileMenu color="white" display={true} />
-      {sections.map((section, index) => {
-        const img = data.images.edges.find(
-          ({ node }) => node.name === section.imgPath
-        )
-        const sources = [
-          img.node.small.fluid,
-          { ...img.node.medium.fluid, media: "(min-width: 700px)" },
-          { ...img.node.large.fluid, media: "(min-width: 1800px)" },
-          { ...img.node.full.fluid, media: "(min-width: 3000px)" },
-        ]
-        return (
-          <Section
-            key={index}
-            active={index === active}
-            nextSection={nextSection}
-            img={sources}
-            headline={section.text}
-            href={section.link}
-          />
-        )
-      })}
+      {sections.map((_, index) => (
+        <Img
+          key={"section-img" + index}
+          className={
+            active % sections.length === index
+              ? "section-image "
+              : "hidden-section"
+          }
+          fluid={computeSources(index, data)}
+        />
+      ))}
+      <div className="section-container">
+        <div className="section-header">
+          <h1>
+            I am a{" "}
+            <Typed
+              strings={sections.map(section => section.text)}
+              typeSpeed={70}
+              backSpeed={50}
+              backDelay={1000}
+              preStringTyped={nextSection}
+              loop
+              smartBackspace={false}
+            />
+          </h1>
+        </div>
+      </div>
     </div>
   )
 }
