@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import MobileMenu from "../components/menus/Mobile"
 import { graphql } from "gatsby"
 import Header from "../components/header"
