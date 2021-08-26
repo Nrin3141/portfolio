@@ -46,10 +46,10 @@ function renderCV(data) {
       <div className="cv-section">
         <h3>ABOUT ME</h3>
         <p>
-          I am a self-taught developer from Berlin. Someone, who is constantly
-          striving to become a little better every day. I just love learning new
-          things. But even more than learning, I love to use what I have learned
-          to build awesome things. Mostly on the web.
+          I am a self-taught software engineer from Berlin. Someone, who is
+          constantly striving to become a little better every day. I just love
+          learning new things. But even more than learning, I love to use what I
+          have learned to build awesome things. Mostly on the web.
         </p>
       </div>
       <div className="cv-section cv-main-section">
