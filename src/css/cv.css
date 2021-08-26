@@ -144,6 +144,10 @@ a {
   .cv-job-title {
     margin-top: 2vh;
   }
+
+  .cv-name-heading {
+    margin-left: 10px;
+  }
   .cv-name-heading h1 {
     font-size: 3rem;
   }
@@ -172,5 +176,8 @@ a {
   .cv-container {
     max-width: 800px;
     margin: 5vh auto;
+  }
+  .cv-job-title {
+    display: block;
   }
 }
