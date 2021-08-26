@@ -145,6 +145,10 @@ a {
     margin-top: 2vh;
   }
 
+  ul {
+    margin-top: 0;
+  }
+
   .cv-name-heading {
     margin-left: 10px;
   }
