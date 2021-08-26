@@ -44,30 +44,39 @@ button {
 }
 
 .cv-image {
-  width: 50px;
-  height: 50px;
+  width: 25%;
+  height: 25%;
 }
 
 .cv-container {
   width: 100%;
-  max-width: 70vw;
-  margin: auto;
+  max-width: 936px;
+  margin: 5vh auto;
   font-family: Helvetica;
-  font-size: 16px;
-}
-
-.cv-container > p {
-  max-width: 90vw;
+  font-size: 20px;
 }
 
 .cv-section {
   display: grid;
   grid-template-columns: 30% 70%;
+  grid-column-gap: 10px;
+}
+
+.cv-divider {
+  height: 5px;
+  width: 101%;
+  margin-left: -1%;
+  background-color: #559b39;
+  align-self: center;
+}
+
+.cv-main-section {
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .cv-container ul {
-  padding-left: 0;
-  list-style-type: none;
+  margin-left: -20px;
 }
 
 .cv-container h1,
@@ -75,15 +84,16 @@ button {
 .cv-container h3 {
   color: #559b39;
 }
-.cv-container > h1 {
-  font-size: 1.5rem;
+
+.cv-container h1 {
+  font-size: 1.7rem;
 }
 
-.cv-container > h2 {
-  font-size: 1.3rem;
+.cv-container h2 {
+  font-size: 1.5rem;
 }
-.cv-container > h3 {
-  font-size: 1.1rem;
+.cv-container h3 {
+  font-size: 1.3rem;
 }
 
 .cv-header {

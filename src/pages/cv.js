@@ -29,7 +29,7 @@ function renderCV(data) {
         <div className="cv-name-heading">
           <h1 style={{ color: "black" }}>RICO</h1>
           <h1>TREBELJAHR</h1>
-          <h2>FULLSTACK DEVELOPER</h2>
+          <h1 style={{ color: "black" }}>FULLSTACK DEVELOPER</h1>
         </div>
         <div className="cv-contact-info">
           <p>ricotrebeljahr@gmail.com</p>
@@ -44,7 +44,10 @@ function renderCV(data) {
           use what I have learned to build awesome stuff with code.
         </p>
       </div>
-      <h2 style={{ color: "black" }}>PROJECTS</h2>
+      <div className="cv-section cv-main-section">
+        <h1 style={{ color: "black" }}>PROJECTS</h1>
+        <div className="cv-divider" />
+      </div>
       <div className="cv-section">
         <h3>MULTIPLAYER SERVER</h3>
         <p>
@@ -76,7 +79,10 @@ function renderCV(data) {
         </p>
       </div>
 
-      <h2 style={{ color: "black" }}>SKILLS</h2>
+      <div className="cv-section cv-main-section">
+        <h1 style={{ color: "black" }}>SKILLS</h1>
+        <div className="cv-divider" />
+      </div>
       <div className="cv-section">
         <h3>OVERVIEW</h3>
         <ul>
