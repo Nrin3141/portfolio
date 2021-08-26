@@ -44,8 +44,12 @@ button {
 }
 
 .cv-image {
-  width: 25%;
-  height: 25%;
+  width: 90%;
+  height: 90%;
+}
+
+.cv-container a {
+  color: #559b39 !important;
 }
 
 .cv-container {
@@ -54,6 +58,31 @@ button {
   margin: 5vh auto;
   font-family: Helvetica;
   font-size: 20px;
+}
+.cv-contact-info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3vh;
+}
+.cv-contact-info p,
+.cv-contact-info a {
+  margin: 5px;
+}
+
+.cv-date {
+  margin-top: -1vh;
+}
+
+.cv-name-heading {
+  margin-top: 3vh;
+}
+
+.cv-name-heading h1 {
+  font-size: 3rem !important;
+}
+
+.cv-job-title {
+  margin-top: 2vh;
 }
 
 .cv-section {
@@ -64,8 +93,7 @@ button {
 
 .cv-divider {
   height: 5px;
-  width: 101%;
-  margin-left: -1%;
+  width: 100%;
   background-color: #559b39;
   align-self: center;
 }
@@ -97,8 +125,13 @@ button {
 }
 
 .cv-header {
-  flex-wrap: wrap;
-  display: flex;
+  display: grid;
+  grid-template-columns: 30% auto 20%;
+  margin: 4vh 0;
+}
+
+.cv-header h1 {
+  font-size: 2rem;
 }
 
 .cv-name-heading {
@@ -198,6 +231,7 @@ button {
 .project-image:hover {
   transform: scale(1.5);
 }
+
 .projects-container {
   width: 100vw;
   display: flex;
