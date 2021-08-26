@@ -50,8 +50,8 @@ button {
 
 .cv-container {
   width: 100%;
-  max-width: 90vw;
-  margin: 5px;
+  max-width: 70vw;
+  margin: auto;
   font-family: Helvetica;
   font-size: 16px;
 }
@@ -60,6 +60,21 @@ button {
   max-width: 90vw;
 }
 
+.cv-section {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.cv-container ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.cv-container h1,
+.cv-container h2,
+.cv-container h3 {
+  color: #559b39;
+}
 .cv-container > h1 {
   font-size: 1.5rem;
 }
