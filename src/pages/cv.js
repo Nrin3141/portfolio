@@ -64,7 +64,7 @@ function renderCV(data) {
           I was working at Klarna for 6 months in the beginning of 2021 as a
           Software Engineer Level II, as part of their chrome browser extension
           team. There I helped to automate chrome browser extension testing with
-          cypress and wrote a notifications feature for the browser extension.
+          cypress and wrote the extensions' notifications feature.
         </p>
       </div>
       <div className="cv-section">
@@ -73,7 +73,7 @@ function renderCV(data) {
           <p className="cv-date">Jun. 2021 - Apr. 2021</p>
         </div>
         <p>
-          I was working at Softgames as a Junior Full Stack Developer for 9
+          I was working at Softgames as a Junior Full Stack Developer for 11
           months between 2019 and 2020. There I built a large-scale multiplayer
           server using Golang and a Typescript/RxJS client library to adapt to
           the changing requirements of the frontend team.

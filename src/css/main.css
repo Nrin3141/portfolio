@@ -45,10 +45,15 @@ button {
 
 .cv-image {
   width: 90%;
-  height: 90%;
 }
 
-.cv-container a {
+.cv-image img {
+  width: 110% !important;
+  height: 115% !important;
+  object-position: 0% 0% !important;
+}
+
+.cv-section a {
   color: #559b39 !important;
 }
 
