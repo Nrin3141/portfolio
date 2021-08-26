@@ -1,7 +1,7 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
-import "../css/main.css"
+import "../css/cv.css"
 
 const CV = () => {
   return (
@@ -26,13 +26,13 @@ function renderCV(data) {
   return (
     <div className="cv-container">
       <div className="cv-header">
-        <Img className="circular cv-image" fluid={data.file.img.fluid} />
+        <div className="cv-image">
+          <Img className="cv-circular" fluid={data.file.img.fluid} />
+        </div>
         <div className="cv-name-heading">
-          <h1 style={{ color: "black" }}>RICO</h1>
+          <h1 className="cv-black-heading">RICO</h1>
           <h1>TREBELJAHR</h1>
-          <h2 style={{ color: "black" }} className="cv-job-title">
-            SOFTWARE ENGINEER
-          </h2>
+          <h2 className="cv-black-heading cv-job-title">SOFTWARE ENGINEER</h2>
         </div>
         <div className="cv-contact-info">
           <a href="mailto:ricotrebeljahr@gmail.com">ricotrebeljahr@gmail.com</a>
@@ -53,7 +53,7 @@ function renderCV(data) {
         </p>
       </div>
       <div className="cv-section cv-main-section">
-        <h1 style={{ color: "black" }}>WORK</h1>
+        <h1 className="cv-black-heading">WORK</h1>
         <div className="cv-divider" />
       </div>
       <div className="cv-section">
@@ -82,7 +82,7 @@ function renderCV(data) {
       </div>
 
       <div className="cv-section cv-main-section">
-        <h1 style={{ color: "black" }}>PERSONAL PROJECTS</h1>
+        <h1 className="cv-black-heading">PERSONAL PROJECTS</h1>
         <div className="cv-divider" />
       </div>
 
@@ -101,7 +101,7 @@ function renderCV(data) {
       </div>
       <div className="cv-section">
         <div>
-          <h3>SELF-LEARNING PHASE</h3>
+          <h3>SELF LEARNING PHASE</h3>
           <p className="cv-date">2020</p>
         </div>
         <p>
@@ -143,7 +143,7 @@ function renderCV(data) {
       </div>
 
       <div className="cv-section cv-main-section">
-        <h1 style={{ color: "black" }}>SKILLS</h1>
+        <h1 className="cv-black-heading">SKILLS</h1>
         <div className="cv-divider" />
       </div>
       <div className="cv-section">
