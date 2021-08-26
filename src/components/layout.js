@@ -2,11 +2,11 @@ import React from "react"
 import MenuLinks from "./menus/MenuLinks"
 import "../css/layout.css"
 
-const Layout = ({ children }) => (
+const Layout = ({ withFooter = true, withNavigation = true, children }) => (
   <>
-    <Navigation />
+    {withNavigation && <Navigation />}
     {children}
-    <Footer />
+    {withFooter && <Footer />}
   </>
 )
 
