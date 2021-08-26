@@ -26,21 +26,21 @@ const Projects = () => {
 
 const imageMap = {
   tictactoe: {
-    href: "https://tic-tac-toe.ricotrebeljahr.de",
+    href: "https://tic-tac-toe.ricotrebeljahr.de/",
     text: "a game of tic tac toe",
   },
-  chess: { href: "https://chess.ricotrebeljahr.de", text: "a game of chess" },
+  chess: { href: "https://chess.ricotrebeljahr.de/", text: "a game of chess" },
   travel: { href: "https://photodyssee.com", text: "a travel blog" },
   swantje: {
-    href: "https://swantjefurtak.com",
+    href: "https://swantjefurtak.com/",
     text: "a site for a filmmaker",
   },
   amit: {
-    href: "https://brave-morse-b2bb17.netlify.app/",
+    href: "https://amitmeena.com/",
     text: "a portfolio for a copywriter",
   },
   asteroids: {
-    href: "https://confident-aryabhata-d5dc3d.netlify.app/",
+    href: "https://asteroids.ricotrebeljahr.com/",
     text: "a game in space",
   },
   "fractal-tree": {

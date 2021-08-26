@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react"
-// import { QuadTree, Box, Point, Circle } from "js-quadtree"
 import { v4 } from "uuid"
 
 let Vector
@@ -68,7 +67,6 @@ const Sketch = () => {
     let font
     let dots = []
     let bounds1, bounds2
-    // const quadtree = new QuadTree(new Box(0, 0, w, h))
     p.preload = () => {
       font = p.loadFont("/Avenir.otf")
     }
@@ -94,7 +92,6 @@ const Sketch = () => {
 
     p.draw = () => {
       p.background(51)
-      p.fill("red")
 
       p.fill(255)
       dots.forEach(dot => {
@@ -102,20 +99,10 @@ const Sketch = () => {
         dot.update()
         dot.show(249, 220, 92)
         dot.flee()
-
-        // quadtree.insert(new Point(dot.pos.x, dot.pos.y, { flee: dot.flee }))
       })
-
-      // const results = quadtree.query(new Circle(p.mouseX, p.mouseY, 1000))
-      // results.forEach(dot => dot.data.flee())
-      // quadtree.clear()
-      let fps = p.frameRate()
-      p.fill(255)
-      p.stroke(51)
-      p.text("FPS: " + fps.toFixed(0), 10, h - 10)
-      p.text("Dots: " + dots.length, 10, h - 30)
     }
   }
+
   useEffect(() => {
     if (window !== undefined) {
       const p5 = require("p5")
@@ -138,6 +125,7 @@ const Sketch = () => {
       }
     }
   }, [])
+
   return <div className="sketch-container" ref={myRef}></div>
 }
 
